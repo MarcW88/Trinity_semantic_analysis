@@ -95,7 +95,7 @@ export const en: Dict = {
     "geo.same_label_new_version": "New version with an identical wording.", "geo.status_latest_wins": "Different statuses across versions: the latest version applies.",
     "geo.error_with_brand": "A failed run must not set brand_mentioned.", "geo.error_with_citations": "A failed run must not have citations.",
     "geo.question_from_db": "Question not in the workbook: it must exist in history.", "geo.outside_period": "Observation outside the declared period.",
-    "geo.label_changed": "Different wording for an existing version: create a new version.", "geo.run_changed": "run_id already imported with different content: invalidate it then import a replacement run.",
+    "geo.label_changed": "Different wording for an existing version: create a new version.", "geo.run_other_market": "run_id already used in market {market}: run_id values must be unique across markets.", "geo.run_changed": "run_id already imported with different content: invalidate it then import a replacement run.",
     "geo.replaces_unknown": "Unknown replaces_run_id.", "geo.replaces_not_invalidated": "The replaced run must be invalidated first.",
   },
 };

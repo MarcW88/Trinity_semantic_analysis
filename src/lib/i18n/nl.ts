@@ -95,7 +95,7 @@ export const nl: Dict = {
     "geo.same_label_new_version": "Nieuwe versie met identieke formulering.", "geo.status_latest_wins": "Verschillende statussen per versie: de laatste versie geldt.",
     "geo.error_with_brand": "Een mislukte run mag brand_mentioned niet invullen.", "geo.error_with_citations": "Een mislukte run mag geen citaties hebben.",
     "geo.question_from_db": "Vraag niet in de werkmap: ze moet in de geschiedenis bestaan.", "geo.outside_period": "Observatie buiten de opgegeven periode.",
-    "geo.label_changed": "Andere formulering voor een bestaande versie: maak een nieuwe versie aan.", "geo.run_changed": "run_id al geïmporteerd met andere inhoud: verklaar ongeldig en importeer een vervangende run.",
+    "geo.label_changed": "Andere formulering voor een bestaande versie: maak een nieuwe versie aan.", "geo.run_other_market": "run_id al gebruikt in markt {market}: run_id's moeten uniek zijn over alle markten.", "geo.run_changed": "run_id al geïmporteerd met andere inhoud: verklaar ongeldig en importeer een vervangende run.",
     "geo.replaces_unknown": "Onbekende replaces_run_id.", "geo.replaces_not_invalidated": "De vervangen run moet eerst ongeldig verklaard worden.",
   },
 };

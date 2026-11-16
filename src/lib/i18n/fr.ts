@@ -93,7 +93,7 @@ export const fr = {
     "geo.same_label_new_version": "Nouvelle version avec un libellé identique.", "geo.status_latest_wins": "Statuts différents selon les versions : la dernière version s'applique.",
     "geo.error_with_brand": "Un run en erreur ne doit pas renseigner brand_mentioned.", "geo.error_with_citations": "Un run en erreur ne doit pas avoir de citation.",
     "geo.question_from_db": "Question absente du classeur : elle doit exister dans l'historique.", "geo.outside_period": "Observation hors de la période déclarée.",
-    "geo.label_changed": "Libellé différent pour une version existante : créer une nouvelle version.", "geo.run_changed": "run_id déjà importé avec un contenu différent : invalider puis importer un run de remplacement.",
+    "geo.label_changed": "Libellé différent pour une version existante : créer une nouvelle version.", "geo.run_other_market": "run_id déjà utilisé sur le marché {market} : les run_id doivent être uniques tous marchés confondus.", "geo.run_changed": "run_id déjà importé avec un contenu différent : invalider puis importer un run de remplacement.",
     "geo.replaces_unknown": "replaces_run_id inconnu.", "geo.replaces_not_invalidated": "Le run remplacé doit d'abord être invalidé.",
   },
 };

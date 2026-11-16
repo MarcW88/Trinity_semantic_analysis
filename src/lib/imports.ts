@@ -69,7 +69,7 @@ export async function revalidateGeoBatch(projectId: number, batchId: number) {
   const [p] = await db.select().from(schema.projects).where(eq(schema.projects.id, projectId));
   const batch = b.payload as Parameters<typeof planGeoBatch>[1];
   const plan = await planGeoBatch(projectId, batch);
-  const prevIssues = ((b.issues as Issue[]) ?? []).filter((i) => !i.code.startsWith("geo.run_changed") && !i.code.startsWith("geo.label_changed") && !i.code.startsWith("geo.replaces") && i.code !== "ref.question");
+  const prevIssues = ((b.issues as Issue[]) ?? []).filter((i) => !i.code.startsWith("geo.run_") && !i.code.startsWith("geo.label_changed") && !i.code.startsWith("geo.replaces") && i.code !== "ref.question");
   const failed = plan.conflicts.some((c) => c.level === "error");
   await db.update(schema.geoBatches).set({
     baseRevision: p.geoRevision, summary: geoSummary(batch, plan), issues: [...prevIssues, ...plan.conflicts],

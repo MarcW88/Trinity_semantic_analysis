@@ -39,20 +39,21 @@ export async function planGeoBatch(projectId: number, batch: GeoBatch): Promise<
 
   const runIds = batch.runs.map((r) => r.runId);
   const existingRuns = runIds.length
-    ? await db.select({ runId: schema.geoRuns.runId, contentHash: schema.geoRuns.contentHash }).from(schema.geoRuns).where(and(eq(schema.geoRuns.projectId, projectId), inArray(schema.geoRuns.runId, runIds)))
+    ? await db.select({ runId: schema.geoRuns.runId, market: schema.geoRuns.market, contentHash: schema.geoRuns.contentHash }).from(schema.geoRuns).where(and(eq(schema.geoRuns.projectId, projectId), inArray(schema.geoRuns.runId, runIds)))
     : [];
-  const hashBy = new Map(existingRuns.map((r) => [r.runId, r.contentHash]));
+  const existingBy = new Map(existingRuns.map((r) => [r.runId, r]));
   let newRuns = 0, duplicateRuns = 0, replacements = 0;
   const replaced = batch.runs.map((r) => r.replacesRunId).filter((x): x is string => Boolean(x));
   const replacedRows = replaced.length
     ? await db.select({ runId: schema.geoRuns.runId, invalidatedAt: schema.geoRuns.invalidatedAt }).from(schema.geoRuns).where(and(eq(schema.geoRuns.projectId, projectId), inArray(schema.geoRuns.runId, replaced)))
     : [];
   for (const r of batch.runs) {
-    const h = hashBy.get(r.runId);
-    if (h === undefined) newRuns++;
-    else if (h === r.contentHash) duplicateRuns++;
+    const ex = existingBy.get(r.runId);
+    if (!ex) newRuns++;
+    else if (ex.market !== batch.market) conflicts.push({ level: "error", code: "geo.run_other_market", sheet: "Runs", field: "run_id", value: r.runId, params: { market: ex.market } });
+    else if (ex.contentHash === r.contentHash) duplicateRuns++;
     else conflicts.push({ level: "error", code: "geo.run_changed", sheet: "Runs", field: "run_id", value: r.runId });
-    if (r.replacesRunId && h === undefined) {
+    if (r.replacesRunId && !ex) {
       const target = replacedRows.find((x) => x.runId === r.replacesRunId);
       if (!target) conflicts.push({ level: "error", code: "geo.replaces_unknown", sheet: "Runs", field: "replaces_run_id", value: r.replacesRunId });
       else if (!target.invalidatedAt) conflicts.push({ level: "error", code: "geo.replaces_not_invalidated", sheet: "Runs", field: "replaces_run_id", value: r.replacesRunId });
