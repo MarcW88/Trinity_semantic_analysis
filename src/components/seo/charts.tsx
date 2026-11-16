@@ -3,17 +3,20 @@ import { Bar, BarChart, CartesianGrid, Cell, Legend, Pie, PieChart, ResponsiveCo
 import { BUCKET_COLORS } from "@/lib/config";
 import { BUCKETS, type Bucket, type DomainInfo, type SeoResult } from "@/lib/seo/types";
 
+const legendText = (v: string) => <span style={{ color: "#2d2d2d" }}>{v}</span>;
+const TOOLTIP = { borderRadius: 12, border: "1px solid #e8e2dc", boxShadow: "0 8px 24px -12px rgba(45,45,45,.25)", fontSize: 12 };
+
 export function DistributionChart({ data, labels }: { data: SeoResult["distribution"]; labels: Record<Bucket, string> }) {
   const rows = data.map((r) => ({ category: r.category, ...r.counts }));
   return (
     <div className="h-72" role="img" aria-label={data.map((r) => `${r.category}: ${BUCKETS.map((b) => `${labels[b]} ${r.counts[b]}`).join(", ")}`).join("; ")}>
       <ResponsiveContainer>
         <BarChart data={rows} margin={{ top: 8, right: 8, left: 0, bottom: 8 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#eee" />
+          <CartesianGrid strokeDasharray="3 3" stroke="#efeae5" vertical={false} />
           <XAxis dataKey="category" tick={{ fontSize: 11 }} interval={0} />
           <YAxis allowDecimals={false} tick={{ fontSize: 11 }} />
-          <Tooltip />
-          {BUCKETS.map((b) => <Bar key={b} dataKey={b} name={labels[b]} stackId="a" fill={BUCKET_COLORS[b]} />)}
+          <Tooltip contentStyle={TOOLTIP} />
+          {BUCKETS.map((b) => <Bar key={b} dataKey={b} name={labels[b]} stackId="a" fill={BUCKET_COLORS[b]} animationDuration={900} radius={b === "unranked" ? [6, 6, 0, 0] : 0} />)}
         </BarChart>
       </ResponsiveContainer>
     </div>
@@ -29,8 +32,8 @@ export function VisibilityChart({ data, total, domains }: { data: SeoResult["vis
         <BarChart data={rows} layout="vertical" margin={{ top: 4, right: 40, left: 8, bottom: 4 }}>
           <XAxis type="number" allowDecimals={false} domain={[0, Math.max(1, total)]} tick={{ fontSize: 11 }} />
           <YAxis type="category" dataKey="label" width={110} tick={{ fontSize: 11 }} />
-          <Tooltip formatter={(v) => [`${v}/${total}`, ""]} />
-          <Bar dataKey="ranked" label={{ position: "right", fontSize: 11, formatter: (v: unknown) => `${v}/${total}` }}>
+          <Tooltip contentStyle={TOOLTIP} formatter={(v) => [`${v}/${total}`, ""]} />
+          <Bar dataKey="ranked" radius={[0, 6, 6, 0]} animationDuration={900} label={{ position: "right", fontSize: 11, formatter: (v: unknown) => `${v}/${total}` }}>
             {rows.map((r) => <Cell key={r.domain} fill={color(r.domain)} />)}
           </Bar>
         </BarChart>
@@ -47,12 +50,12 @@ export function VisibilityByCategoryChart({ data, domains }: { data: SeoResult["
     <div className="h-72" role="img" aria-label={data.map((c) => `${c.category}: ${c.rates.map((r) => `${r.label} ${r.rate === null ? "—" : (r.rate * 100).toFixed(1) + "%"}`).join(", ")}`).join("; ")}>
       <ResponsiveContainer>
         <BarChart data={rows} margin={{ top: 8, right: 8, left: 0, bottom: 8 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#eee" />
+          <CartesianGrid strokeDasharray="3 3" stroke="#efeae5" vertical={false} />
           <XAxis dataKey="category" tick={{ fontSize: 11 }} interval={0} />
           <YAxis unit="%" tick={{ fontSize: 11 }} />
-          <Tooltip formatter={(v) => `${v} %`} />
-          <Legend wrapperStyle={{ fontSize: 11 }} />
-          {labels.map((l) => <Bar key={l} dataKey={l} fill={colorOf(l)} />)}
+          <Tooltip contentStyle={TOOLTIP} formatter={(v) => `${v} %`} />
+          <Legend wrapperStyle={{ fontSize: 11 }} formatter={legendText} />
+          {labels.map((l) => <Bar key={l} dataKey={l} fill={colorOf(l)} radius={[4, 4, 0, 0]} animationDuration={900} />)}
         </BarChart>
       </ResponsiveContainer>
     </div>
@@ -65,12 +68,12 @@ export function Donut({ data, format }: { data: { name: string; value: number; c
     <div className="h-56" role="img" aria-label={data.map((x) => `${x.name}: ${format(x.value)}`).join(", ")}>
       <ResponsiveContainer>
         <PieChart>
-          <Pie data={data} dataKey="value" nameKey="name" innerRadius="55%" outerRadius="80%" paddingAngle={1}
-            label={({ value }) => (total ? `${((Number(value) / total) * 100).toFixed(1)}%` : "")}>
+          <Pie data={data} dataKey="value" nameKey="name" innerRadius="55%" outerRadius="80%" paddingAngle={2} cornerRadius={4} animationDuration={900}
+            label={({ value, x, y, textAnchor }) => (total ? <text x={x} y={y} textAnchor={textAnchor} dominantBaseline="central" fill="#2d2d2d" fontSize={12} fontWeight={600}>{`${((Number(value) / total) * 100).toFixed(1)}%`}</text> : null)}>
             {data.map((x) => <Cell key={x.name} fill={x.color} />)}
           </Pie>
-          <Tooltip formatter={(v) => format(Number(v))} />
-          <Legend wrapperStyle={{ fontSize: 11 }} />
+          <Tooltip contentStyle={TOOLTIP} formatter={(v) => format(Number(v))} />
+          <Legend wrapperStyle={{ fontSize: 11 }} formatter={legendText} />
         </PieChart>
       </ResponsiveContainer>
     </div>

@@ -40,7 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# local data (real client workbooks never committed)
-/data/
 /storage/
 !.env.example

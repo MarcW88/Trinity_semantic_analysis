@@ -2,20 +2,15 @@
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 import { setLang } from "@/app/actions";
-import { UI_LANGS } from "@/lib/config";
+import { UI_LANGS, type UiLang } from "@/lib/config";
+import { Segmented } from "./motion";
 
-export function LangSwitcher({ lang, label }: { lang: string; label: string }) {
+export function LangSwitcher({ lang, label }: { lang: UiLang; label: string }) {
   const router = useRouter();
   const [pending, start] = useTransition();
   return (
-    <select
-      aria-label={label}
-      className="select"
-      value={lang}
-      disabled={pending}
-      onChange={(e) => start(async () => { await setLang(e.target.value); router.refresh(); })}
-    >
-      {UI_LANGS.map((l) => <option key={l} value={l}>{l.toUpperCase()}</option>)}
-    </select>
+    <Segmented label={label} layoutId="lang-pill" value={lang} disabled={pending}
+      options={UI_LANGS.map((l) => ({ value: l, label: l.toUpperCase() }))}
+      onChange={(l) => start(async () => { await setLang(l); router.refresh(); })} />
   );
 }

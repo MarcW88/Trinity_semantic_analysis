@@ -1,29 +1,31 @@
 "use server";
 import { cookies } from "next/headers";
-import { AuthError } from "next-auth";
-import { signIn, signOut } from "@/auth";
+import { redirect } from "next/navigation";
 import { LANG_COOKIE, resolveLang } from "@/lib/i18n";
+import { MARKETS } from "@/lib/config";
+import { SESSION_COOKIE, SESSION_MAX_AGE, checkPassword, passwordConfigured, sessionToken } from "@/lib/auth";
 
-const cookieOpts = { httpOnly: false, sameSite: "lax" as const, secure: process.env.NODE_ENV === "production", path: "/", maxAge: 60 * 60 * 24 * 365 };
+const prefOpts = { httpOnly: false, sameSite: "lax" as const, secure: process.env.NODE_ENV === "production", path: "/", maxAge: 60 * 60 * 24 * 365 };
 
 export async function setLang(lang: string) {
-  (await cookies()).set(LANG_COOKIE, resolveLang(lang), cookieOpts);
+  (await cookies()).set(LANG_COOKIE, resolveLang(lang), prefOpts);
 }
 
 export async function setMarketCookie(market: string) {
-  if (/^[A-Z]{4}$/.test(market)) (await cookies()).set("market", market, cookieOpts);
+  if (MARKETS.some((m) => m.code === market)) (await cookies()).set("market", market, prefOpts);
 }
 
-export async function loginAction(_prev: { error: boolean } | undefined, form: FormData) {
-  try {
-    await signIn("credentials", { email: form.get("email"), password: form.get("password"), redirectTo: "/seo" });
-    return { error: false };
-  } catch (e) {
-    if (e instanceof AuthError) return { error: true };
-    throw e;
+export async function loginAction(_prev: { error: "invalid" | "config" } | undefined, form: FormData) {
+  if (!passwordConfigured()) return { error: "config" as const };
+  if (!checkPassword(String(form.get("password") ?? ""))) {
+    await new Promise((r) => setTimeout(r, 500));
+    return { error: "invalid" as const };
   }
+  (await cookies()).set(SESSION_COOKIE, sessionToken(), { httpOnly: true, sameSite: "lax", secure: process.env.NODE_ENV === "production", path: "/", maxAge: SESSION_MAX_AGE });
+  redirect("/seo");
 }
 
 export async function logoutAction() {
-  await signOut({ redirectTo: "/login" });
+  (await cookies()).delete(SESSION_COOKIE);
+  redirect("/login");
 }

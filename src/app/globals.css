@@ -10,33 +10,67 @@
 }
 
 body {
-  background: var(--color-cream);
   color: var(--color-ink);
+  background:
+    radial-gradient(1200px 500px at 0% -10%, rgba(184, 169, 154, 0.28), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(139, 115, 85, 0.14), transparent 55%),
+    var(--color-cream);
+  background-attachment: fixed;
 }
 
 .card {
-  @apply rounded-lg border border-line bg-white p-4 shadow-sm;
+  @apply rounded-2xl border border-line/80 bg-white/85 p-5 shadow-[0_1px_2px_rgba(45,45,45,0.04),0_12px_32px_-18px_rgba(45,45,45,0.18)] backdrop-blur;
+}
+.card-hover {
+  @apply transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_2px_4px_rgba(45,45,45,0.05),0_18px_40px_-18px_rgba(139,115,85,0.35)];
+}
+.card-title {
+  @apply mb-3 text-sm font-semibold text-ink/80;
+}
+.hero {
+  @apply relative overflow-hidden rounded-3xl p-7 shadow-[0_20px_50px_-24px_rgba(139,115,85,0.6)] sm:p-9;
+  background: linear-gradient(120deg, #6f5b44 0%, #8b7355 45%, #b8a99a 100%);
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: -40% -10% auto auto;
+  width: 420px;
+  height: 420px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.22), transparent 65%);
+  animation: float 9s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-40px, 30px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero::after { animation: none; }
 }
 .section-title {
-  @apply mb-3 border-b-2 border-taupe pb-1 text-lg font-semibold text-ink;
+  @apply mb-4 flex items-center gap-2 text-xl font-semibold tracking-tight text-ink before:h-5 before:w-1.5 before:rounded-full before:bg-brown before:content-[''];
 }
 .btn {
-  @apply inline-flex items-center gap-1 rounded-md border border-brown bg-brown px-3 py-1.5 text-sm font-medium text-white hover:bg-[#6f5b44] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brown disabled:opacity-50;
+  @apply inline-flex items-center gap-1 rounded-full border border-brown bg-brown px-4 py-1.5 text-sm font-medium text-white shadow-sm transition hover:bg-[#6f5b44] hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brown disabled:opacity-50;
 }
 .btn-ghost {
-  @apply inline-flex items-center gap-1 rounded-md border border-line bg-white px-3 py-1.5 text-sm text-ink hover:bg-cream focus-visible:outline-2 focus-visible:outline-brown disabled:opacity-50;
+  @apply inline-flex items-center gap-1 rounded-full border border-line bg-white/70 px-3 py-1.5 text-sm text-ink transition hover:bg-white focus-visible:outline-2 focus-visible:outline-brown disabled:opacity-50;
 }
 .select, .input {
-  @apply rounded-md border border-line bg-white px-2 py-1.5 text-sm focus-visible:outline-2 focus-visible:outline-brown;
+  @apply rounded-xl border border-line bg-white px-3 py-1.5 text-sm transition focus-visible:border-brown focus-visible:outline-2 focus-visible:outline-brown/40;
 }
 .tbl {
   @apply w-full border-collapse text-sm;
 }
 .tbl th {
-  @apply border-b border-line bg-cream px-2 py-1.5 text-left font-semibold whitespace-nowrap;
+  @apply border-b border-line bg-cream/95 px-3 py-2 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap text-ink/60 backdrop-blur;
 }
 .tbl td {
-  @apply border-b border-line px-2 py-1.5;
+  @apply border-b border-line/70 px-3 py-2;
+}
+.tbl tbody tr {
+  @apply transition-colors hover:bg-cream/70;
 }
 .num {
   @apply text-right tabular-nums;

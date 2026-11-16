@@ -2,42 +2,37 @@ export type UiLang = "fr" | "nl" | "en";
 export const UI_LANGS: UiLang[] = ["fr", "nl", "en"];
 export const DEFAULT_UI_LANG: UiLang = "fr";
 
-export const BRAND = {
-  taupe: "#B8A99A",
-  brown: "#8B7355",
-  text: "#2D2D2D",
-  background: "#F9F7F5",
-};
+export const CLIENT = { name: "DeDecker Keukens", brandLabel: "DeDecker" };
 
-export const DEFAULT_PROJECT = {
-  slug: "dedecker",
-  name: "DeDecker Keukens",
-  brandLabel: "DeDecker",
-  clientDomains: ["dedecker.be"],
-};
+/** One folder per market under data/. BEEN (English for Belgium) is a hypothesis to confirm. */
+export const MARKETS = [
+  { code: "BENL", isDefault: true },
+  { code: "BEFR", isDefault: false },
+  { code: "BEEN", isDefault: false },
+] as const;
+export type MarketCode = (typeof MARKETS)[number]["code"];
 
-export type MarketConfig = {
-  code: string;
-  country: string;
-  language: string;
-  isDefault: boolean;
-  sortOrder: number;
-};
+/** Categories kept in the Excel but left out of every dashboard calculation. */
+export const EXCLUDED_CATEGORIES = ["Branding", "Marque et valeurs"];
 
-/** Third market (BEEN, English for Belgium) is a hypothesis to confirm with the client. */
-export const DEFAULT_MARKETS: MarketConfig[] = [
-  { code: "BENL", country: "BE", language: "nl-BE", isDefault: true, sortOrder: 1 },
-  { code: "BEFR", country: "BE", language: "fr-BE", isDefault: false, sortOrder: 2 },
-  { code: "BEEN", country: "BE", language: "en-BE", isDefault: false, sortOrder: 3 },
-];
-
-export const IMPORT_LIMITS = {
-  maxFileBytes: 10 * 1024 * 1024,
-  maxUncompressedBytes: 120 * 1024 * 1024,
-  maxKeywords: 20_000,
-  maxRankings: 200_000,
-  maxGeoRuns: 100_000,
-  maxCells: 3_000_000,
+/** Display names and colours for known competitor domains; unknown domains show the domain itself. */
+export const KNOWN_COMPETITORS: Record<string, { label: string; color: string }> = {
+  "vika.be": { label: "Vika", color: "#C4956A" },
+  "dsmkeukens.be": { label: "DSM Keukens", color: "#4A90A4" },
+  "dovykeukens.be": { label: "Dovy", color: "#7A9E7E" },
+  "diapal.be": { label: "Diapal", color: "#D4A87C" },
+  "ilwa.be": { label: "Ilwa", color: "#9C8AA5" },
+  "cuisinesdovy.be": { label: "Dovy", color: "#7A9E7E" },
+  "ixina.be": { label: "Ixina", color: "#4A90A4" },
+  "vandenborrekitchen.be": { label: "Vandenborre", color: "#C4956A" },
+  "dsmcuisines.be": { label: "DSM Cuisines", color: "#D4A87C" },
+  "groepwouters.be": { label: "Groep Wouters", color: "#6AAFC3" },
+  "debadbeke.be": { label: "De Badbeke", color: "#A3B18A" },
+  "x2o.be": { label: "X2O", color: "#B07D56" },
+  "facq.be": { label: "Facq", color: "#82C0D2" },
+  "vanmarcke.com": { label: "Vanmarcke", color: "#9C8AA5" },
+  "sanijura.be": { label: "Sanijura", color: "#6AAFC3" },
+  "mobalpa.be": { label: "Mobalpa", color: "#A3B18A" },
 };
 
 export const POSITION_COLORS = {
@@ -56,8 +51,3 @@ export const BUCKET_COLORS = {
   "21+": "#E5DDD4",
   unranked: "#C9A59A",
 };
-
-export const DISPLAY_TZ = "Europe/Brussels";
-
-/** Account lockout after repeated wrong passwords. */
-export const LOGIN_LOCK = { maxAttempts: 5, minutes: 15 };
