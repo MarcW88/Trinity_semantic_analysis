@@ -74,7 +74,7 @@ export const nl: Dict = {
     "file.extension": "Het bestand moet een .xlsx-werkmap zijn.", "file.too_large": "Bestand te groot (max. {max} MB).",
     "file.not_xlsx": "Het bestand is geen geldige Excel-werkmap.", "file.uncompressed_too_large": "Uitgepakte inhoud te groot (max. {max} MB).",
     "file.macros": "Macro's zijn niet toegestaan.", "file.external_links": "Externe koppelingen zijn niet toegestaan.", "file.too_many_cells": "Te veel cellen (max. {max}).",
-    "sheet.missing": "Tabblad ontbreekt.", "sheet.merged_cells": "Samengevoegde cellen zijn niet toegestaan.", "header.missing": "Verplichte kolomkop ontbreekt.", "header.unknown": "Onbekende kolom genegeerd.",
+    "sheet.missing": "Tabblad ontbreekt.", "sheet.merged_cells": "Samengevoegde cellen zijn niet toegestaan.", "header.missing": "Verplichte kolomkop ontbreekt.", "header.duplicate": "Dubbele kolom.", "header.unknown": "Onbekende kolom genegeerd.",
     "cell.formula": "Formules zijn niet toegestaan: vul een waarde in.", "cell.error": "Cel bevat een fout.",
     "field.required": "Waarde verplicht.", "field.int_positive": "Strikt positief geheel getal verwacht.", "field.int_min": "Geheel getal ≥ {min} verwacht.",
     "field.decimal": "Positief getal verwacht.", "field.bool": "Booleaanse waarde verwacht (true/false, 1/0, yes/no, vrai/faux).", "field.date": "Datum JJJJ-MM-DD verwacht.",

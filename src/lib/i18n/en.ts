@@ -74,7 +74,7 @@ export const en: Dict = {
     "file.extension": "The file must be an .xlsx workbook.", "file.too_large": "File too large (max {max} MB).",
     "file.not_xlsx": "The file is not a valid Excel workbook.", "file.uncompressed_too_large": "Uncompressed content too large (max {max} MB).",
     "file.macros": "Macros are not allowed.", "file.external_links": "External links are not allowed.", "file.too_many_cells": "Too many cells (max {max}).",
-    "sheet.missing": "Missing sheet.", "sheet.merged_cells": "Merged cells are not allowed.", "header.missing": "Missing required header.", "header.unknown": "Unknown column ignored.",
+    "sheet.missing": "Missing sheet.", "sheet.merged_cells": "Merged cells are not allowed.", "header.missing": "Missing required header.", "header.duplicate": "Duplicate column.", "header.unknown": "Unknown column ignored.",
     "cell.formula": "Formulas are not allowed: enter a value.", "cell.error": "Cell contains an error.",
     "field.required": "Value required.", "field.int_positive": "Strictly positive integer expected.", "field.int_min": "Integer ≥ {min} expected.",
     "field.decimal": "Positive number expected.", "field.bool": "Boolean expected (true/false, 1/0, yes/no, vrai/faux).", "field.date": "Date YYYY-MM-DD expected.",

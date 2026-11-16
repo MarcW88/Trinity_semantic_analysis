@@ -72,7 +72,7 @@ export const fr = {
     "file.extension": "Le fichier doit être au format .xlsx.", "file.too_large": "Fichier trop volumineux (maximum {max} Mo).",
     "file.not_xlsx": "Le fichier n'est pas un classeur Excel valide.", "file.uncompressed_too_large": "Contenu décompressé trop volumineux (maximum {max} Mo).",
     "file.macros": "Les macros sont interdites.", "file.external_links": "Les liens externes sont interdits.", "file.too_many_cells": "Trop de cellules (maximum {max}).",
-    "sheet.missing": "Onglet manquant.", "sheet.merged_cells": "Cellules fusionnées interdites.", "header.missing": "En-tête obligatoire manquant.", "header.unknown": "Colonne inconnue ignorée.",
+    "sheet.missing": "Onglet manquant.", "sheet.merged_cells": "Cellules fusionnées interdites.", "header.missing": "En-tête obligatoire manquant.", "header.duplicate": "Colonne en double.", "header.unknown": "Colonne inconnue ignorée.",
     "cell.formula": "Formule interdite : saisir une valeur.", "cell.error": "Cellule en erreur.",
     "field.required": "Valeur obligatoire.", "field.int_positive": "Entier strictement positif attendu.", "field.int_min": "Entier ≥ {min} attendu.",
     "field.decimal": "Nombre positif attendu.", "field.bool": "Booléen attendu (true/false, 1/0, yes/no, vrai/faux).", "field.date": "Date AAAA-MM-JJ attendue.",

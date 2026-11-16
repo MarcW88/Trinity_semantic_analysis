@@ -175,6 +175,11 @@ export function normalizeLabel(s: string): string {
 export function checkHeaders(sheet: Sheet | undefined, name: string, required: string[], optional: string[], issues: IssueList): boolean {
   if (!sheet) { issues.error("sheet.missing", { sheet: name }); return false; }
   let ok = true;
+  const seen = new Set<string>();
+  for (const h of sheet.headers) {
+    if (seen.has(h)) { issues.error("header.duplicate", { sheet: name, row: 1, field: h }); ok = false; }
+    seen.add(h);
+  }
   for (const h of required) {
     if (!sheet.headers.includes(h)) { issues.error("header.missing", { sheet: name, row: 1, field: h }); ok = false; }
   }
