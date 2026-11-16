@@ -153,7 +153,10 @@ export function parseIsoDate(v: Cell, field: string, c: FieldCtx): string | null
   if (v === null) { c.issues.error("field.required", { sheet: c.sheet, row: c.row, field }); return null; }
   if (v instanceof Date && !isNaN(v.getTime())) return v.toISOString().slice(0, 10);
   const s = String(v).trim();
-  if (/^\d{4}-\d{2}-\d{2}$/.test(s) && new Date(s + "T00:00:00Z").toISOString().slice(0, 10) === s) return s;
+  if (/^\d{4}-\d{2}-\d{2}$/.test(s)) {
+    const d = new Date(s + "T00:00:00Z");
+    if (!isNaN(d.getTime()) && d.toISOString().slice(0, 10) === s) return s;
+  }
   c.issues.error("field.date", { sheet: c.sheet, row: c.row, field, value: showValue(v) });
   return null;
 }
