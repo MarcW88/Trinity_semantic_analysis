@@ -11,6 +11,10 @@ import { DEFAULT_MARKETS, DEFAULT_PROJECT } from "../src/lib/config";
 
 async function main() {
   const url = process.env.DATABASE_URL;
+  if (!url && process.argv.includes("--if-db")) {
+    console.log("DATABASE_URL not set, skipping migrations");
+    return;
+  }
   if (!url) throw new Error("DATABASE_URL is required");
   const sql = postgres(url, { max: 1, prepare: false });
   const db = drizzle(sql, { schema });

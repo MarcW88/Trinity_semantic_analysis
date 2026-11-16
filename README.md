@@ -44,8 +44,8 @@ Les tests de recette `tests/seo-reference.test.ts` vérifient les valeurs du pro
 1. Importer le dépôt GitHub dans Vercel (framework Next.js détecté automatiquement).
 2. **Storage → Marketplace → Neon** : crée la base et injecte `DATABASE_URL`.
 3. **Storage → Blob** (facultatif) : créer un store, ce qui injecte `BLOB_READ_WRITE_TOKEN`. Les classeurs originaux sont alors archivés en accès privé et l'envoi passe directement vers Blob (jusqu'à 10 Mo). Sans Blob, les imports fonctionnent (les données validées sont en base) mais le fichier original n'est pas conservé et Vercel limite l'envoi à 4,5 Mo.
-4. Variables d'environnement : `AUTH_SECRET` (`openssl rand -base64 32`), `CLIENT_DOMAINS` (ex. `dedecker.be`), et pour le premier déploiement `ADMIN_EMAIL` / `ADMIN_PASSWORD`.
-5. Appliquer les migrations depuis un poste : `vercel env pull .env.local && npm run db:migrate`.
+4. Variables d'environnement : `AUTH_SECRET` (chaîne aléatoire qui signe les sessions, ex. `openssl rand -base64 32` ou https://generate-secret.vercel.app/32), `CLIENT_DOMAINS` (ex. `dedecker.be`), et pour le premier déploiement `ADMIN_EMAIL` / `ADMIN_PASSWORD` (10 caractères minimum).
+5. Déployer : `npm run build` applique les migrations et crée le compte admin automatiquement dès que `DATABASE_URL` est défini (sinon il les ignore). `npm run db:migrate` reste disponible en local.
 6. Supprimer `ADMIN_PASSWORD` des variables Vercel après la création du compte, puis gérer les comptes dans `/admin/users`.
 
 Après 5 mots de passe erronés, le compte est verrouillé 15 minutes (une réinitialisation par un admin le déverrouille). Une réinitialisation ou une désactivation révoque les sessions ouvertes.
