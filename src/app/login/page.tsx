@@ -1,13 +1,12 @@
 import Image from "next/image";
 import { redirect } from "next/navigation";
-import { auth } from "@/auth";
+import { getCurrentUser } from "@/lib/auth/guard";
 import { getDict } from "@/lib/i18n/server";
 import { LoginForm } from "./login-form";
 import { LangSwitcher } from "@/components/lang-switcher";
 
 export default async function LoginPage() {
-  const session = await auth();
-  if (session?.user) redirect("/seo");
+  if (await getCurrentUser()) redirect("/seo");
   const { d, lang } = await getDict();
   return (
     <main className="flex min-h-screen items-center justify-center p-4">
