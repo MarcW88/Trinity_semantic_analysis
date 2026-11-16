@@ -8,11 +8,13 @@ export function MarketSwitcher({ market, options, label }: { market: string; opt
   const pathname = usePathname();
   const params = useSearchParams();
   const [pending, start] = useTransition();
+  const fromUrl = params.get("market")?.toUpperCase();
+  const current = options.some((o) => o.code === fromUrl) ? fromUrl! : market;
   return (
     <select
       aria-label={label}
       className="select"
-      value={market}
+      value={current}
       disabled={pending}
       onChange={(e) => start(async () => {
         await setMarketCookie(e.target.value);
