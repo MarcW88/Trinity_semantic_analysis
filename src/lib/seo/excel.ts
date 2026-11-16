@@ -90,8 +90,8 @@ export function buildMarket(market: string, input: SourceFile[]): MarketData | n
   for (const f of files) { const c = columns(f.rows); f.rows.forEach((r) => catOf(text(c.get(r, "category")))); }
   catVariants.forEach((v) => v.clear());
 
-  const catKeys = () => [...catVariants.keys()].filter((k) => k.length >= 4);
-  const scopeOfFile = (f: SourceFile) => catKeys().find((k) => normKey(f.name.replace(/\.xlsx$/i, "")).includes(k)) ?? null;
+  const catKeys = [...catVariants.keys()].filter((k) => k.length >= 4).sort((a, b) => b.length - a.length || a.localeCompare(b));
+  const scopeOfFile = (f: SourceFile) => catKeys.find((k) => normKey(f.name.replace(/\.xlsx$/i, "")).includes(k)) ?? null;
   const main = files.find((f) => scopeOfFile(f) === null) ?? files[0];
   const mainCols = columns(main.rows);
 
