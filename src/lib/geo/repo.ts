@@ -81,7 +81,7 @@ export async function findGeoBatchBySha(projectId: number, sha: string) {
 }
 
 export async function createGeoBatch(input: {
-  projectId: number; sha: string; filename: string; storageUrl: string; fileSize: number; authorId: number;
+  projectId: number; sha: string; filename: string; storageUrl: string | null; fileSize: number; authorId: number;
   batch: GeoBatch | null; summary: unknown; issues: Issue[]; baseRevision: number;
 }) {
   const [b] = await db.insert(schema.geoBatches).values({

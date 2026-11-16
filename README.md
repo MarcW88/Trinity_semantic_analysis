@@ -43,7 +43,7 @@ Les tests de recette `tests/seo-reference.test.ts` vérifient les valeurs du pro
 
 1. Importer le dépôt GitHub dans Vercel (framework Next.js détecté automatiquement).
 2. **Storage → Marketplace → Neon** : crée la base et injecte `DATABASE_URL`.
-3. **Storage → Blob** : créer un store, ce qui injecte `BLOB_READ_WRITE_TOKEN`. Les classeurs sont stockés en accès privé.
+3. **Storage → Blob** (facultatif) : créer un store, ce qui injecte `BLOB_READ_WRITE_TOKEN`. Les classeurs originaux sont alors archivés en accès privé et l'envoi passe directement vers Blob (jusqu'à 10 Mo). Sans Blob, les imports fonctionnent (les données validées sont en base) mais le fichier original n'est pas conservé et Vercel limite l'envoi à 4,5 Mo.
 4. Variables d'environnement : `AUTH_SECRET` (`openssl rand -base64 32`), `CLIENT_DOMAINS` (ex. `dedecker.be`), et pour le premier déploiement `ADMIN_EMAIL` / `ADMIN_PASSWORD`.
 5. Appliquer les migrations depuis un poste : `vercel env pull .env.local && npm run db:migrate`.
 6. Supprimer `ADMIN_PASSWORD` des variables Vercel après la création du compte, puis gérer les comptes dans `/admin/users`.

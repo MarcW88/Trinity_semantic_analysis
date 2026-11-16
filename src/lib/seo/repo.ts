@@ -16,7 +16,7 @@ export async function findSeoVersionBySha(projectId: number, sha: string) {
 
 /** Records an import attempt; validated snapshots are stored with all their rows. */
 export async function createSeoVersion(input: {
-  projectId: number; sha: string; filename: string; storageUrl: string; fileSize: number; authorId: number;
+  projectId: number; sha: string; filename: string; storageUrl: string | null; fileSize: number; authorId: number;
   snapshot: SeoSnapshot | null; summary: unknown; issues: Issue[];
 }) {
   return db.transaction(async (tx) => {

@@ -11,13 +11,17 @@ export function sha256(buf: Uint8Array): string {
   return createHash("sha256").update(buf).digest("hex");
 }
 
-/** Stores an uploaded workbook privately; returns a storage reference (blob URL or local path). */
-export async function storeFile(kind: string, hash: string, buf: Uint8Array): Promise<string> {
+/**
+ * Stores an uploaded workbook privately; returns a storage reference (blob URL or local path).
+ * On Vercel without Blob the filesystem is read-only, so the original file is not archived (null).
+ */
+export async function storeFile(kind: string, hash: string, buf: Uint8Array): Promise<string | null> {
   const name = `imports/${kind}/${hash}.xlsx`;
   if (blobEnabled()) {
     const res = await put(name, Buffer.from(buf), { access: "private", addRandomSuffix: false, allowOverwrite: true, contentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
     return res.url;
   }
+  if (process.env.VERCEL) return null;
   const path = join(LOCAL_DIR, name);
   await mkdir(join(LOCAL_DIR, "imports", kind), { recursive: true });
   await writeFile(path, buf);
