@@ -42,13 +42,14 @@ export async function processImport(user: CurrentUser, kind: ImportKind, rawName
   const parsed = workbook && !issues.hasErrors() ? parseGeoWorkbook(workbook, markets, issues) : { batch: null };
   let batch = parsed.batch;
   let summary: unknown = null;
+  const [proj] = await db.select({ geoRevision: schema.projects.geoRevision }).from(schema.projects).where(eq(schema.projects.id, user.projectId));
   if (batch) {
     const plan = await planGeoBatch(user.projectId, batch);
     issues.items.push(...plan.conflicts);
     summary = geoSummary(batch, plan);
     if (plan.conflicts.some((c) => c.level === "error")) batch = null;
   }
-  const b = await createGeoBatch({ projectId: user.projectId, sha: hash, filename, storageUrl: ref, fileSize: buf.length, authorId: user.id, batch, summary, issues: issues.items });
+  const b = await createGeoBatch({ projectId: user.projectId, sha: hash, filename, storageUrl: ref, fileSize: buf.length, authorId: user.id, batch, summary, issues: issues.items, baseRevision: proj.geoRevision });
   return { id: b.id, duplicate: false };
 }
 

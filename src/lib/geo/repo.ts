@@ -78,12 +78,11 @@ export async function findGeoBatchBySha(projectId: number, sha: string) {
 
 export async function createGeoBatch(input: {
   projectId: number; sha: string; filename: string; storageUrl: string; fileSize: number; authorId: number;
-  batch: GeoBatch | null; summary: unknown; issues: Issue[];
+  batch: GeoBatch | null; summary: unknown; issues: Issue[]; baseRevision: number;
 }) {
-  const [p] = await db.select().from(schema.projects).where(eq(schema.projects.id, input.projectId));
   const [b] = await db.insert(schema.geoBatches).values({
     projectId: input.projectId, status: input.batch ? "validated" : "failed", sha256: input.sha, filename: input.filename,
-    storageUrl: input.storageUrl, fileSize: input.fileSize, baseRevision: p.geoRevision, payload: input.batch, summary: input.summary,
+    storageUrl: input.storageUrl, fileSize: input.fileSize, baseRevision: input.baseRevision, payload: input.batch, summary: input.summary,
     issues: input.issues.slice(0, 1000), authorId: input.authorId,
   }).returning();
   await db.insert(schema.importEvents).values({ projectId: input.projectId, kind: "geo", action: input.batch ? "validated" : "failed", refId: b.id, actorId: input.authorId, details: { filename: input.filename, sha256: input.sha } });
