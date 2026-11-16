@@ -9,11 +9,12 @@ export type Role = "admin" | "viewer";
 
 declare module "next-auth" {
   interface Session {
-    user: { id: string; role: Role; projectId: number } & DefaultSession["user"];
+    user: { id: string; role: Role; projectId: number; sessionVersion: number } & DefaultSession["user"];
   }
   interface User {
     role?: Role;
     projectId?: number;
+    sessionVersion?: number;
   }
 }
 
@@ -34,7 +35,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         if (!user || !user.active) return null;
         if (!(await bcrypt.compare(parsed.data.password, user.passwordHash))) return null;
         await db.update(schema.users).set({ lastLoginAt: new Date() }).where(eq(schema.users.id, user.id));
-        return { id: String(user.id), email: user.email, name: user.name || user.email, role: user.role, projectId: user.projectId };
+        return { id: String(user.id), email: user.email, name: user.name || user.email, role: user.role, projectId: user.projectId, sessionVersion: user.sessionVersion };
       },
     }),
   ],
@@ -43,6 +44,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       if (user) {
         token.role = user.role;
         token.projectId = user.projectId;
+        token.sv = user.sessionVersion;
       }
       return token;
     },
@@ -50,6 +52,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       session.user.id = token.sub ?? "";
       session.user.role = (token.role as Role) ?? "viewer";
       session.user.projectId = Number(token.projectId ?? 0);
+      session.user.sessionVersion = Number(token.sv ?? -1);
       return session;
     },
   },

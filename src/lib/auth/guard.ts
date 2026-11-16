@@ -7,13 +7,13 @@ import { db, schema } from "@/lib/db";
 
 export type CurrentUser = { id: number; email: string; name: string; role: Role; projectId: number };
 
-/** Re-reads the user row so deactivated accounts and role changes apply immediately. */
+/** Re-reads the user row so deactivation, password resets and role changes apply immediately. */
 export async function getCurrentUser(): Promise<CurrentUser | null> {
   const session = await auth();
   const id = Number(session?.user?.id);
   if (!id) return null;
   const [u] = await db.select().from(schema.users).where(eq(schema.users.id, id)).limit(1);
-  if (!u || !u.active) return null;
+  if (!u || !u.active || u.sessionVersion !== session?.user?.sessionVersion) return null;
   return { id: u.id, email: u.email, name: u.name || u.email, role: u.role, projectId: u.projectId };
 }
 

@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
-import { and, eq } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
+import type { PgUpdateSetSource } from "drizzle-orm/pg-core";
 import { z } from "zod";
 import { jsonPrivate, requireApiUser } from "@/lib/auth/guard";
 import { db, schema } from "@/lib/db";
@@ -22,10 +23,11 @@ export async function POST(req: Request) {
   const u = updateBody.safeParse(raw);
   if (!u.success) return jsonPrivate({ error: "bad_request" }, { status: 400 });
   if (u.data.id === user.id) return jsonPrivate({ error: "self" }, { status: 400 });
-  const set: Partial<typeof schema.users.$inferInsert> = {};
+  const set: PgUpdateSetSource<typeof schema.users> = {};
   if (u.data.active !== undefined) set.active = u.data.active;
   if (u.data.role) set.role = u.data.role;
   if (u.data.password) set.passwordHash = await bcrypt.hash(u.data.password, 12);
+  if (u.data.password || u.data.active === false) set.sessionVersion = sql`${schema.users.sessionVersion} + 1`;
   await db.update(schema.users).set(set).where(and(eq(schema.users.id, u.data.id), eq(schema.users.projectId, user.projectId)));
   return jsonPrivate({ ok: true });
 }
