@@ -59,7 +59,7 @@ describe("buildMarket", () => {
 
   it("assigns a category workbook to the longest matching category", () => {
     const rows = [
-      { keyword: "keuken", category: "Keukens", volume: 1, client_pos: "" },
+      { keyword: "kast", category: "Kasten", volume: 1, client_pos: "" },
       { keyword: "keukenkast", category: "Keukenkasten", volume: 1, client_pos: "" },
     ];
     const m = buildMarket("BENL", [{ name: "main.xlsx", modified: null, rows }, { name: "serp_keukenkasten.xlsx", modified: null, rows: [{ keyword: "keukenkast", "c.be_pos": 2 }] }])!;
