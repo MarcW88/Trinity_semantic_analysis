@@ -6,6 +6,13 @@ import type { GeoBatch, GeoQuestionInfo, GeoRunInfo } from "./types";
 
 export class GeoConflictError extends Error {}
 
+/** Splits IN (...) lists to stay under PostgreSQL's 65,535 bind-parameter limit. */
+async function inChunks<T, R>(ids: T[], query: (part: T[]) => Promise<R[]>, size = 10_000): Promise<R[]> {
+  const out: R[] = [];
+  for (let i = 0; i < ids.length; i += size) out.push(...(await query(ids.slice(i, i + size))));
+  return out;
+}
+
 export type GeoPlan = {
   newQuestions: number; newRuns: number; duplicateRuns: number; statusChanges: number;
   replacements: number; conflicts: Issue[];
@@ -15,9 +22,8 @@ export type GeoPlan = {
 export async function planGeoBatch(projectId: number, batch: GeoBatch): Promise<GeoPlan> {
   const conflicts: Issue[] = [];
   const qids = [...new Set([...batch.questions.map((q) => q.questionId), ...batch.runs.map((r) => r.questionId)])];
-  const existingQ = qids.length
-    ? await db.select().from(schema.geoQuestions).where(and(eq(schema.geoQuestions.projectId, projectId), eq(schema.geoQuestions.market, batch.market), inArray(schema.geoQuestions.questionId, qids)))
-    : [];
+  const existingQ = await inChunks(qids, (part) =>
+    db.select().from(schema.geoQuestions).where(and(eq(schema.geoQuestions.projectId, projectId), eq(schema.geoQuestions.market, batch.market), inArray(schema.geoQuestions.questionId, part))));
   const qByKey = new Map(existingQ.map((q) => [`${q.questionId}|${q.questionVersion}`, q]));
   let newQuestions = 0;
   for (const q of batch.questions) {
@@ -30,23 +36,20 @@ export async function planGeoBatch(projectId: number, batch: GeoBatch): Promise<
     const key = `${r.questionId}|${r.questionVersion}`;
     if (!batchKeys.has(key) && !qByKey.has(key)) conflicts.push({ level: "error", code: "ref.question", sheet: "Runs", field: "question_id", value: `${r.questionId} v${r.questionVersion}` });
   }
-  const states = qids.length
-    ? await db.select().from(schema.geoQuestionStates).where(and(eq(schema.geoQuestionStates.projectId, projectId), eq(schema.geoQuestionStates.market, batch.market), inArray(schema.geoQuestionStates.questionId, qids)))
-    : [];
+  const states = await inChunks(qids, (part) =>
+    db.select().from(schema.geoQuestionStates).where(and(eq(schema.geoQuestionStates.projectId, projectId), eq(schema.geoQuestionStates.market, batch.market), inArray(schema.geoQuestionStates.questionId, part))));
   const stateBy = new Map(states.map((s) => [s.questionId, s.status]));
   let statusChanges = 0;
   for (const [qid, status] of latestStatuses(batch)) if (stateBy.get(qid) !== status) statusChanges++;
 
   const runIds = batch.runs.map((r) => r.runId);
-  const existingRuns = runIds.length
-    ? await db.select({ runId: schema.geoRuns.runId, market: schema.geoRuns.market, contentHash: schema.geoRuns.contentHash }).from(schema.geoRuns).where(and(eq(schema.geoRuns.projectId, projectId), inArray(schema.geoRuns.runId, runIds)))
-    : [];
+  const existingRuns = await inChunks(runIds, (part) =>
+    db.select({ runId: schema.geoRuns.runId, market: schema.geoRuns.market, contentHash: schema.geoRuns.contentHash }).from(schema.geoRuns).where(and(eq(schema.geoRuns.projectId, projectId), inArray(schema.geoRuns.runId, part))));
   const existingBy = new Map(existingRuns.map((r) => [r.runId, r]));
   let newRuns = 0, duplicateRuns = 0, replacements = 0;
   const replaced = batch.runs.map((r) => r.replacesRunId).filter((x): x is string => Boolean(x));
-  const replacedRows = replaced.length
-    ? await db.select({ runId: schema.geoRuns.runId, invalidatedAt: schema.geoRuns.invalidatedAt }).from(schema.geoRuns).where(and(eq(schema.geoRuns.projectId, projectId), inArray(schema.geoRuns.runId, replaced)))
-    : [];
+  const replacedRows = await inChunks(replaced, (part) =>
+    db.select({ runId: schema.geoRuns.runId, invalidatedAt: schema.geoRuns.invalidatedAt }).from(schema.geoRuns).where(and(eq(schema.geoRuns.projectId, projectId), inArray(schema.geoRuns.runId, part))));
   for (const r of batch.runs) {
     const ex = existingBy.get(r.runId);
     if (!ex) newRuns++;
@@ -135,14 +138,14 @@ export async function getGeoBatch(projectId: number, id: number) {
 }
 
 export async function loadGeoMarket(projectId: number, market: string): Promise<{ questions: GeoQuestionInfo[]; runs: GeoRunInfo[] }> {
-  const [qs, states, runs] = await Promise.all([
+  const [qs, states, runs, cites] = await Promise.all([
     db.select().from(schema.geoQuestions).where(and(eq(schema.geoQuestions.projectId, projectId), eq(schema.geoQuestions.market, market))),
     db.select().from(schema.geoQuestionStates).where(and(eq(schema.geoQuestionStates.projectId, projectId), eq(schema.geoQuestionStates.market, market))),
     db.select().from(schema.geoRuns).where(and(eq(schema.geoRuns.projectId, projectId), eq(schema.geoRuns.market, market))),
+    db.select({ runPk: schema.geoCitations.runPk, citedUrl: schema.geoCitations.citedUrl, host: schema.geoCitations.host, citationOrder: schema.geoCitations.citationOrder })
+      .from(schema.geoCitations).innerJoin(schema.geoRuns, eq(schema.geoRuns.id, schema.geoCitations.runPk))
+      .where(and(eq(schema.geoRuns.projectId, projectId), eq(schema.geoRuns.market, market))),
   ]);
-  const cites = runs.length
-    ? await db.select().from(schema.geoCitations).where(inArray(schema.geoCitations.runPk, runs.map((r) => r.id)))
-    : [];
   const citesBy = new Map<number, typeof cites>();
   for (const c of cites) citesBy.set(c.runPk, [...(citesBy.get(c.runPk) ?? []), c]);
   const stateBy = new Map(states.map((s) => [s.questionId, s.status]));
