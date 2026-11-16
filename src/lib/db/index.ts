@@ -1,19 +1,28 @@
 import postgres from "postgres";
-import { drizzle } from "drizzle-orm/postgres-js";
+import { drizzle, type PostgresJsDatabase } from "drizzle-orm/postgres-js";
 import * as schema from "./schema";
 
-const globalForDb = globalThis as unknown as { pgClient?: ReturnType<typeof postgres> };
+export type Db = PostgresJsDatabase<typeof schema>;
+export type Tx = Parameters<Parameters<Db["transaction"]>[0]>[0];
 
-function createClient() {
+const globalForDb = globalThis as unknown as { pgClient?: ReturnType<typeof postgres>; db?: Db };
+
+/** Connects on first use so `next build` can run without DATABASE_URL. */
+function getDb(): Db {
+  if (globalForDb.db) return globalForDb.db;
   const url = process.env.DATABASE_URL;
   if (!url) throw new Error("DATABASE_URL is not configured");
-  return postgres(url, { max: process.env.VERCEL ? 3 : 10, prepare: false });
+  const client = globalForDb.pgClient ?? postgres(url, { max: process.env.VERCEL ? 3 : 10, prepare: false });
+  if (process.env.NODE_ENV !== "production") globalForDb.pgClient = client;
+  globalForDb.db = drizzle(client, { schema });
+  return globalForDb.db;
 }
 
-export const sql = globalForDb.pgClient ?? createClient();
-if (process.env.NODE_ENV !== "production") globalForDb.pgClient = sql;
-
-export const db = drizzle(sql, { schema });
-export type Db = typeof db;
-export type Tx = Parameters<Parameters<Db["transaction"]>[0]>[0];
+export const db = new Proxy({} as Db, {
+  get(_target, prop) {
+    const real = getDb();
+    const value = Reflect.get(real, prop, real);
+    return typeof value === "function" ? value.bind(real) : value;
+  },
+});
 export { schema };
