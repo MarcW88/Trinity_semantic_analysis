@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DeDecker · Tableau de bord sémantique (SEO + GEO)
 
-## Getting Started
+Application Next.js (App Router, TypeScript) déployable sur Vercel. Elle remplace le prototype Streamlit
+`DeDecker-Semantic-Analysis` et ajoute le suivi GEO, trois marchés, une interface FR/NL/EN, des imports
+Excel validés et versionnés, et des comptes nominatifs.
 
-First, run the development server:
+| Vue | Contenu |
+| --- | --- |
+| `/seo` | KPI, distribution des positions, performance par catégorie, paysage concurrentiel, leaders, AI Overviews, explorateur triable et export CSV |
+| `/geo` | Questions suivies/observées, réponses valides, taux de présence et de citation, évolution hebdo/mensuelle, liste et détail des questions, export CSV |
+| `/admin/imports` | Téléversement, validation (onglet, ligne, champ), aperçu, publication, retour arrière, historique, journal |
+| `/admin/users` | Comptes, rôles lecteur/admin, activation, réinitialisation du mot de passe |
+
+Marchés : `BENL` (défaut), `BEFR`, `BEEN`. Un marché sans données publiées affiche « Données à venir ».
+
+## Stack
+
+Next.js 16 · React 19 · Tailwind 4 · Recharts · Drizzle ORM + PostgreSQL · Auth.js (Credentials, sessions JWT, rôle revérifié en base à chaque requête) · Vercel Blob privé · ExcelJS · Vitest.
+
+## Développement local
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.example .env.local        # renseigner DATABASE_URL, AUTH_SECRET, ADMIN_EMAIL, ADMIN_PASSWORD
+docker run -d --name pg -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=dedecker -p 5432:5432 postgres:16
+npm install
+npm run db:migrate                # migrations + projet + marchés + compte admin initial
+npm run dev                       # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Puis se connecter, ouvrir **Imports**, téléverser `public/templates/seo_template.xlsx` (ou le classeur converti) et publier.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Script | Rôle |
+| --- | --- |
+| `npm run lint` / `npm run typecheck` / `npm test` / `npm run build` | Vérifications |
+| `npm run db:generate` | Génère une migration après modification de `src/lib/db/schema.ts` |
+| `npm run db:migrate` | Applique les migrations et crée l'admin initial (idempotent) |
+| `npm run templates` | Régénère les modèles Excel fictifs SEO/GEO |
+| `npm run convert:legacy -- --src data/sources [--benl-date AAAA-MM-JJ --befr-date AAAA-MM-JJ]` | Convertit les 4 classeurs historiques BENL/BEFR vers le contrat SEO (`data/out/seo_initial.xlsx`) |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Les tests de recette `tests/seo-reference.test.ts` vérifient les valeurs du prototype (BENL : 240 requêtes, 89 700 de volume, position moyenne 98,52 ; BEFR : 305, 126 650, 99,90) lorsque `data/out/seo_initial.xlsx` est présent. Les classeurs clients ne sont jamais commités (`/data` est ignoré).
 
-## Learn More
+## Déploiement Vercel
 
-To learn more about Next.js, take a look at the following resources:
+1. Importer le dépôt GitHub dans Vercel (framework Next.js détecté automatiquement).
+2. **Storage → Marketplace → Neon** : crée la base et injecte `DATABASE_URL`.
+3. **Storage → Blob** : créer un store, ce qui injecte `BLOB_READ_WRITE_TOKEN`. Les classeurs sont stockés en accès privé.
+4. Variables d'environnement : `AUTH_SECRET` (`openssl rand -base64 32`), `CLIENT_DOMAINS` (ex. `dedecker.be`), et pour le premier déploiement `ADMIN_EMAIL` / `ADMIN_PASSWORD`.
+5. Appliquer les migrations depuis un poste : `vercel env pull .env.local && npm run db:migrate`.
+6. Supprimer `ADMIN_PASSWORD` des variables Vercel après la création du compte, puis gérer les comptes dans `/admin/users`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Le site est privé : `robots.txt` interdit tout, en-têtes `X-Robots-Tag: noindex`, `X-Frame-Options: DENY`, réponses API `Cache-Control: private, no-store`, toutes les pages, routes, exports et lectures de fichiers vérifient la session et le rôle.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Données et règles
 
-## Deploy on Vercel
+Voir [docs/IMPORTS.md](docs/IMPORTS.md) pour le contrat des classeurs, la validation, la publication et les règles de calcul.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Décisions ouvertes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Langue/pays exacts du 3e marché (`BEEN` = Belgique anglais par hypothèse).
+- Fournisseur d'identité (Credentials par défaut ; Auth.js permet d'ajouter Microsoft Entra ID ou Google).
+- Dates exactes de collecte SEO historiques (provisoirement 07/04/2026 BENL et 08/04/2026 BEFR).
+- Plateformes, source et cadence GEO ; domaines DeDecker comptés comme citations.
