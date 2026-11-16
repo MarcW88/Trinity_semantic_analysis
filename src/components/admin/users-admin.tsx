@@ -19,9 +19,10 @@ export function UsersAdmin({ users, labels, meId }: { users: U[]; labels: Dict["
     <div className="space-y-4">
       <form className="card flex flex-wrap items-end gap-2" onSubmit={async (e) => {
         e.preventDefault();
-        const fd = new FormData(e.currentTarget);
+        const form = e.currentTarget;
+        const fd = new FormData(form);
         const ok = await call({ action: "create", email: fd.get("email"), name: fd.get("name"), role: fd.get("role"), password: fd.get("password") });
-        if (ok) { setMsg(labels.created); e.currentTarget.reset(); }
+        if (ok) { setMsg(labels.created); form.reset(); }
       }}>
         <label className="text-sm">{labels.email}<input name="email" type="email" required className="input mt-1 block" /></label>
         <label className="text-sm">{labels.name}<input name="name" className="input mt-1 block" /></label>
