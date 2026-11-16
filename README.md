@@ -48,6 +48,8 @@ Les tests de recette `tests/seo-reference.test.ts` vérifient les valeurs du pro
 5. Appliquer les migrations depuis un poste : `vercel env pull .env.local && npm run db:migrate`.
 6. Supprimer `ADMIN_PASSWORD` des variables Vercel après la création du compte, puis gérer les comptes dans `/admin/users`.
 
+Après 5 mots de passe erronés, le compte est verrouillé 15 minutes (une réinitialisation par un admin le déverrouille). Une réinitialisation ou une désactivation révoque les sessions ouvertes.
+
 Le site est privé : `robots.txt` interdit tout, en-têtes `X-Robots-Tag: noindex`, `X-Frame-Options: DENY`, réponses API `Cache-Control: private, no-store`, toutes les pages, routes, exports et lectures de fichiers vérifient la session et le rôle.
 
 ## Données et règles

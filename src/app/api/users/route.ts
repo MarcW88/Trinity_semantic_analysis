@@ -26,7 +26,7 @@ export async function POST(req: Request) {
   const set: PgUpdateSetSource<typeof schema.users> = {};
   if (u.data.active !== undefined) set.active = u.data.active;
   if (u.data.role) set.role = u.data.role;
-  if (u.data.password) set.passwordHash = await bcrypt.hash(u.data.password, 12);
+  if (u.data.password) Object.assign(set, { passwordHash: await bcrypt.hash(u.data.password, 12), failedLogins: 0, lockedUntil: null });
   if (u.data.password || u.data.active === false) set.sessionVersion = sql`${schema.users.sessionVersion} + 1`;
   await db.update(schema.users).set(set).where(and(eq(schema.users.id, u.data.id), eq(schema.users.projectId, user.projectId)));
   return jsonPrivate({ ok: true });

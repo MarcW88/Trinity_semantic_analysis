@@ -58,3 +58,6 @@ export const BUCKET_COLORS = {
 };
 
 export const DISPLAY_TZ = "Europe/Brussels";
+
+/** Account lockout after repeated wrong passwords. */
+export const LOGIN_LOCK = { maxAttempts: 5, minutes: 15 };

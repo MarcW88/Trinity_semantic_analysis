@@ -33,6 +33,8 @@ export const users = pgTable("users", {
   role: text("role", { enum: ["admin", "viewer"] }).notNull().default("viewer"),
   active: boolean("active").notNull().default(true),
   sessionVersion: integer("session_version").notNull().default(0),
+  failedLogins: integer("failed_logins").notNull().default(0),
+  lockedUntil: timestamp("locked_until", { withTimezone: true }),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   lastLoginAt: timestamp("last_login_at", { withTimezone: true }),
 });

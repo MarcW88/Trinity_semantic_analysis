@@ -1,9 +1,10 @@
 import NextAuth, { type DefaultSession } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import { z } from "zod";
 import { db, schema } from "@/lib/db";
+import { LOGIN_LOCK } from "@/lib/config";
 
 export type Role = "admin" | "viewer";
 
@@ -33,8 +34,16 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         const email = parsed.data.email.trim().toLowerCase();
         const [user] = await db.select().from(schema.users).where(eq(schema.users.email, email)).limit(1);
         if (!user || !user.active) return null;
-        if (!(await bcrypt.compare(parsed.data.password, user.passwordHash))) return null;
-        await db.update(schema.users).set({ lastLoginAt: new Date() }).where(eq(schema.users.id, user.id));
+        if (user.lockedUntil && user.lockedUntil > new Date()) return null;
+        if (!(await bcrypt.compare(parsed.data.password, user.passwordHash))) {
+          const [f] = await db.update(schema.users).set({ failedLogins: sql`${schema.users.failedLogins} + 1` })
+            .where(eq(schema.users.id, user.id)).returning({ failedLogins: schema.users.failedLogins });
+          if (f && f.failedLogins >= LOGIN_LOCK.maxAttempts) {
+            await db.update(schema.users).set({ failedLogins: 0, lockedUntil: new Date(Date.now() + LOGIN_LOCK.minutes * 60_000) }).where(eq(schema.users.id, user.id));
+          }
+          return null;
+        }
+        await db.update(schema.users).set({ lastLoginAt: new Date(), failedLogins: 0, lockedUntil: null }).where(eq(schema.users.id, user.id));
         return { id: String(user.id), email: user.email, name: user.name || user.email, role: user.role, projectId: user.projectId, sessionVersion: user.sessionVersion };
       },
     }),
