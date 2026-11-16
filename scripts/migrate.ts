@@ -1,5 +1,6 @@
 /** Applies SQL migrations and bootstraps the project, markets and the first admin (from env). */
-import "dotenv/config";
+import { config } from "dotenv";
+config({ path: [".env.local", ".env"], quiet: true });
 import postgres from "postgres";
 import { drizzle } from "drizzle-orm/postgres-js";
 import { migrate } from "drizzle-orm/postgres-js/migrator";
