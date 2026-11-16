@@ -50,7 +50,7 @@ export function Segmented<T extends string>({ value, options, onChange, layoutId
         return (
           <button key={o.value} type="button" role="radio" aria-checked={active} disabled={disabled} onClick={() => onChange(o.value)}
             className={`relative rounded-full px-3 py-1 text-sm font-medium transition-colors ${active ? "text-white" : "text-ink/70 hover:text-ink"}`}>
-            {active && <motion.span layoutId={layoutId} className="absolute inset-0 rounded-full bg-brown shadow-sm" transition={{ type: "spring", stiffness: 420, damping: 34 }} />}
+            {active && <motion.span layoutId={layoutId} className="absolute inset-0 rounded-full bg-brand shadow-sm" transition={{ type: "spring", stiffness: 420, damping: 34 }} />}
             <span className="relative">{o.label}</span>
           </button>
         );

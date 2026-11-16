@@ -1,5 +1,5 @@
 import ExcelJS from "exceljs";
-import { EXCLUDED_CATEGORIES, KNOWN_COMPETITORS } from "../config";
+import { EXCLUDED_CATEGORIES } from "../config";
 import type { MarketData, SeoCategory, SeoCompetitor, SeoKeyword, SeoRanking, SeoScope } from "./types";
 
 export type RawRow = Record<string, unknown>;
@@ -70,7 +70,7 @@ function columns(rows: RawRow[]) {
 
 /**
  * Builds a market from the Streamlit-format workbooks of one folder.
- * The first workbook whose name does not contain a category name is the main file (keywords, volumes, DeDecker positions,
+ * The first workbook whose name does not contain a category name is the main file (keywords, volumes, client positions,
  * AI Overviews). A workbook whose name contains a category (e.g. "..._badkamers_...") only adds the competitors
  * of that category, matched on `keyword`.
  */
@@ -140,8 +140,7 @@ export function buildMarket(market: string, input: SourceFile[]): MarketData | n
     for (const r of f.rows) { const kw = text(c.get(r, "keyword")).toLowerCase(); if (kw && !byKw.has(kw)) byKw.set(kw, r); }
     for (const { domain, col } of c.competitorCols) {
       if (!competitors.some((x) => x.domain === domain)) {
-        const known = KNOWN_COMPETITORS[domain];
-        competitors.push({ market, domain, label: known?.label ?? domain, colorHex: known?.color ?? null, sortOrder: competitors.length + 1 });
+        competitors.push({ market, domain, label: domain, colorHex: null, sortOrder: competitors.length + 1 });
       }
       if (!scopes.some((s) => s.scope === scope && s.domain === domain))
         scopes.push({ market, scope, domain, sortOrder: scopes.filter((s) => s.scope === scope).length + 1 });

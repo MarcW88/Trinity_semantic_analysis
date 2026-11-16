@@ -68,7 +68,7 @@ export function SeoDashboard({ result, meta, brand, client, marketLabel, d, lang
               <div role="radiogroup" aria-label={s.ranked} className="mt-1 flex gap-1">
                 {(["ranked", "top20", "top10"] as const).map((m) => (
                   <button key={m} type="button" role="radio" aria-checked={rankMode === m} onClick={() => setRankMode(m)}
-                    className={`rounded-full px-2 py-0.5 text-xs font-medium transition-colors ${rankMode === m ? "bg-brown text-white" : "bg-cream text-ink/70 hover:bg-line"}`}>
+                    className={`rounded-full px-2 py-0.5 text-xs font-medium transition-colors ${rankMode === m ? "bg-brand text-white" : "bg-mist text-ink/70 hover:bg-line"}`}>
                     {m === "ranked" ? s.rankedAll : m === "top20" ? s.top20 : s.top10}
                   </button>
                 ))}
@@ -170,12 +170,12 @@ export function SeoDashboard({ result, meta, brand, client, marketLabel, d, lang
         <div className="grid gap-4 lg:grid-cols-3">
           <div className="card">
             <h3 className="card-title">{s.aiDonut}</h3>
-            <Donut data={[{ name: s.withAi, value: k.aiCount, color: "#8B7355" }, { name: s.withoutAi, value: k.keywords - k.aiCount, color: "#E5DDD4" }]} format={f.int} />
+            <Donut data={[{ name: s.withAi, value: k.aiCount, color: "#EA3323" }, { name: s.withoutAi, value: k.keywords - k.aiCount, color: "#E4E4E7" }]} format={f.int} />
           </div>
           <div className="card">
             <h3 className="card-title">{s.citeDonut}</h3>
             {k.aiCount > 0
-              ? <Donut data={[{ name: t(s.cited, { brand }), value: k.aiCited, color: "#7A9E7E" }, { name: s.notCited, value: k.aiCount - k.aiCited, color: "#C9A59A" }]} format={f.int} />
+              ? <Donut data={[{ name: t(s.cited, { brand }), value: k.aiCited, color: "#1F1F22" }, { name: s.notCited, value: k.aiCount - k.aiCited, color: "#F8B4AD" }]} format={f.int} />
               : <p className="py-12 text-center text-sm text-ink/50">{s.noAi}</p>}
           </div>
           <div className="card max-h-80 overflow-auto">

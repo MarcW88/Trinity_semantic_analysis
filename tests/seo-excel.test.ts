@@ -21,9 +21,9 @@ describe.skipIf(!hasData)("reference values from the Streamlit workbooks", () =>
     expect(r.kpis.avgPosition!.toFixed(2)).toBe("98.52");
     expect(r.categories.map((c) => c.label)).not.toContain("Branding");
     const bad = computeSeo(data, "badkamers", "DeDecker");
-    expect(bad.domains.filter((d) => !d.isClient).map((d) => d.label)).toEqual(["Groep Wouters", "De Badbeke", "X2O", "Facq", "Vanmarcke"]);
+    expect(bad.domains.filter((d) => !d.isClient).map((d) => d.domain)).toEqual(["groepwouters.be", "debadbeke.be", "x2o.be", "facq.be", "vanmarcke.com"]);
     const keukens = computeSeo(data, "keukens", "DeDecker");
-    expect(keukens.domains.filter((d) => !d.isClient).map((d) => d.label)).toContain("DSM Keukens");
+    expect(keukens.domains.filter((d) => !d.isClient).map((d) => d.domain)).toContain("dsmkeukens.be");
   });
 
   it("BEFR matches the Streamlit dashboard", async () => {

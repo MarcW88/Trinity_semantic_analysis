@@ -40,4 +40,4 @@ Les catégories `Branding` et `Marque et valeurs` restent dans le fichier mais s
 - Taux de citation AI = mots-clés où DeDecker est cité / mots-clés avec AI Overview.
 - La date affichée est la date de dernière modification enregistrée dans le fichier Excel.
 
-Noms et couleurs des concurrents connus : `KNOWN_COMPETITORS` dans `src/lib/config.ts` (un domaine inconnu s'affiche tel quel).
+Les concurrents sont affichés sous leur nom de domaine, dans l'ordre des colonnes ; couleurs : `COMPETITOR_COLORS` dans `src/lib/config.ts`.

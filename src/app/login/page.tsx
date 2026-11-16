@@ -14,7 +14,7 @@ export default async function LoginPage() {
       <Reveal className="w-full max-w-sm">
         <div className="card space-y-5 p-7">
           <div className="flex items-center justify-between gap-2">
-            <Image src="/dedecker-logo.png" alt="DeDecker" width={140} height={40} className="h-10 w-auto" style={{ width: "auto" }} priority />
+            <Image src="/trinity-logo.png" alt="Trinity" width={274} height={61} className="h-8 w-auto" style={{ width: "auto" }} priority />
             <LangSwitcher lang={lang} label={d.common.language} />
           </div>
           <div>

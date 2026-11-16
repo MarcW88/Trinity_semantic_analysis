@@ -15,9 +15,9 @@ export default async function AppLayout({ children }: LayoutProps<"/">) {
   const marketLabels = d.markets as Record<string, string>;
   return (
     <>
-      <header className="sticky top-0 z-30 border-b border-line/70 bg-cream/80 backdrop-blur-xl">
+      <header className="sticky top-0 z-30 border-b border-line/70 bg-mist/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-3 px-4 py-2.5">
-          <Image src="/dedecker-logo.png" alt="DeDecker" width={120} height={34} className="h-8 w-auto" style={{ width: "auto" }} priority />
+          <Image src="/trinity-logo.png" alt="Trinity" width={274} height={61} className="h-6 w-auto" style={{ width: "auto" }} priority />
           <span className="hidden text-sm font-medium text-ink/50 sm:inline">{d.common.appTitle}</span>
           <div className="ml-auto flex flex-wrap items-center gap-2">
             <Suspense>

@@ -1,4 +1,4 @@
-# DeDecker · Tableau de bord sémantique SEO
+# Trinity · Tableau de bord sémantique SEO
 
 Version Next.js (App Router, TypeScript), déployable sur Vercel, du prototype Streamlit `DeDecker-Semantic-Analysis` : mêmes données Excel, mêmes calculs, interface FR/NL/EN animée.
 
@@ -37,7 +37,7 @@ DASHBOARD_PASSWORD=mon-mot-de-passe npm run dev
 - `src/lib/seo/excel.ts` : lecture des Excel au format Streamlit, fusion des fichiers par marché.
 - `src/lib/seo/source.ts` : chargement de `data/<MARCHÉ>/*.xlsx` (mis en cache, relu si un fichier change).
 - `src/lib/seo/compute.ts` : calculs (position moyenne avec non classé = 100, buckets, visibilité, leaders, AI Overviews).
-- `src/lib/config.ts` : marchés, catégories exclues, noms et couleurs des concurrents.
+- `src/lib/config.ts` : marchés, catégories exclues, couleurs.
 
 ## Évolutions prévues
 

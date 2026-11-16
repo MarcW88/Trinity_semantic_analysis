@@ -15,25 +15,9 @@ export type MarketCode = (typeof MARKETS)[number]["code"];
 /** Categories kept in the Excel but left out of every dashboard calculation. */
 export const EXCLUDED_CATEGORIES = ["Branding", "Marque et valeurs"];
 
-/** Display names and colours for known competitor domains; unknown domains show the domain itself. */
-export const KNOWN_COMPETITORS: Record<string, { label: string; color: string }> = {
-  "vika.be": { label: "Vika", color: "#C4956A" },
-  "dsmkeukens.be": { label: "DSM Keukens", color: "#4A90A4" },
-  "dovykeukens.be": { label: "Dovy", color: "#7A9E7E" },
-  "diapal.be": { label: "Diapal", color: "#D4A87C" },
-  "ilwa.be": { label: "Ilwa", color: "#9C8AA5" },
-  "cuisinesdovy.be": { label: "Dovy", color: "#7A9E7E" },
-  "ixina.be": { label: "Ixina", color: "#4A90A4" },
-  "vandenborrekitchen.be": { label: "Vandenborre", color: "#C4956A" },
-  "dsmcuisines.be": { label: "DSM Cuisines", color: "#D4A87C" },
-  "groepwouters.be": { label: "Groep Wouters", color: "#6AAFC3" },
-  "debadbeke.be": { label: "De Badbeke", color: "#A3B18A" },
-  "x2o.be": { label: "X2O", color: "#B07D56" },
-  "facq.be": { label: "Facq", color: "#82C0D2" },
-  "vanmarcke.com": { label: "Vanmarcke", color: "#9C8AA5" },
-  "sanijura.be": { label: "Sanijura", color: "#6AAFC3" },
-  "mobalpa.be": { label: "Mobalpa", color: "#A3B18A" },
-};
+/** Brand colour for the client series; competitors cycle through COMPETITOR_COLORS in column order. */
+export const CLIENT_COLOR = "#EA3323";
+export const COMPETITOR_COLORS = ["#1F1F22", "#2563EB", "#0EA5E9", "#14B8A6", "#F59E0B", "#8B5CF6", "#6B7280", "#EC4899", "#84CC16", "#A16207"];
 
 export const POSITION_COLORS = {
   top3: "#C8E6C9",
@@ -45,9 +29,9 @@ export const POSITION_COLORS = {
 };
 
 export const BUCKET_COLORS = {
-  top3: "#8B7355",
-  "4-10": "#B8A99A",
-  "11-20": "#D4C4B5",
-  "21+": "#E5DDD4",
-  unranked: "#C9A59A",
+  top3: "#EA3323",
+  "4-10": "#F2766B",
+  "11-20": "#F8B4AD",
+  "21+": "#FCE0DC",
+  unranked: "#D4D4D8",
 };

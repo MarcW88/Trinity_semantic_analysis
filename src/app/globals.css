@@ -1,20 +1,21 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-taupe: #b8a99a;
-  --color-brown: #8b7355;
-  --color-ink: #2d2d2d;
-  --color-cream: #f9f7f5;
-  --color-line: #e8e2dc;
+  --color-brand: #ea3323;
+  --color-brand-dark: #c4241a;
+  --color-brand-soft: #fde4e1;
+  --color-ink: #1f1f22;
+  --color-mist: #f6f6f7;
+  --color-line: #e6e6e9;
   --font-sans: var(--font-inter), Arial, Helvetica, sans-serif;
 }
 
 body {
   color: var(--color-ink);
   background:
-    radial-gradient(1200px 500px at 0% -10%, rgba(184, 169, 154, 0.28), transparent 60%),
-    radial-gradient(900px 500px at 100% 0%, rgba(139, 115, 85, 0.14), transparent 55%),
-    var(--color-cream);
+    radial-gradient(1100px 480px at 0% -10%, rgba(234, 51, 35, 0.10), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(31, 31, 34, 0.06), transparent 55%),
+    var(--color-mist);
   background-attachment: fixed;
 }
 
@@ -22,14 +23,14 @@ body {
   @apply rounded-2xl border border-line/80 bg-white/85 p-5 shadow-[0_1px_2px_rgba(45,45,45,0.04),0_12px_32px_-18px_rgba(45,45,45,0.18)] backdrop-blur;
 }
 .card-hover {
-  @apply transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_2px_4px_rgba(45,45,45,0.05),0_18px_40px_-18px_rgba(139,115,85,0.35)];
+  @apply transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_2px_4px_rgba(45,45,45,0.05),0_18px_40px_-18px_rgba(234,51,35,0.25)];
 }
 .card-title {
   @apply mb-3 text-sm font-semibold text-ink/80;
 }
 .hero {
-  @apply relative overflow-hidden rounded-3xl p-7 shadow-[0_20px_50px_-24px_rgba(139,115,85,0.6)] sm:p-9;
-  background: linear-gradient(120deg, #6f5b44 0%, #8b7355 45%, #b8a99a 100%);
+  @apply relative overflow-hidden rounded-3xl p-7 shadow-[0_20px_50px_-24px_rgba(234,51,35,0.45)] sm:p-9;
+  background: linear-gradient(120deg, #1f1f22 0%, #3a1512 55%, #ea3323 120%);
 }
 .hero::after {
   content: "";
@@ -38,7 +39,7 @@ body {
   width: 420px;
   height: 420px;
   border-radius: 9999px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.22), transparent 65%);
+  background: radial-gradient(circle, rgba(234, 51, 35, 0.45), transparent 65%);
   animation: float 9s ease-in-out infinite;
 }
 @keyframes float {
@@ -49,28 +50,28 @@ body {
   .hero::after { animation: none; }
 }
 .section-title {
-  @apply mb-4 flex items-center gap-2 text-xl font-semibold tracking-tight text-ink before:h-5 before:w-1.5 before:rounded-full before:bg-brown before:content-[''];
+  @apply mb-4 flex items-center gap-2 text-xl font-semibold tracking-tight text-ink before:h-5 before:w-1.5 before:rounded-full before:bg-brand before:content-[''];
 }
 .btn {
-  @apply inline-flex items-center gap-1 rounded-full border border-brown bg-brown px-4 py-1.5 text-sm font-medium text-white shadow-sm transition hover:bg-[#6f5b44] hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brown disabled:opacity-50;
+  @apply inline-flex items-center gap-1 rounded-full border border-brand bg-brand px-4 py-1.5 text-sm font-medium text-white shadow-sm transition hover:bg-brand-dark hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand disabled:opacity-50;
 }
 .btn-ghost {
-  @apply inline-flex items-center gap-1 rounded-full border border-line bg-white/70 px-3 py-1.5 text-sm text-ink transition hover:bg-white focus-visible:outline-2 focus-visible:outline-brown disabled:opacity-50;
+  @apply inline-flex items-center gap-1 rounded-full border border-line bg-white/70 px-3 py-1.5 text-sm text-ink transition hover:bg-white focus-visible:outline-2 focus-visible:outline-brand disabled:opacity-50;
 }
 .select, .input {
-  @apply rounded-xl border border-line bg-white px-3 py-1.5 text-sm transition focus-visible:border-brown focus-visible:outline-2 focus-visible:outline-brown/40;
+  @apply rounded-xl border border-line bg-white px-3 py-1.5 text-sm transition focus-visible:border-brand focus-visible:outline-2 focus-visible:outline-brand/40;
 }
 .tbl {
   @apply w-full border-collapse text-sm;
 }
 .tbl th {
-  @apply border-b border-line bg-cream/95 px-3 py-2 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap text-ink/60 backdrop-blur;
+  @apply border-b border-line bg-mist/95 px-3 py-2 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap text-ink/60 backdrop-blur;
 }
 .tbl td {
   @apply border-b border-line/70 px-3 py-2;
 }
 .tbl tbody tr {
-  @apply transition-colors hover:bg-cream/70;
+  @apply transition-colors hover:bg-mist/70;
 }
 .num {
   @apply text-right tabular-nums;
