@@ -80,7 +80,7 @@ export function SerpLeaders({ data, meta, d, f }: { data: Data; meta: KeywordMet
                 {keywords.map((k) => (
                   <tr key={k.keyword} className="align-top">
                     <td>{k.keyword}</td><td className="text-xs text-ink/60">{k.category}</td><td className="num">{f.int(k.volume)}</td>
-                    <td><div className="flex flex-wrap gap-x-3 gap-y-1 text-xs">{k.sites.slice(0, 3).map((s) => (
+                    <td><div className="flex flex-wrap gap-x-3 gap-y-1 text-xs">{k.sites.filter((s) => s.position <= 3).map((s) => (
                       <a key={s.domain} href={s.url} target="_blank" rel="noopener noreferrer nofollow" className="flex items-center gap-1 hover:text-brand"><Pos p={s.position} />{s.domain}</a>
                     ))}</div></td>
                   </tr>
