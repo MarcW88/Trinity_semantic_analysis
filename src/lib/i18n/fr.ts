@@ -13,6 +13,18 @@ export const fr = {
     error: "Mot de passe incorrect.", subtitle: "Accès protégé par mot de passe.",
     notConfigured: "Aucun mot de passe n'est configuré : ajoutez la variable DASHBOARD_PASSWORD dans Vercel puis redéployez.",
   },
+  nav: { seo: "Mots-clés suivis", benchmark: "Benchmark concurrents" },
+  bench: {
+    title: "Benchmark concurrents", subtitle: "Mots-clés sur lesquels vos concurrents se positionnent réellement sur Google ({market})",
+    trackedNone: "Vos concurrents ne se positionnent sur aucun des {n} mots-clés suivis. Voici les mots-clés sur lesquels ils sont visibles.",
+    trackedSome: "Sur les {n} mots-clés suivis, vos concurrents se positionnent peu. Voici l'ensemble des mots-clés sur lesquels ils sont visibles.",
+    traffic: "Trafic estimé / mois", keywords: "Mots-clés positionnés", top10: "Top 10", top3: "Top 3", tracked: "Sur mots-clés suivis",
+    trafficChart: "Trafic organique estimé par concurrent", keywordsChart: "Mots-clés positionnés par concurrent",
+    list: "Mots-clés de {domain}", listNote: "{shown} mots-clés affichés sur {total} (classés par trafic estimé)",
+    col: { keyword: "Mot-clé", position: "Position", volume: "Volume", traffic: "Trafic estimé", url: "URL" },
+    search: "Filtrer les mots-clés…", none: "Aucun benchmark pour ce marché pour l'instant.",
+    footer: "Source : {source}, Google {lang}-BE, données du {date}",
+  },
   seo: {
     title: "Tableau de bord SEO", kpis: "Indicateurs clés", volume: "Volume total", volumeHelp: "Somme des volumes mensuels",
     keywords: "Requêtes", keywordsHelp: "Requêtes suivies", ranked: "Requêtes positionnées", rankedAll: "Toutes classées", top20: "Top 20", top10: "Top 10",

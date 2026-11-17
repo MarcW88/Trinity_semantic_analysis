@@ -15,6 +15,18 @@ export const en: Dict = {
     error: "Wrong password.", subtitle: "Password-protected access.",
     notConfigured: "No password is configured: add the DASHBOARD_PASSWORD variable in Vercel and redeploy.",
   },
+  nav: { seo: "Tracked keywords", benchmark: "Competitor benchmark" },
+  bench: {
+    title: "Competitor benchmark", subtitle: "Keywords your competitors actually rank for on Google ({market})",
+    trackedNone: "Your competitors rank for none of the {n} tracked keywords. Here are the keywords they are visible for.",
+    trackedSome: "Your competitors rank for few of the {n} tracked keywords. Here are all the keywords they are visible for.",
+    traffic: "Estimated traffic / month", keywords: "Ranking keywords", top10: "Top 10", top3: "Top 3", tracked: "On tracked keywords",
+    trafficChart: "Estimated organic traffic per competitor", keywordsChart: "Ranking keywords per competitor",
+    list: "Keywords for {domain}", listNote: "{shown} of {total} keywords shown (sorted by estimated traffic)",
+    col: { keyword: "Keyword", position: "Position", volume: "Volume", traffic: "Est. traffic", url: "URL" },
+    search: "Filter keywords…", none: "No benchmark for this market yet.",
+    footer: "Source: {source}, Google {lang}-BE, data from {date}",
+  },
   seo: {
     title: "SEO dashboard", kpis: "Key indicators", volume: "Total volume", volumeHelp: "Sum of monthly volumes",
     keywords: "Keywords", keywordsHelp: "Tracked keywords", ranked: "Ranking keywords", rankedAll: "All ranked", top20: "Top 20", top10: "Top 10",

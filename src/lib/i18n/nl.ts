@@ -15,6 +15,18 @@ export const nl: Dict = {
     error: "Onjuist wachtwoord.", subtitle: "Toegang beveiligd met een wachtwoord.",
     notConfigured: "Er is geen wachtwoord ingesteld: voeg de variabele DASHBOARD_PASSWORD toe in Vercel en deploy opnieuw.",
   },
+  nav: { seo: "Gevolgde zoekwoorden", benchmark: "Benchmark concurrenten" },
+  bench: {
+    title: "Benchmark concurrenten", subtitle: "Zoekwoorden waarop uw concurrenten echt ranken in Google ({market})",
+    trackedNone: "Uw concurrenten ranken op geen enkel van de {n} gevolgde zoekwoorden. Dit zijn de zoekwoorden waarop ze wel zichtbaar zijn.",
+    trackedSome: "Op de {n} gevolgde zoekwoorden ranken uw concurrenten weinig. Dit zijn alle zoekwoorden waarop ze zichtbaar zijn.",
+    traffic: "Geschat verkeer / maand", keywords: "Gerankte zoekwoorden", top10: "Top 10", top3: "Top 3", tracked: "Op gevolgde zoekwoorden",
+    trafficChart: "Geschat organisch verkeer per concurrent", keywordsChart: "Gerankte zoekwoorden per concurrent",
+    list: "Zoekwoorden van {domain}", listNote: "{shown} van {total} zoekwoorden getoond (gesorteerd op geschat verkeer)",
+    col: { keyword: "Zoekwoord", position: "Positie", volume: "Volume", traffic: "Geschat verkeer", url: "URL" },
+    search: "Zoekwoorden filteren…", none: "Nog geen benchmark voor deze markt.",
+    footer: "Bron: {source}, Google {lang}-BE, gegevens van {date}",
+  },
   seo: {
     title: "SEO-dashboard", kpis: "Kernindicatoren", volume: "Totaal volume", volumeHelp: "Som van de maandvolumes",
     keywords: "Zoekwoorden", keywordsHelp: "Gevolgde zoekwoorden", ranked: "Gepositioneerde zoekwoorden", rankedAll: "Alle gerankt", top20: "Top 20", top10: "Top 10",
