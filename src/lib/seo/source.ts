@@ -25,3 +25,11 @@ export async function getMarketData(market: string): Promise<MarketData | null> 
   cache.set(market, { stamp, data });
   return data;
 }
+
+export async function hasMarketData(market: string): Promise<boolean> {
+  try {
+    return (await readdir(join(DATA_DIR, market))).some((n) => /\.xlsx$/i.test(n) && !n.startsWith("~$"));
+  } catch {
+    return false;
+  }
+}

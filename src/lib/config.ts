@@ -2,7 +2,7 @@ export type UiLang = "fr" | "nl" | "en";
 export const UI_LANGS: UiLang[] = ["fr", "nl", "en"];
 export const DEFAULT_UI_LANG: UiLang = "fr";
 
-export const CLIENT = { name: "DeDecker Keukens", brandLabel: "DeDecker" };
+export const CLIENT = { name: "Trinity", brandLabel: "Trinity" };
 
 /** One folder per market under data/. BEEN (English for Belgium) is a hypothesis to confirm. */
 export const MARKETS = [
