@@ -33,11 +33,16 @@ export function withTrackedSerp(bench: Benchmark, volumes: Record<string, number
       byKw.set(key(kw), { keyword: kw, position: h.position, url: h.url || old?.url || "", volume, traffic: Math.round(volume * ctr(h.position) * 10) / 10, cpc: old?.cpc ?? null, language: old?.language, tracked: true });
     }
     const all = [...byKw.values()].sort((a, b) => b.traffic - a.traffic || b.volume - a.volume || a.position - b.position);
-    const band = (lo: number, hi: number) => all.filter((k) => k.position >= lo && k.position <= hi);
-    const sum = (ks: BenchmarkKeyword[]) => Math.round(ks.reduce((s, k) => s + k.traffic, 0));
+    const band = (ks: BenchmarkKeyword[], lo: number, hi: number) => ks.filter((k) => k.position >= lo && k.position <= hi);
+    const sum = (ks: BenchmarkKeyword[]) => ks.reduce((s, k) => s + k.traffic, 0);
+    // Saved aggregates also cover keywords cut from the capped list: keep that remainder and swap the listed ones.
+    const delta = (lo: number, hi: number) => band(all, lo, hi).length - band(dm.keywords, lo, hi).length;
+    const tr = (lo: number, hi: number, saved: number) => Math.round(saved + sum(band(all, lo, hi)) - sum(band(dm.keywords, lo, hi)));
     return {
-      domain: dm.domain, total: Math.max(dm.total, 0) - dm.keywords.length + all.length, top3: band(1, 3).length, top10: band(1, 10).length, top20: band(1, 20).length,
-      traffic: sum(all), trafficByRange: { top3: sum(band(1, 3)), "4-10": sum(band(4, 10)), "11-20": sum(band(11, 20)), "21+": sum(band(21, 1e9)) },
+      domain: dm.domain, total: dm.total + all.length - dm.keywords.length,
+      top3: dm.top3 + delta(1, 3), top10: dm.top10 + delta(1, 10), top20: dm.top20 + delta(1, 20),
+      traffic: tr(1, 1e9, dm.traffic),
+      trafficByRange: { top3: tr(1, 3, dm.trafficByRange.top3), "4-10": tr(4, 10, dm.trafficByRange["4-10"]), "11-20": tr(11, 20, dm.trafficByRange["11-20"]), "21+": tr(21, 1e9, dm.trafficByRange["21+"]) },
       keywords: all,
     };
   });
