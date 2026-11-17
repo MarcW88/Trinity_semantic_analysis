@@ -11,7 +11,8 @@ async function loadFolder(market: string) {
   return buildMarket(market, files)!;
 }
 
-const hasData = existsSync("data/BENL") && readdirSync("data/BENL").some((n) => n.endsWith(".xlsx"));
+// Reference values come from the original DeDecker workbooks; the Trinity workbooks now in data/ have no Streamlit reference.
+const hasData = existsSync("data/BENL") && readdirSync("data/BENL").some((n) => n.endsWith(".xlsx") && !/trinity/i.test(n));
 
 describe.skipIf(!hasData)("reference values from the Streamlit workbooks", () => {
   it("BENL matches the Streamlit dashboard", async () => {
