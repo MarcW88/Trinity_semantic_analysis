@@ -96,7 +96,7 @@ export function VisibilityByCategoryChart({ data, domains }: { data: SeoResult["
 function VisibilityByCategoryTable({ data }: { data: SeoResult["visibilityByCategory"] }) {
   const cols = [...new Set(data.flatMap((c) => c.rates.map((r) => r.label)))];
   return (
-    <div className="max-h-96 overflow-auto">
+    <div className="max-h-[36rem] overflow-auto">
       <table className="tbl">
         <thead className="sticky top-0 z-10"><tr><th scope="col" />{cols.map((l) => <th key={l} scope="col" className="num">{l}</th>)}</tr></thead>
         <tbody>

@@ -7,10 +7,11 @@ import { BUCKET_COLORS, COMPETITOR_COLORS, POSITION_COLORS, type UiLang } from "
 import { positionTone } from "@/lib/seo/compute";
 import { toCsv } from "@/lib/csv";
 import { CountUp, Reveal, Segmented } from "../motion";
+import { InfoTip } from "../info-tip";
 import { SerpLeaders, type KeywordMeta } from "./serp-leaders";
 
 const TOOLTIP = { borderRadius: 12, border: "1px solid #e6e6e9", boxShadow: "0 8px 24px -12px rgba(31,31,34,.25)", fontSize: 12 };
-const RANGES = ["top3", "4-10", "11-20", "21+"] as const;
+const RANGES = ["top3", "4-10", "11-20"] as const;
 const PAGE = 200;
 
 type Props = { bench: Benchmark; tracked: Record<string, number>; trackedTotal: number; keywordMeta: KeywordMeta; marketLabel: string; d: Dict; lang: UiLang };
@@ -69,19 +70,19 @@ export function BenchmarkView({ bench, tracked, trackedTotal, keywordMeta, marke
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {domains.map((x, i) => (
             <Reveal key={x.domain} delay={i * 0.05} className="h-full">
-              <button type="button" onClick={() => { setSelected(x.domain); setLimit(PAGE); }}
-                className={`card card-hover h-full w-full text-left ${x.domain === selected ? "ring-2 ring-brand/40" : ""}`}>
-                <div className="flex items-center gap-2">
+              <div onClick={() => { setSelected(x.domain); setLimit(PAGE); }}
+                className={`card card-hover h-full w-full cursor-pointer text-left ${x.domain === selected ? "ring-2 ring-brand/40" : ""}`}>
+                <button type="button" aria-pressed={x.domain === selected} className="flex items-center gap-2" onClick={(e) => { e.stopPropagation(); setSelected(x.domain); setLimit(PAGE); }}>
                   <span className="h-3 w-3 rounded-full" style={{ background: color(x.domain) }} />
                   <span className="font-semibold">{x.domain}</span>
-                </div>
+                </button>
                 <div className="mt-3 grid grid-cols-3 gap-2">
-                  <div><div className="text-2xl font-semibold tabular-nums"><CountUp value={x.traffic} format={f.int} /></div><div className="text-[11px] text-ink/50">{b.traffic}</div></div>
-                  <div><div className="text-2xl font-semibold tabular-nums"><CountUp value={x.total} format={f.int} /></div><div className="text-[11px] text-ink/50">{b.keywords}</div></div>
-                  <div><div className="text-2xl font-semibold tabular-nums"><CountUp value={x.top10} format={f.int} /></div><div className="text-[11px] text-ink/50">{b.top10}</div></div>
+                  <div><div className="text-2xl font-semibold tabular-nums"><CountUp value={x.traffic} format={f.int} /></div><div className="text-[11px] text-ink/50">{b.traffic}<InfoTip text={b.help.traffic} align="left" /></div></div>
+                  <div><div className="text-2xl font-semibold tabular-nums"><CountUp value={x.total} format={f.int} /></div><div className="text-[11px] text-ink/50">{b.keywords}<InfoTip text={b.help.keywords} /></div></div>
+                  <div><div className="text-2xl font-semibold tabular-nums"><CountUp value={x.top10} format={f.int} /></div><div className="text-[11px] text-ink/50">{b.top10}<InfoTip text={b.help.top10} align="right" /></div></div>
                 </div>
-                {trackedTotal > 0 && <p className="mt-2 text-xs text-ink/50">{b.tracked} : {f.int(tracked[x.domain] ?? 0)} / {f.int(trackedTotal)}</p>}
-              </button>
+                {trackedTotal > 0 && <p className="mt-2 text-xs text-ink/50">{t(b.trackedLine, { n: f.int(tracked[x.domain] ?? 0), total: f.int(trackedTotal) })}<InfoTip text={t(b.help.tracked, { total: f.int(trackedTotal) })} align="right" /></p>}
+              </div>
             </Reveal>
           ))}
         </div>
@@ -90,7 +91,7 @@ export function BenchmarkView({ bench, tracked, trackedTotal, keywordMeta, marke
       <Reveal>
         <section className="grid gap-4 lg:grid-cols-2">
           <div className="card">
-            <h3 className="card-title">{b.trafficChart}</h3>
+            <h3 className="card-title">{b.trafficChart}<InfoTip text={b.help.trafficChart} align="left" /></h3>
             <div style={{ height: Math.max(240, domains.length * 44) }}>
               <ResponsiveContainer>
                 <BarChart data={trafficData} layout="vertical" margin={{ top: 4, right: 16, left: 8, bottom: 4 }}>
@@ -105,7 +106,7 @@ export function BenchmarkView({ bench, tracked, trackedTotal, keywordMeta, marke
             </div>
           </div>
           <div className="card">
-            <h3 className="card-title">{b.keywordsChart}</h3>
+            <h3 className="card-title">{b.keywordsChart}<InfoTip text={b.help.keywordsChart} align="left" /></h3>
             <div style={{ height: Math.max(240, domains.length * 44) }}>
               <ResponsiveContainer>
                 <BarChart data={kwData} layout="vertical" margin={{ top: 4, right: 16, left: 8, bottom: 4 }}>
@@ -140,7 +141,7 @@ export function BenchmarkView({ bench, tracked, trackedTotal, keywordMeta, marke
             <table className="tbl">
               <thead className="sticky top-0 z-10"><tr>
                 <th scope="col">{b.col.keyword}</th><th scope="col" className="num">{b.col.position}</th><th scope="col" className="num">{b.col.volume}</th>
-                <th scope="col" className="num">{b.col.traffic}</th><th scope="col">{b.col.url}</th>
+                <th scope="col" className="num">{b.col.traffic}<InfoTip text={b.help.traffic} align="right" /></th><th scope="col">{b.col.url}</th>
               </tr></thead>
               <tbody>
                 {rows.slice(0, limit).map((k) => (

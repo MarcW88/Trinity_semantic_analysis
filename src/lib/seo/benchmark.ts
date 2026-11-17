@@ -40,6 +40,19 @@ const sameSite = (serpDomain: string, domain: string) => serpDomain === domain |
 
 // Labs keywords of each competitor, with tracked keywords overridden by the live Google SERP snapshot (real positions).
 export function withTrackedSerp(bench: Benchmark, volumes: Record<string, number>): BenchmarkDomain[] {
+  return mergeTrackedSerp(bench, volumes).map(noTrafficBeyond20);
+}
+
+/** Google gives no clicks beyond page 2: the DataForSEO estimate for positions 21+ is dropped. */
+function noTrafficBeyond20(dm: BenchmarkDomain): BenchmarkDomain {
+  const r = dm.trafficByRange;
+  return {
+    ...dm, traffic: Math.round(r.top3 + r["4-10"] + r["11-20"]), trafficByRange: { ...r, "21+": 0 },
+    keywords: dm.keywords.map((k) => (k.position > 20 ? { ...k, traffic: 0 } : k)).sort((a, b) => b.traffic - a.traffic || b.volume - a.volume || a.position - b.position),
+  };
+}
+
+function mergeTrackedSerp(bench: Benchmark, volumes: Record<string, number>): BenchmarkDomain[] {
   const serp = bench.serpLeaders?.serp;
   const isTracked = (k: BenchmarkKeyword) => (!k.language || k.language === bench.language) && k.keyword.toLowerCase() in volumes;
   if (!serp) return bench.domains.map((dm) => ({ ...dm, keywords: dm.keywords.map((k) => ({ ...k, tracked: isTracked(k) })) }));
