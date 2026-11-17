@@ -3,6 +3,7 @@ import { readdir, readFile, stat } from "node:fs/promises";
 import { join } from "node:path";
 import { buildMarket, readFirstSheet } from "./excel";
 import type { MarketData } from "./types";
+import type { Benchmark } from "./benchmark";
 
 const DATA_DIR = join(/*turbopackIgnore: true*/ process.cwd(), "data");
 const cache = new Map<string, { stamp: string; data: MarketData | null }>();
@@ -32,4 +33,18 @@ export async function hasMarketData(market: string): Promise<boolean> {
   } catch {
     return false;
   }
+}
+
+const benchCache = new Map<string, { stamp: number; data: Benchmark | null }>();
+
+/** data/<market>/benchmark.json, produced by scripts/fetch-benchmark.mjs. */
+export async function getBenchmark(market: string): Promise<Benchmark | null> {
+  const file = join(DATA_DIR, market, "benchmark.json");
+  let stamp: number;
+  try { stamp = (await stat(file)).mtimeMs; } catch { return null; }
+  const hit = benchCache.get(market);
+  if (hit && hit.stamp === stamp) return hit.data;
+  const data = JSON.parse(await readFile(file, "utf8")) as Benchmark;
+  benchCache.set(market, { stamp, data });
+  return data;
 }

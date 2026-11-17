@@ -1,0 +1,152 @@
+{
+ "market": "BEFR",
+ "generatedAt": "2026-11-17T13:52:42.453Z",
+ "source": "DataForSEO Labs ranked_keywords",
+ "location": 2056,
+ "language": "fr",
+ "domains": [
+  {
+   "domain": "duckmotion.be",
+   "total": 1,
+   "top3": 1,
+   "top10": 1,
+   "top20": 1,
+   "traffic": 308,
+   "trafficByRange": {
+    "top3": 308,
+    "4-10": 0,
+    "11-20": 0,
+    "21+": 0
+   },
+   "keywords": [
+    {
+     "keyword": "lasemo",
+     "position": 3,
+     "url": "https://duckmotion.be/cas-client/lasemo/",
+     "volume": 9900,
+     "traffic": 307.5,
+     "cpc": 0.05000000074505806
+    }
+   ]
+  },
+  {
+   "domain": "socialsky.eu",
+   "total": 4,
+   "top3": 3,
+   "top10": 4,
+   "top20": 4,
+   "traffic": 540,
+   "trafficByRange": {
+    "top3": 532,
+    "4-10": 8,
+    "11-20": 0,
+    "21+": 0
+   },
+   "keywords": [
+    {
+     "keyword": "tiktok shop",
+     "position": 3,
+     "url": "https://www.socialsky.eu/articles/tiktok-shop-arrive-en-belgique-ce-que-ca-change-pour-les-marques-et-vendeurs",
+     "volume": 5400,
+     "traffic": 324.4,
+     "cpc": 7.039999961853027
+    },
+    {
+     "keyword": "socialsky",
+     "position": 1,
+     "url": "https://www.socialsky.eu/",
+     "volume": 720,
+     "traffic": 144.5,
+     "cpc": 0.47999998927116394
+    },
+    {
+     "keyword": "tiktok shop belgique",
+     "position": 2,
+     "url": "https://www.socialsky.eu/articles/tiktok-shop-arrive-en-belgique-ce-que-ca-change-pour-les-marques-et-vendeurs",
+     "volume": 590,
+     "traffic": 63.1,
+     "cpc": 2.630000114440918
+    },
+    {
+     "keyword": "socials",
+     "position": 8,
+     "url": "https://www.socialsky.eu/",
+     "volume": 2400,
+     "traffic": 8,
+     "cpc": 0.6299999952316284
+    }
+   ]
+  },
+  {
+   "domain": "veaudeville.be",
+   "total": 0,
+   "top3": 0,
+   "top10": 0,
+   "top20": 0,
+   "traffic": 0,
+   "trafficByRange": {
+    "top3": 0,
+    "4-10": 0,
+    "11-20": 0,
+    "21+": 0
+   },
+   "keywords": []
+  },
+  {
+   "domain": "castaar.com",
+   "total": 2,
+   "top3": 1,
+   "top10": 1,
+   "top20": 1,
+   "traffic": 318,
+   "trafficByRange": {
+    "top3": 318,
+    "4-10": 0,
+    "11-20": 0,
+    "21+": 1
+   },
+   "keywords": [
+    {
+     "keyword": "castaar",
+     "position": 1,
+     "url": "https://castaar.com/",
+     "volume": 720,
+     "traffic": 317.6,
+     "cpc": null
+    },
+    {
+     "keyword": "deusjevoo",
+     "position": 44,
+     "url": "https://castaar.com/poulekes/",
+     "volume": 590,
+     "traffic": 0.6,
+     "cpc": 0.6100000143051147
+    }
+   ]
+  },
+  {
+   "domain": "mediamixer.be",
+   "total": 1,
+   "top3": 1,
+   "top10": 1,
+   "top20": 1,
+   "traffic": 271,
+   "trafficByRange": {
+    "top3": 271,
+    "4-10": 0,
+    "11-20": 0,
+    "21+": 0
+   },
+   "keywords": [
+    {
+     "keyword": "mediamixer",
+     "position": 1,
+     "url": "https://www.mediamixer.be/",
+     "volume": 590,
+     "traffic": 271,
+     "cpc": null
+    }
+   ]
+  }
+ ]
+}
