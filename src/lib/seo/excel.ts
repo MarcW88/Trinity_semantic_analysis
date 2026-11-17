@@ -3,7 +3,8 @@ import { EXCLUDED_CATEGORIES } from "../config";
 import type { MarketData, SeoCategory, SeoCompetitor, SeoKeyword, SeoRanking, SeoScope } from "./types";
 
 export type RawRow = Record<string, unknown>;
-export type SourceFile = { name: string; rows: RawRow[]; modified: Date | null };
+export type SourceFile = { name: string; rows: RawRow[]; modified: Date | null; serp?: RawRow[] };
+export type SerpRow = { keyword: string; position: number; domain: string; url: string };
 
 const UNCATEGORISED = "Non catégorisé";
 const TRUE_VALUES = new Set(["true", "1", "yes", "vrai", "ja", "waar", "oui", "x"]);
@@ -39,23 +40,40 @@ const pos = (v: unknown): number | null => {
 const bool = (v: unknown) => TRUE_VALUES.has(text(v).toLowerCase());
 const isUrl = (s: string) => /^https?:\/\/\S+$/i.test(s);
 
-/** Reads the first worksheet of a workbook into rows keyed by trimmed header. */
+function sheetRows(ws: ExcelJS.Worksheet | undefined): RawRow[] {
+  const rows: RawRow[] = [];
+  if (!ws) return rows;
+  const headers: string[] = [];
+  ws.getRow(1).eachCell({ includeEmpty: true }, (c, col) => { headers[col] = text(c.value); });
+  ws.eachRow({ includeEmpty: false }, (r, n) => {
+    if (n === 1) return;
+    const o: RawRow = {};
+    headers.forEach((h, col) => { if (h && !(h in o)) o[h] = r.getCell(col).value; });
+    rows.push(o);
+  });
+  return rows;
+}
+
+/** Reads the first worksheet of a workbook, plus its `serp` worksheet (full Google results per keyword) when present. */
 export async function readFirstSheet(buf: Uint8Array, name: string): Promise<SourceFile> {
   const wb = new ExcelJS.Workbook();
   await wb.xlsx.load(buf as unknown as ArrayBuffer);
-  const ws = wb.worksheets[0];
-  const rows: RawRow[] = [];
-  if (ws) {
-    const headers: string[] = [];
-    ws.getRow(1).eachCell({ includeEmpty: true }, (c, col) => { headers[col] = text(c.value); });
-    ws.eachRow({ includeEmpty: false }, (r, n) => {
-      if (n === 1) return;
-      const o: RawRow = {};
-      headers.forEach((h, col) => { if (h && !(h in o)) o[h] = r.getCell(col).value; });
-      rows.push(o);
-    });
+  const serp = wb.worksheets.slice(1).find((ws) => ws.name.trim().toLowerCase() === "serp");
+  return { name, rows: sheetRows(wb.worksheets[0]), modified: wb.modified ?? null, ...(serp ? { serp: sheetRows(serp) } : {}) };
+}
+
+/** Rows of the `serp` worksheets (keyword, position, domain, url). */
+export function serpRows(files: SourceFile[]): SerpRow[] {
+  const out: SerpRow[] = [];
+  for (const f of files) {
+    const c = columns(f.serp ?? []);
+    for (const r of f.serp ?? []) {
+      const keyword = text(c.get(r, "keyword")).toLowerCase(), position = pos(c.get(r, "position"));
+      const domain = text(c.get(r, "domain")).toLowerCase().replace(/^www\./, "");
+      if (keyword && position && domain) out.push({ keyword, position, domain, url: text(c.get(r, "url")) });
+    }
   }
-  return { name, rows, modified: wb.modified ?? null };
+  return out;
 }
 
 /** Case-insensitive column lookup ("Category" and "category" are the same column). */

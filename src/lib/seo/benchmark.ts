@@ -10,6 +10,32 @@ export type SerpLeaders = { generatedAt: string; trackedKeywords: number; keywor
 
 const CTR = [0.316, 0.143, 0.089, 0.067, 0.054, 0.045, 0.038, 0.033, 0.029, 0.026];
 export const ctr = (p: number) => (p <= 10 ? CTR[p - 1] : p <= 20 ? 0.01 : 0);
+/** Tracked-keyword leaders and per-keyword top 20, built from the workbook's `serp` worksheet. */
+export function serpLeadersFromRows(rows: { keyword: string; position: number; domain: string; url: string }[], volumes: Record<string, number>, generatedAt: string): SerpLeaders | null {
+  const serp: NonNullable<SerpLeaders["serp"]> = {};
+  const byDomain = new Map<string, { traffic: number; positions: { keyword: string; position: number }[] }>();
+  for (const r of rows) {
+    if (r.position > 20 || !(r.keyword in volumes)) continue;
+    const sites = (serp[r.keyword] ??= []);
+    if (sites.some((s) => s.domain === r.domain)) continue;
+    sites.push({ domain: r.domain, position: r.position, url: r.url });
+    const d = byDomain.get(r.domain) ?? { traffic: 0, positions: [] };
+    d.traffic += volumes[r.keyword] * ctr(r.position);
+    d.positions.push({ keyword: r.keyword, position: r.position });
+    byDomain.set(r.domain, d);
+  }
+  if (byDomain.size === 0) return null;
+  for (const sites of Object.values(serp)) sites.sort((a, b) => a.position - b.position);
+  const items = [...byDomain].map(([domain, d]) => {
+    const ps = d.positions.sort((a, b) => a.position - b.position);
+    return {
+      domain, keywords: ps.length, top3: ps.filter((p) => p.position <= 3).length, top10: ps.filter((p) => p.position <= 10).length,
+      traffic: Math.round(d.traffic), avgPosition: Math.round((ps.reduce((s, p) => s + p.position, 0) / ps.length) * 10) / 10, positions: ps,
+    };
+  }).sort((a, b) => b.top10 - a.top10 || b.traffic - a.traffic).slice(0, 30);
+  return { generatedAt, trackedKeywords: Object.keys(volumes).length, keywordsWithSerp: Object.keys(serp).length, source: "Excel serp (top 20)", items, serp };
+}
+
 const sameSite = (serpDomain: string, domain: string) => serpDomain === domain || serpDomain.endsWith(`.${domain}`);
 
 // Labs keywords of each competitor, with tracked keywords overridden by the live Google SERP snapshot (real positions).
@@ -27,6 +53,8 @@ export function withTrackedSerp(bench: Benchmark, volumes: Record<string, number
       if (s && kw in volumes) hits.set(kw, { position: s.position, url: s.url });
     }
     for (const p of leaderPositions.get(dm.domain) ?? []) if (!hits.has(p.keyword) && p.keyword in volumes) hits.set(p.keyword, { position: p.position, url: "" });
+    // The SERP snapshot is authoritative for tracked keywords: drop Labs positions it does not confirm.
+    for (const [k, v] of byKw) if (v.tracked && !hits.has(v.keyword.toLowerCase())) byKw.delete(k);
     for (const [kw, h] of hits) {
       const old = byKw.get(key(kw));
       const volume = volumes[kw] ?? old?.volume ?? 0;
