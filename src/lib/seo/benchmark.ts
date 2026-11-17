@@ -15,11 +15,12 @@ const sameSite = (serpDomain: string, domain: string) => serpDomain === domain |
 // Labs keywords of each competitor, with tracked keywords overridden by the live Google SERP snapshot (real positions).
 export function withTrackedSerp(bench: Benchmark, volumes: Record<string, number>): BenchmarkDomain[] {
   const serp = bench.serpLeaders?.serp;
-  if (!serp) return bench.domains;
+  const isTracked = (k: BenchmarkKeyword) => (!k.language || k.language === bench.language) && k.keyword.toLowerCase() in volumes;
+  if (!serp) return bench.domains.map((dm) => ({ ...dm, keywords: dm.keywords.map((k) => ({ ...k, tracked: isTracked(k) })) }));
   const leaderPositions = new Map(bench.serpLeaders!.items.map((l) => [l.domain, l.positions]));
   return bench.domains.map((dm) => {
     const key = (kw: string, lang?: string) => `${kw.toLowerCase()}|${lang || bench.language}`;
-    const byKw = new Map(dm.keywords.map((k) => [key(k.keyword, k.language), { ...k, tracked: (!k.language || k.language === bench.language) && k.keyword.toLowerCase() in volumes }]));
+    const byKw = new Map(dm.keywords.map((k) => [key(k.keyword, k.language), { ...k, tracked: isTracked(k) }]));
     const hits = new Map<string, { position: number; url: string }>();
     for (const [kw, sites] of Object.entries(serp)) {
       const s = sites.find((x) => sameSite(x.domain, dm.domain));
