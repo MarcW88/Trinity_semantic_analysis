@@ -17,6 +17,7 @@ export const nl: Dict = {
   },
   nav: { seo: "Gevolgde zoekwoorden", benchmark: "Benchmark concurrenten" },
   bench: {
+    leaders: "Best gerankte sites op uw gevolgde zoekwoorden", leadersNote: "Domeinen in Google op de {n} gevolgde zoekwoorden, gesorteerd op aantal top 10-zoekwoorden.", leadersChart: "Gevolgde zoekwoorden waarop de site rankt", lcol: { domain: "Site", keywords: "Zoekwoorden", top10: "Top 10", top3: "Top 3", avg: "Gem. pos.", traffic: "Geschat verkeer", best: "Beste zoekwoorden" },
     title: "Benchmark concurrenten", subtitle: "Zoekwoorden waarop uw concurrenten echt ranken in Google ({market})",
     trackedNone: "Uw concurrenten ranken op geen enkel van de {n} gevolgde zoekwoorden. Dit zijn de zoekwoorden waarop ze wel zichtbaar zijn.",
     trackedSome: "Op de {n} gevolgde zoekwoorden ranken uw concurrenten weinig. Dit zijn alle zoekwoorden waarop ze zichtbaar zijn.",
@@ -28,6 +29,7 @@ export const nl: Dict = {
     footer: "Bron: {source}, Google {lang}-BE, gegevens van {date}",
   },
   seo: {
+    volumeChart: "Zoekvolume per categorie", showAll: "Alle categorieën tonen ({n})", showTop: "Top 10 tonen", rankedShare: "{r} gerankt / {n}",
     title: "SEO-dashboard", kpis: "Kernindicatoren", volume: "Totaal volume", volumeHelp: "Som van de maandvolumes",
     keywords: "Zoekwoorden", keywordsHelp: "Gevolgde zoekwoorden", ranked: "Gepositioneerde zoekwoorden", rankedAll: "Alle gerankt", top20: "Top 20", top10: "Top 10",
     avgPosition: "Gemiddelde positie", avgHelp: "Niet gerankt telt als 100", aiPresence: "Aanwezigheid AI Overviews", aiCitation: "{brand} geciteerd in AI",

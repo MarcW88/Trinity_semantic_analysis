@@ -153,6 +153,50 @@ export function BenchmarkView({ bench, tracked, trackedTotal, marketLabel, d, la
         </section>
       </Reveal>
 
+      {bench.serpLeaders && bench.serpLeaders.items.length > 0 && (
+        <Reveal>
+          <section aria-labelledby="serp-leaders" className="space-y-4">
+            <div>
+              <h2 id="serp-leaders" className="section-title">{b.leaders}</h2>
+              <p className="-mt-2 text-sm text-ink/60">{t(b.leadersNote, { n: f.int(bench.serpLeaders.trackedKeywords) })}</p>
+            </div>
+            <div className="card">
+              <h3 className="card-title">{b.leadersChart}</h3>
+              <div className="h-80">
+                <ResponsiveContainer>
+                  <BarChart data={bench.serpLeaders.items.slice(0, 12).map((l) => ({ domain: l.domain, [b.lcol.keywords]: l.keywords, [b.lcol.top10]: l.top10 }))} margin={{ top: 8, right: 8, left: 0, bottom: 60 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#ececef" vertical={false} />
+                    <XAxis dataKey="domain" interval={0} angle={-35} textAnchor="end" tick={{ fontSize: 11 }} />
+                    <YAxis allowDecimals={false} tick={{ fontSize: 11 }} />
+                    <Tooltip contentStyle={TOOLTIP} />
+                    <Legend verticalAlign="top" wrapperStyle={{ fontSize: 11 }} />
+                    <Bar dataKey={b.lcol.keywords} fill="#1F1F22" radius={[6, 6, 0, 0]} animationDuration={900} />
+                    <Bar dataKey={b.lcol.top10} fill="#EA3323" radius={[6, 6, 0, 0]} animationDuration={900} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+            <div className="card max-h-[560px] overflow-auto p-0">
+              <table className="tbl">
+                <thead className="sticky top-0 z-10"><tr>
+                  <th scope="col">{b.lcol.domain}</th><th scope="col" className="num">{b.lcol.keywords}</th><th scope="col" className="num">{b.lcol.top10}</th>
+                  <th scope="col" className="num">{b.lcol.top3}</th><th scope="col" className="num">{b.lcol.avg}</th><th scope="col" className="num">{b.lcol.traffic}</th><th scope="col">{b.lcol.best}</th>
+                </tr></thead>
+                <tbody>
+                  {bench.serpLeaders.items.map((l) => (
+                    <tr key={l.domain}>
+                      <td className="font-medium">{l.domain}</td><td className="num">{f.int(l.keywords)}</td><td className="num">{f.int(l.top10)}</td>
+                      <td className="num">{f.int(l.top3)}</td><td className="num">{f.dec1(l.avgPosition)}</td><td className="num">{f.int(l.traffic)}</td>
+                      <td className="text-xs text-ink/70">{l.positions.slice(0, 4).map((p) => `${p.keyword} (${p.position})`).join(" · ")}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </Reveal>
+      )}
+
       <footer className="border-t border-line pt-3 text-xs text-ink/50">{t(b.footer, { source: bench.source, lang: bench.language, date: f.date(bench.generatedAt.slice(0, 10)) })}</footer>
     </div>
   );

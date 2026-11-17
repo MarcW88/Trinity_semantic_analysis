@@ -31,6 +31,27 @@ export function DistributionChart({ data, labels }: { data: SeoResult["distribut
   );
 }
 
+export function CategoryVolumeChart({ data, rankedLabel, format }: { data: SeoResult["categoryTable"]; rankedLabel: (r: number, n: number) => string; format: (n: number) => string }) {
+  const rows = data.map((c) => ({ ...c, label: rankedLabel(c.keywords - c.unranked, c.keywords) }));
+  return (
+    <div className="h-80" role="img" aria-label={rows.map((r) => `${r.category}: ${format(r.volume)}, ${r.label}`).join("; ")}>
+      <ResponsiveContainer>
+        <BarChart data={rows} margin={{ top: 24, right: 8, left: 0, bottom: rows.length > 5 ? 70 : 8 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="#ececef" vertical={false} />
+          <XAxis dataKey="category" interval={0} angle={rows.length > 5 ? -35 : 0} textAnchor={rows.length > 5 ? "end" : "middle"} tick={{ fontSize: 11 }} />
+          <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => format(Number(v))} />
+          <Tooltip contentStyle={TOOLTIP} formatter={(v, _n, item) => [`${format(Number(v))} · ${(item.payload as { label: string }).label}`, ""]} />
+          <Bar dataKey="volume" radius={[6, 6, 0, 0]} animationDuration={900} label={{ position: "top", fontSize: 10, formatter: (v: unknown) => format(Number(v)) }}>
+            {rows.map((r, i) => <Cell key={r.categoryId} fill={CATEGORY_COLORS[i % CATEGORY_COLORS.length]} />)}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  );
+}
+
+const CATEGORY_COLORS = ["#EA3323", "#1F1F22", "#F2766B", "#2563EB", "#F59E0B", "#14B8A6", "#8B5CF6", "#0EA5E9", "#EC4899", "#6B7280"];
+
 export function VisibilityChart({ data, total, domains }: { data: SeoResult["visibility"]; total: number; domains: DomainInfo[] }) {
   const color = (d: string) => domains.find((x) => x.domain === d)?.color ?? "#6B7280";
   const rows = data.map((v) => ({ ...v, text: `${v.ranked}/${total}` }));
