@@ -1,22 +1,23 @@
 {
  "market": "BEFR",
- "generatedAt": "2026-11-17T13:52:42.453Z",
+ "generatedAt": "2026-11-17T15:50:36.980Z",
  "source": "DataForSEO Labs ranked_keywords",
  "location": 2056,
  "language": "fr",
+ "allLanguages": true,
  "domains": [
   {
    "domain": "duckmotion.be",
-   "total": 1,
-   "top3": 1,
-   "top10": 1,
-   "top20": 1,
-   "traffic": 308,
+   "total": 46,
+   "top3": 3,
+   "top10": 9,
+   "top20": 26,
+   "traffic": 557,
    "trafficByRange": {
-    "top3": 308,
-    "4-10": 0,
-    "11-20": 0,
-    "21+": 0
+    "top3": 467,
+    "4-10": 5,
+    "11-20": 78,
+    "21+": 6
    },
    "keywords": [
     {
@@ -25,31 +26,456 @@
      "url": "https://duckmotion.be/cas-client/lasemo/",
      "volume": 9900,
      "traffic": 307.5,
-     "cpc": 0.05000000074505806
+     "cpc": 0.05000000074505806,
+     "language": "fr"
+    },
+    {
+     "keyword": "duckmotion",
+     "position": 1,
+     "url": "https://duckmotion.be/nl/",
+     "volume": 260,
+     "traffic": 151.8,
+     "cpc": 0.20999999344348907,
+     "language": "nl"
+    },
+    {
+     "keyword": "lasemo",
+     "position": 17,
+     "url": "https://duckmotion.be/nl/case-study/lasemo/",
+     "volume": 9900,
+     "traffic": 64.8,
+     "cpc": 0.05000000074505806,
+     "language": "nl"
+    },
+    {
+     "keyword": "video production brussels",
+     "position": 2,
+     "url": "https://duckmotion.be/en/video-production/",
+     "volume": 70,
+     "traffic": 8,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "explicative",
+     "position": 18,
+     "url": "https://duckmotion.be/blog/comment-faire-une-video-explicative-efficace/",
+     "volume": 880,
+     "traffic": 6,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "after effects",
+     "position": 16,
+     "url": "https://duckmotion.be/nl/blog/category/adobe-after-effects/",
+     "volume": 1600,
+     "traffic": 3.8,
+     "cpc": 2.069999933242798,
+     "language": "nl"
+    },
+    {
+     "keyword": "interactieve",
+     "position": 4,
+     "url": "https://duckmotion.be/nl/videoproductie/interactieve-video/",
+     "volume": 260,
+     "traffic": 3.1,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "d-motion",
+     "position": 5,
+     "url": "https://duckmotion.be/en/blog/agence-motion-design-ou-studio-d-animation/",
+     "volume": 260,
+     "traffic": 2.1,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "produweb",
+     "position": 25,
+     "url": "https://duckmotion.be/",
+     "volume": 390,
+     "traffic": 2,
+     "cpc": 4.650000095367432,
+     "language": "nl"
+    },
+    {
+     "keyword": "d motion",
+     "position": 29,
+     "url": "https://duckmotion.be/en/",
+     "volume": 260,
+     "traffic": 0.9,
+     "cpc": null,
+     "language": "de"
+    },
+    {
+     "keyword": "brand book",
+     "position": 16,
+     "url": "https://duckmotion.be/nl/blog/brand-book/",
+     "volume": 320,
+     "traffic": 0.8,
+     "cpc": 8.140000343322754,
+     "language": "nl"
+    },
+    {
+     "keyword": "exstatic video agency",
+     "position": 18,
+     "url": "https://duckmotion.be/",
+     "volume": 90,
+     "traffic": 0.7,
+     "cpc": 2.630000114440918,
+     "language": "nl"
+    },
+    {
+     "keyword": "youtube ad",
+     "position": 23,
+     "url": "https://duckmotion.be/en/blog/youtube-advertising/",
+     "volume": 260,
+     "traffic": 0.6,
+     "cpc": 8.319999694824219,
+     "language": "nl"
+    },
+    {
+     "keyword": "société de production audiovisuelle belgique",
+     "position": 30,
+     "url": "https://duckmotion.be/",
+     "volume": 170,
+     "traffic": 0.5,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "agence de publicite bruxelles",
+     "position": 14,
+     "url": "https://duckmotion.be/",
+     "volume": 110,
+     "traffic": 0.5,
+     "cpc": 7.970000267028809,
+     "language": "nl"
+    },
+    {
+     "keyword": "animation studio",
+     "position": 25,
+     "url": "https://duckmotion.be/en/blog/agence-motion-design-ou-studio-d-animation/",
+     "volume": 110,
+     "traffic": 0.5,
+     "cpc": 0.25,
+     "language": "nl"
+    },
+    {
+     "keyword": "vidéaste bruxelles",
+     "position": 12,
+     "url": "https://duckmotion.be/",
+     "volume": 70,
+     "traffic": 0.5,
+     "cpc": 5,
+     "language": "nl"
+    },
+    {
+     "keyword": "brand book",
+     "position": 32,
+     "url": "https://duckmotion.be/nl/blog/brand-book/",
+     "volume": 320,
+     "traffic": 0.4,
+     "cpc": 8.140000343322754,
+     "language": "de"
+    },
+    {
+     "keyword": "enclume animation",
+     "position": 29,
+     "url": "https://duckmotion.be/",
+     "volume": 140,
+     "traffic": 0.4,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "happy duck films",
+     "position": 41,
+     "url": "https://duckmotion.be/en/",
+     "volume": 390,
+     "traffic": 0.3,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "video agency",
+     "position": 13,
+     "url": "https://duckmotion.be/",
+     "volume": 50,
+     "traffic": 0.3,
+     "cpc": 8.640000343322754,
+     "language": "nl"
+    },
+    {
+     "keyword": "tipik foot direct",
+     "position": 79,
+     "url": "https://duckmotion.be/cas-client/tipik/",
+     "volume": 390,
+     "traffic": 0.2,
+     "cpc": 1.090000033378601,
+     "language": "de"
+    },
+    {
+     "keyword": "agence pub bruxelles",
+     "position": 14,
+     "url": "https://duckmotion.be/",
+     "volume": 90,
+     "traffic": 0.2,
+     "cpc": 4.090000152587891,
+     "language": "nl"
+    },
+    {
+     "keyword": "vidéo d'entreprise",
+     "position": 30,
+     "url": "https://duckmotion.be/blog/video-corporate-video-decalee-entreprise/",
+     "volume": 90,
+     "traffic": 0.2,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "studio d'animation",
+     "position": 27,
+     "url": "https://duckmotion.be/nl/blog/agence-motion-design-ou-studio-d-animation/",
+     "volume": 70,
+     "traffic": 0.2,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "motion designer",
+     "position": 59,
+     "url": "https://duckmotion.be/en/video-production/motion-design/",
+     "volume": 140,
+     "traffic": 0.1,
+     "cpc": 5.230000019073486,
+     "language": "nl"
+    },
+    {
+     "keyword": "agence publicité bruxelles",
+     "position": 14,
+     "url": "https://duckmotion.be/",
+     "volume": 90,
+     "traffic": 0.1,
+     "cpc": 4.090000152587891,
+     "language": "nl"
+    },
+    {
+     "keyword": "interview voorbeeld",
+     "position": 14,
+     "url": "https://duckmotion.be/nl/blog/5-idees-interview-entreprise-decalees/",
+     "volume": 70,
+     "traffic": 0.1,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "voorbeeld interview",
+     "position": 14,
+     "url": "https://duckmotion.be/nl/blog/5-idees-interview-entreprise-decalees/",
+     "volume": 70,
+     "traffic": 0.1,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "youtube advertentie",
+     "position": 12,
+     "url": "https://duckmotion.be/nl/blog/youtube-advertising/",
+     "volume": 50,
+     "traffic": 0.1,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "corporate branding",
+     "position": 10,
+     "url": "https://duckmotion.be/nl/blog/corporate-branding-strategy-2025/",
+     "volume": 40,
+     "traffic": 0.1,
+     "cpc": 2.369999885559082,
+     "language": "nl"
+    },
+    {
+     "keyword": "production vidéo",
+     "position": 10,
+     "url": "https://duckmotion.be/",
+     "volume": 40,
+     "traffic": 0.1,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "tipik radio frequence",
+     "position": 97,
+     "url": "https://duckmotion.be/cas-client/tipik/",
+     "volume": 260,
+     "traffic": 0,
+     "cpc": 0.11999999731779099,
+     "language": "de"
+    },
+    {
+     "keyword": "animade studio",
+     "position": 24,
+     "url": "https://duckmotion.be/en/blog/agence-motion-design-ou-studio-d-animation/",
+     "volume": 110,
+     "traffic": 0,
+     "cpc": 0.25,
+     "language": "nl"
+    },
+    {
+     "keyword": "personal branding manager",
+     "position": 70,
+     "url": "https://duckmotion.be/nl/digitale-strategie/personal-branding/",
+     "volume": 110,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "interviews voorbeelden",
+     "position": 11,
+     "url": "https://duckmotion.be/nl/blog/5-idees-interview-entreprise-decalees/",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "voorbeelden interview",
+     "position": 11,
+     "url": "https://duckmotion.be/nl/blog/5-idees-interview-entreprise-decalees/",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "voorbeeld van een interview",
+     "position": 16,
+     "url": "https://duckmotion.be/nl/blog/5-idees-interview-entreprise-decalees/",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "youtube-advertenties",
+     "position": 15,
+     "url": "https://duckmotion.be/nl/blog/youtube-advertising/",
+     "volume": 50,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "videoproductie",
+     "position": 59,
+     "url": "https://duckmotion.be/nl/",
+     "volume": 50,
+     "traffic": 0,
+     "cpc": 8.90999984741211,
+     "language": "nl"
+    },
+    {
+     "keyword": "corporate video",
+     "position": 7,
+     "url": "https://duckmotion.be/en/blog/4-etapes-video-corporate/",
+     "volume": 40,
+     "traffic": 0,
+     "cpc": 16.850000381469727,
+     "language": "nl"
+    },
+    {
+     "keyword": "corporate brand",
+     "position": 9,
+     "url": "https://duckmotion.be/nl/blog/corporate-branding-strategy-2025/",
+     "volume": 40,
+     "traffic": 0,
+     "cpc": 2.369999885559082,
+     "language": "nl"
+    },
+    {
+     "keyword": "corporate brands",
+     "position": 23,
+     "url": "https://duckmotion.be/nl/blog/corporate-branding-strategy-2025/",
+     "volume": 40,
+     "traffic": 0,
+     "cpc": 2.369999885559082,
+     "language": "nl"
+    },
+    {
+     "keyword": "vidéo corporate",
+     "position": 26,
+     "url": "https://duckmotion.be/production-video/video-corporate/",
+     "volume": 40,
+     "traffic": 0,
+     "cpc": 16.850000381469727,
+     "language": "nl"
+    },
+    {
+     "keyword": "corporate videos",
+     "position": 29,
+     "url": "https://duckmotion.be/nl/blog/video-corporate-7-types-videos/",
+     "volume": 40,
+     "traffic": 0,
+     "cpc": 16.850000381469727,
+     "language": "nl"
+    },
+    {
+     "keyword": "corporate videographer",
+     "position": 45,
+     "url": "https://duckmotion.be/production-video/video-corporate/",
+     "volume": 40,
+     "traffic": 0,
+     "cpc": 16.850000381469727,
+     "language": "nl"
     }
    ]
   },
   {
    "domain": "socialsky.eu",
-   "total": 4,
-   "top3": 3,
-   "top10": 4,
-   "top20": 4,
-   "traffic": 540,
+   "total": 22,
+   "top3": 8,
+   "top10": 14,
+   "top20": 15,
+   "traffic": 1174,
    "trafficByRange": {
-    "top3": 532,
-    "4-10": 8,
+    "top3": 1147,
+    "4-10": 19,
     "11-20": 0,
-    "21+": 0
+    "21+": 8
    },
    "keywords": [
+    {
+     "keyword": "socialsky",
+     "position": 1,
+     "url": "https://www.socialsky.eu/",
+     "volume": 720,
+     "traffic": 388.5,
+     "cpc": 0.47999998927116394,
+     "language": "de"
+    },
     {
      "keyword": "tiktok shop",
      "position": 3,
      "url": "https://www.socialsky.eu/articles/tiktok-shop-arrive-en-belgique-ce-que-ca-change-pour-les-marques-et-vendeurs",
      "volume": 5400,
      "traffic": 324.4,
-     "cpc": 7.039999961853027
+     "cpc": 7.039999961853027,
+     "language": "fr"
+    },
+    {
+     "keyword": "socialsky",
+     "position": 1,
+     "url": "https://www.socialsky.eu/services/google-ads",
+     "volume": 720,
+     "traffic": 209.5,
+     "cpc": 0.47999998927116394,
+     "language": "nl"
     },
     {
      "keyword": "socialsky",
@@ -57,7 +483,8 @@
      "url": "https://www.socialsky.eu/",
      "volume": 720,
      "traffic": 144.5,
-     "cpc": 0.47999998927116394
+     "cpc": 0.47999998927116394,
+     "language": "fr"
     },
     {
      "keyword": "tiktok shop belgique",
@@ -65,7 +492,17 @@
      "url": "https://www.socialsky.eu/articles/tiktok-shop-arrive-en-belgique-ce-que-ca-change-pour-les-marques-et-vendeurs",
      "volume": 590,
      "traffic": 63.1,
-     "cpc": 2.630000114440918
+     "cpc": 2.630000114440918,
+     "language": "fr"
+    },
+    {
+     "keyword": "agence facebook ads",
+     "position": 1,
+     "url": "https://www.socialsky.eu/services/agence-facebook-ads",
+     "volume": 70,
+     "traffic": 13,
+     "cpc": 55.56999969482422,
+     "language": "nl"
     },
     {
      "keyword": "socials",
@@ -73,37 +510,282 @@
      "url": "https://www.socialsky.eu/",
      "volume": 2400,
      "traffic": 8,
-     "cpc": 0.6299999952316284
+     "cpc": 0.6299999952316284,
+     "language": "fr"
+    },
+    {
+     "keyword": "tiktok shop belgie",
+     "position": 6,
+     "url": "https://www.socialsky.eu/nl/articles/tiktok-shop-komt-naar-belgie-wat-dit-betekent-voor-merken-en-verkopers",
+     "volume": 390,
+     "traffic": 4.8,
+     "cpc": 2.700000047683716,
+     "language": "nl"
+    },
+    {
+     "keyword": "tiktok shop belgium",
+     "position": 7,
+     "url": "https://www.socialsky.eu/nl/articles/tiktok-shop-komt-naar-belgie-wat-dit-betekent-voor-merken-en-verkopers",
+     "volume": 390,
+     "traffic": 3.4,
+     "cpc": 12.180000305175781,
+     "language": "nl"
+    },
+    {
+     "keyword": "o'tacos gosselies",
+     "position": 33,
+     "url": "https://www.socialsky.eu/local/agence-social-media-charleroi",
+     "volume": 1300,
+     "traffic": 2.8,
+     "cpc": 1.3799999952316284,
+     "language": "nl"
+    },
+    {
+     "keyword": "bluesky sarah nys",
+     "position": 22,
+     "url": "https://www.socialsky.eu/nl/about",
+     "volume": 480,
+     "traffic": 2.5,
+     "cpc": 1.2999999523162842,
+     "language": "de"
+    },
+    {
+     "keyword": "agence marketing digital liege",
+     "position": 2,
+     "url": "https://www.socialsky.eu/local/agence-social-media-liege",
+     "volume": 30,
+     "traffic": 2.3,
+     "cpc": 4.239999771118164,
+     "language": "nl"
+    },
+    {
+     "keyword": "social media agency",
+     "position": 6,
+     "url": "https://www.socialsky.eu/nl",
+     "volume": 170,
+     "traffic": 2.2,
+     "cpc": 6.239999771118164,
+     "language": "nl"
+    },
+    {
+     "keyword": "agence marketing digital liège",
+     "position": 3,
+     "url": "https://www.socialsky.eu/local/agence-social-media-liege",
+     "volume": 30,
+     "traffic": 1.4,
+     "cpc": 4.529999732971191,
+     "language": "nl"
+    },
+    {
+     "keyword": "hosni essaouiki",
+     "position": 39,
+     "url": "https://www.socialsky.eu/about",
+     "volume": 480,
+     "traffic": 1.3,
+     "cpc": null,
+     "language": "de"
+    },
+    {
+     "keyword": "o'tacos namur",
+     "position": 48,
+     "url": "https://www.socialsky.eu/cases",
+     "volume": 1600,
+     "traffic": 0.9,
+     "cpc": 1.2000000476837158,
+     "language": "de"
+    },
+    {
+     "keyword": "hosni essaouiki",
+     "position": 44,
+     "url": "https://www.socialsky.eu/about",
+     "volume": 480,
+     "traffic": 0.9,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "google ads bureau",
+     "position": 5,
+     "url": "https://www.socialsky.eu/nl/services/google-ads",
+     "volume": 20,
+     "traffic": 0.4,
+     "cpc": 16.200000762939453,
+     "language": "nl"
+    },
+    {
+     "keyword": "sociale media bureau",
+     "position": 10,
+     "url": "https://www.socialsky.eu/nl",
+     "volume": 70,
+     "traffic": 0.3,
+     "cpc": 10.390000343322754,
+     "language": "nl"
+    },
+    {
+     "keyword": "tiktok technologies belgium",
+     "position": 18,
+     "url": "https://www.socialsky.eu/nl/expertises/tiktok",
+     "volume": 90,
+     "traffic": 0.1,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "sociale media bedrijf",
+     "position": 53,
+     "url": "https://www.socialsky.eu/nl",
+     "volume": 110,
+     "traffic": 0,
+     "cpc": 2.309999942779541,
+     "language": "nl"
+    },
+    {
+     "keyword": "starsky belgium",
+     "position": 60,
+     "url": "https://www.socialsky.eu/nl/about",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
     }
    ]
   },
   {
    "domain": "veaudeville.be",
-   "total": 0,
-   "top3": 0,
-   "top10": 0,
-   "top20": 0,
-   "traffic": 0,
+   "total": 12,
+   "top3": 1,
+   "top10": 3,
+   "top20": 4,
+   "traffic": 30,
    "trafficByRange": {
-    "top3": 0,
-    "4-10": 0,
-    "11-20": 0,
-    "21+": 0
+    "top3": 22,
+    "4-10": 4,
+    "11-20": 2,
+    "21+": 3
    },
-   "keywords": []
+   "keywords": [
+    {
+     "keyword": "vaudeville",
+     "position": 3,
+     "url": "https://www.veaudeville.be/",
+     "volume": 1300,
+     "traffic": 21.6,
+     "cpc": null,
+     "language": "de"
+    },
+    {
+     "keyword": "club brugge abonnement",
+     "position": 17,
+     "url": "https://veaudeville.be/projects/club-brugge-abonnementen.html",
+     "volume": 210,
+     "traffic": 1.9,
+     "cpc": null,
+     "language": "de"
+    },
+    {
+     "keyword": "vtm casting",
+     "position": 6,
+     "url": "https://veaudeville.be/casting/index.html",
+     "volume": 90,
+     "traffic": 1.9,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "webdesigner vacature",
+     "position": 9,
+     "url": "https://www.veaudeville.be/jobs/webdesigner.html",
+     "volume": 140,
+     "traffic": 1.6,
+     "cpc": 0.8500000238418579,
+     "language": "nl"
+    },
+    {
+     "keyword": "veaux",
+     "position": 43,
+     "url": "https://www.veaudeville.be/",
+     "volume": 1900,
+     "traffic": 1.1,
+     "cpc": 0.1899999976158142,
+     "language": "nl"
+    },
+    {
+     "keyword": "circus comedy",
+     "position": 29,
+     "url": "https://www.veaudeville.be/circus/",
+     "volume": 260,
+     "traffic": 0.9,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "deville",
+     "position": 57,
+     "url": "https://www.veaudeville.be/",
+     "volume": 720,
+     "traffic": 0.2,
+     "cpc": null,
+     "language": "de"
+    },
+    {
+     "keyword": "vaudeville brussels",
+     "position": 31,
+     "url": "https://www.veaudeville.be/",
+     "volume": 50,
+     "traffic": 0.2,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "weber shandwick brussels",
+     "position": 74,
+     "url": "https://www.veaudeville.be/",
+     "volume": 210,
+     "traffic": 0.1,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "wunderman thompson brussels",
+     "position": 54,
+     "url": "https://www.veaudeville.be/",
+     "volume": 140,
+     "traffic": 0.1,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "webmaster vacature",
+     "position": 60,
+     "url": "https://www.veaudeville.be/jobs/webdesigner.html",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": 0.699999988079071,
+     "language": "nl"
+    },
+    {
+     "keyword": "waly dia bruxelles",
+     "position": 75,
+     "url": "https://circus.veaudeville.be/",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    }
+   ]
   },
   {
    "domain": "castaar.com",
-   "total": 2,
-   "top3": 1,
-   "top10": 1,
-   "top20": 1,
-   "traffic": 318,
+   "total": 24,
+   "top3": 2,
+   "top10": 4,
+   "top20": 7,
+   "traffic": 736,
    "trafficByRange": {
-    "top3": 318,
-    "4-10": 0,
-    "11-20": 0,
-    "21+": 1
+    "top3": 706,
+    "4-10": 25,
+    "11-20": 2,
+    "21+": 4
    },
    "keywords": [
     {
@@ -111,8 +793,45 @@
      "position": 1,
      "url": "https://castaar.com/",
      "volume": 720,
+     "traffic": 388.5,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "castaar",
+     "position": 1,
+     "url": "https://castaar.com/",
+     "volume": 720,
      "traffic": 317.6,
-     "cpc": null
+     "cpc": null,
+     "language": "fr"
+    },
+    {
+     "keyword": "kastaar",
+     "position": 5,
+     "url": "https://castaar.com/",
+     "volume": 1600,
+     "traffic": 22.3,
+     "cpc": 2.3499999046325684,
+     "language": "de"
+    },
+    {
+     "keyword": "kinderpraktijk castaar",
+     "position": 10,
+     "url": "https://castaar.com/",
+     "volume": 260,
+     "traffic": 2.5,
+     "cpc": null,
+     "language": "de"
+    },
+    {
+     "keyword": "trends gazellen 2026",
+     "position": 40,
+     "url": "https://castaar.com/award/trends-gazellen/",
+     "volume": 390,
+     "traffic": 0.8,
+     "cpc": 5.059999942779541,
+     "language": "nl"
     },
     {
      "keyword": "deusjevoo",
@@ -120,22 +839,185 @@
      "url": "https://castaar.com/poulekes/",
      "volume": 590,
      "traffic": 0.6,
-     "cpc": 0.6100000143051147
+     "cpc": 0.6100000143051147,
+     "language": "fr"
+    },
+    {
+     "keyword": "trends gazellen",
+     "position": 23,
+     "url": "https://castaar.com/award/trends-gazellen/",
+     "volume": 320,
+     "traffic": 0.6,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "gazellen",
+     "position": 13,
+     "url": "https://castaar.com/award/trends-gazellen/",
+     "volume": 90,
+     "traffic": 0.6,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "trends gazelle",
+     "position": 35,
+     "url": "https://castaar.com/award/trends-gazellen/",
+     "volume": 210,
+     "traffic": 0.5,
+     "cpc": 4.460000038146973,
+     "language": "de"
+    },
+    {
+     "keyword": "trends gazellen 2025",
+     "position": 12,
+     "url": "https://castaar.com/award/trends-gazellen/",
+     "volume": 70,
+     "traffic": 0.5,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "reclamebureau choco",
+     "position": 16,
+     "url": "https://castaar.com/",
+     "volume": 90,
+     "traffic": 0.4,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "dicar vacatures",
+     "position": 38,
+     "url": "https://castaar.com/jobs/",
+     "volume": 90,
+     "traffic": 0.4,
+     "cpc": 0.7099999785423279,
+     "language": "nl"
+    },
+    {
+     "keyword": "marker roeselare",
+     "position": 45,
+     "url": "https://castaar.com/",
+     "volume": 260,
+     "traffic": 0.2,
+     "cpc": 3.3499999046325684,
+     "language": "de"
+    },
+    {
+     "keyword": "computertovenaar",
+     "position": 38,
+     "url": "https://castaar.com/",
+     "volume": 70,
+     "traffic": 0.2,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "kastaar denderwindeke",
+     "position": 96,
+     "url": "https://castaar.com/",
+     "volume": 260,
+     "traffic": 0.1,
+     "cpc": null,
+     "language": "de"
+    },
+    {
+     "keyword": "de kastaar kessel lo",
+     "position": 49,
+     "url": "https://castaar.com/",
+     "volume": 110,
+     "traffic": 0.1,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "cidar",
+     "position": 43,
+     "url": "https://castaar.com/",
+     "volume": 90,
+     "traffic": 0.1,
+     "cpc": 0.029999999329447746,
+     "language": "nl"
+    },
+    {
+     "keyword": "sjacheraar",
+     "position": 26,
+     "url": "https://castaar.com/",
+     "volume": 70,
+     "traffic": 0.1,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "de kastaar kessel-lo",
+     "position": 49,
+     "url": "https://castaar.com/",
+     "volume": 110,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "d'artagnan brugge",
+     "position": 49,
+     "url": "https://castaar.com/poulekes/",
+     "volume": 90,
+     "traffic": 0,
+     "cpc": 1.159999966621399,
+     "language": "nl"
+    },
+    {
+     "keyword": "deliconstruct",
+     "position": 68,
+     "url": "https://castaar.com/poulekes/",
+     "volume": 90,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "autobelettering",
+     "position": 93,
+     "url": "https://castaar.com/belettering-voertuigen/",
+     "volume": 90,
+     "traffic": 0,
+     "cpc": 2.7699999809265137,
+     "language": "nl"
+    },
+    {
+     "keyword": "kastaars rode loper",
+     "position": 93,
+     "url": "https://castaar.com/",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "reclamebureaus brussel",
+     "position": 24,
+     "url": "https://castaar.com/",
+     "volume": 30,
+     "traffic": 0,
+     "cpc": 2.4800000190734863,
+     "language": "nl"
     }
    ]
   },
   {
    "domain": "mediamixer.be",
-   "total": 1,
-   "top3": 1,
-   "top10": 1,
-   "top20": 1,
-   "traffic": 271,
+   "total": 22,
+   "top3": 4,
+   "top10": 6,
+   "top20": 12,
+   "traffic": 566,
    "trafficByRange": {
-    "top3": 271,
-    "4-10": 0,
-    "11-20": 0,
-    "21+": 0
+    "top3": 551,
+    "4-10": 3,
+    "11-20": 7,
+    "21+": 5
    },
    "keywords": [
     {
@@ -144,7 +1026,197 @@
      "url": "https://www.mediamixer.be/",
      "volume": 590,
      "traffic": 271,
-     "cpc": null
+     "cpc": null,
+     "language": "fr"
+    },
+    {
+     "keyword": "mediamixer",
+     "position": 1,
+     "url": "https://www.mediamixer.be/work/INGCompanyRadio",
+     "volume": 590,
+     "traffic": 270.1,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "gecommuniceerd",
+     "position": 3,
+     "url": "https://www.mediamixer.be/crisisperiodes-het-luik-communicatie-meestal-het-eerste-wat-op-de-schop-gaat-terwijl-er-net-dan",
+     "volume": 480,
+     "traffic": 9.3,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "vacature media",
+     "position": 15,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 320,
+     "traffic": 4.1,
+     "cpc": 0.9399999976158142,
+     "language": "nl"
+    },
+    {
+     "keyword": "vacature videograaf",
+     "position": 27,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 260,
+     "traffic": 2.5,
+     "cpc": 1,
+     "language": "nl"
+    },
+    {
+     "keyword": "bobbejaanland kaart",
+     "position": 9,
+     "url": "https://www.mediamixer.be/work/cm-familiedag-bobbejaanland-verbondenheid-fun-en-live-radio",
+     "volume": 320,
+     "traffic": 2.2,
+     "cpc": 1.0700000524520874,
+     "language": "nl"
+    },
+    {
+     "keyword": "vacatures videograaf",
+     "position": 28,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 260,
+     "traffic": 2.2,
+     "cpc": 1.2400000095367432,
+     "language": "nl"
+    },
+    {
+     "keyword": "media vacatures",
+     "position": 17,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 320,
+     "traffic": 1.1,
+     "cpc": 0.9399999976158142,
+     "language": "de"
+    },
+    {
+     "keyword": "monsieur jobs",
+     "position": 15,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 70,
+     "traffic": 0.8,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "media vacatures",
+     "position": 17,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 320,
+     "traffic": 0.7,
+     "cpc": 0.9399999976158142,
+     "language": "nl"
+    },
+    {
+     "keyword": "mediamixers",
+     "position": 1,
+     "url": "https://www.mediamixer.be/",
+     "volume": 590,
+     "traffic": 0.6,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "media jobs",
+     "position": 17,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 320,
+     "traffic": 0.5,
+     "cpc": 0.6899999976158142,
+     "language": "de"
+    },
+    {
+     "keyword": "strategic planner",
+     "position": 7,
+     "url": "https://www.mediamixer.be/jobs/strategic-planner",
+     "volume": 90,
+     "traffic": 0.5,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "vacatures video editor",
+     "position": 38,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 140,
+     "traffic": 0.3,
+     "cpc": 1.0299999713897705,
+     "language": "nl"
+    },
+    {
+     "keyword": "mediageuzen",
+     "position": 57,
+     "url": "https://www.mediamixer.be/",
+     "volume": 480,
+     "traffic": 0.2,
+     "cpc": 3.759999990463257,
+     "language": "nl"
+    },
+    {
+     "keyword": "vacature video",
+     "position": 16,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 90,
+     "traffic": 0.1,
+     "cpc": 1.4300000667572021,
+     "language": "nl"
+    },
+    {
+     "keyword": "vacature cameraman",
+     "position": 26,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 70,
+     "traffic": 0.1,
+     "cpc": 1.5099999904632568,
+     "language": "nl"
+    },
+    {
+     "keyword": "vacature mediahuis",
+     "position": 24,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 480,
+     "traffic": 0,
+     "cpc": 0.18000000715255737,
+     "language": "de"
+    },
+    {
+     "keyword": "youtuber jobs",
+     "position": 42,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 320,
+     "traffic": 0,
+     "cpc": null,
+     "language": "de"
+    },
+    {
+     "keyword": "vacatures cameraman",
+     "position": 24,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": 1.5099999904632568,
+     "language": "nl"
+    },
+    {
+     "keyword": "video editing jobs",
+     "position": 51,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": 1.399999976158142,
+     "language": "nl"
+    },
+    {
+     "keyword": "klokkenluider betekenis",
+     "position": 98,
+     "url": "https://www.mediamixer.be/klokkenluidersregeling",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
     }
    ]
   }

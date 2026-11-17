@@ -27,6 +27,8 @@ export const nl: Dict = {
     col: { keyword: "Zoekwoord", position: "Positie", volume: "Volume", traffic: "Geschat verkeer", url: "URL" },
     search: "Zoekwoorden filteren…", none: "Nog geen benchmark voor deze markt.",
     footer: "Bron: {source}, Google {lang}-BE, gegevens van {date}",
+    scope: { label: "Zoekwoorden", all: "Alle", tracked: "Gevolgde zoekwoorden", other: "Andere zoekwoorden", badge: "gevolgd" },
+    footerAll: "Bronnen: {source} (Google België, alle talen, {date}); echte Google-posities op de gevolgde zoekwoorden",
   },
   seo: {
     volumeChart: "Zoekvolume per categorie", showAll: "Alle categorieën tonen ({n})", showTop: "Top 10 tonen", rankedShare: "{r} gerankt / {n}",

@@ -25,6 +25,8 @@ export const fr = {
     col: { keyword: "Mot-clé", position: "Position", volume: "Volume", traffic: "Trafic estimé", url: "URL" },
     search: "Filtrer les mots-clés…", none: "Aucun benchmark pour ce marché pour l'instant.",
     footer: "Source : {source}, Google {lang}-BE, données du {date}",
+    scope: { label: "Mots-clés", all: "Tous", tracked: "Mots-clés suivis", other: "Autres mots-clés", badge: "suivi" },
+    footerAll: "Sources : {source} (Google Belgique, toutes langues, {date}) ; positions réelles Google sur les mots-clés suivis",
   },
   seo: {
     volumeChart: "Volume de recherche par catégorie", showAll: "Voir toutes les catégories ({n})", showTop: "Afficher le Top 10", rankedShare: "{r} classées / {n}",

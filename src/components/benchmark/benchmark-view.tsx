@@ -23,11 +23,13 @@ export function BenchmarkView({ bench, tracked, trackedTotal, keywordMeta, marke
   const [selected, setSelected] = useState(domains[0].domain);
   const [query, setQuery] = useState("");
   const [limit, setLimit] = useState(PAGE);
+  const [scope, setScope] = useState<"all" | "tracked" | "other">("all");
   const current = domains.find((x) => x.domain === selected) ?? domains[0];
   const rows = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return q ? current.keywords.filter((k) => k.keyword.toLowerCase().includes(q) || k.url.toLowerCase().includes(q)) : current.keywords;
-  }, [current, query]);
+    return current.keywords.filter((k) => (scope === "all" || (scope === "tracked") === !!k.tracked)
+      && (!q || k.keyword.toLowerCase().includes(q) || k.url.toLowerCase().includes(q)));
+  }, [current, query, scope]);
   const trackedHits = Object.values(tracked).reduce((s, n) => s + n, 0);
 
   const trafficData = domains.map((x) => ({ domain: x.domain, ...x.trafficByRange }));
@@ -129,9 +131,11 @@ export function BenchmarkView({ bench, tracked, trackedTotal, keywordMeta, marke
             <Segmented label={b.title} layoutId="bench-domain" value={current.domain} onChange={(v) => { setSelected(v); setLimit(PAGE); }}
               options={domains.map((x) => ({ value: x.domain, label: x.domain }))} />
             <input className="input min-w-56" type="search" placeholder={b.search} value={query} onChange={(e) => { setQuery(e.target.value); setLimit(PAGE); }} />
+            <Segmented label={b.scope.label} layoutId="bench-scope" value={scope} onChange={(v) => { setScope(v as typeof scope); setLimit(PAGE); }}
+              options={[{ value: "all", label: b.scope.all }, { value: "tracked", label: b.scope.tracked }, { value: "other", label: b.scope.other }]} />
             <button type="button" className="btn ml-auto" onClick={exportCsv}>{d.common.exportCsv}</button>
           </div>
-          <p className="mb-2 text-xs text-ink/50">{t(b.listNote, { shown: f.int(Math.min(limit, rows.length)), total: f.int(current.total) })}</p>
+          <p className="mb-2 text-xs text-ink/50">{t(b.listNote, { shown: f.int(Math.min(limit, rows.length)), total: f.int(scope === "all" ? current.total : rows.length) })}</p>
           <div className="card max-h-[600px] overflow-auto p-0">
             <table className="tbl">
               <thead className="sticky top-0 z-10"><tr>
@@ -140,8 +144,8 @@ export function BenchmarkView({ bench, tracked, trackedTotal, keywordMeta, marke
               </tr></thead>
               <tbody>
                 {rows.slice(0, limit).map((k) => (
-                  <tr key={`${k.keyword}|${k.url}`}>
-                    <td>{k.keyword}</td>
+                  <tr key={`${k.keyword}|${k.language ?? ""}|${k.url}`}>
+                    <td>{k.keyword}{k.tracked && <span className="pill ml-2 text-[10px]">{b.scope.badge}</span>}{k.language && k.language !== bench.language && <span className="ml-2 text-[10px] uppercase text-ink/40">{k.language}</span>}</td>
                     <td className="num" style={{ background: POSITION_COLORS[positionTone(k.position)] }}>{k.position}</td>
                     <td className="num">{f.int(k.volume)}</td><td className="num">{f.dec1(k.traffic)}</td>
                     <td className="max-w-[28rem] truncate"><a className="text-ink/70 hover:text-brand hover:underline" href={k.url} target="_blank" rel="noopener noreferrer nofollow">{k.url.replace(/^https?:\/\/(www\.)?/, "")}</a></td>
@@ -156,7 +160,7 @@ export function BenchmarkView({ bench, tracked, trackedTotal, keywordMeta, marke
 
       {bench.serpLeaders && bench.serpLeaders.items.length > 0 && <SerpLeaders data={bench.serpLeaders} meta={keywordMeta} d={d} f={f} />}
 
-      <footer className="border-t border-line pt-3 text-xs text-ink/50">{t(b.footer, { source: bench.source, lang: bench.language, date: f.date(bench.generatedAt.slice(0, 10)) })}</footer>
+      <footer className="border-t border-line pt-3 text-xs text-ink/50">{t(bench.allLanguages ? b.footerAll : b.footer, { source: bench.source, lang: bench.language, date: f.date(bench.generatedAt.slice(0, 10)) })}</footer>
     </div>
   );
 }

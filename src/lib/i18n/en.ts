@@ -27,6 +27,8 @@ export const en: Dict = {
     col: { keyword: "Keyword", position: "Position", volume: "Volume", traffic: "Est. traffic", url: "URL" },
     search: "Filter keywords…", none: "No benchmark for this market yet.",
     footer: "Source: {source}, Google {lang}-BE, data from {date}",
+    scope: { label: "Keywords", all: "All", tracked: "Tracked keywords", other: "Other keywords", badge: "tracked" },
+    footerAll: "Sources: {source} (Google Belgium, all languages, {date}); real Google positions on tracked keywords",
   },
   seo: {
     volumeChart: "Search volume by category", showAll: "Show all categories ({n})", showTop: "Show Top 10", rankedShare: "{r} ranked / {n}",

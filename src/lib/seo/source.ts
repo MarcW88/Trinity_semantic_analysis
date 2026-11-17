@@ -1,12 +1,12 @@
 import "server-only";
 import { readdir, readFile, stat } from "node:fs/promises";
 import { join } from "node:path";
-import { buildMarket, readFirstSheet } from "./excel";
+import { buildMarket, readFirstSheet, serpRows, type SerpRow, type SourceFile } from "./excel";
 import type { MarketData } from "./types";
 import type { Benchmark } from "./benchmark";
 
 const DATA_DIR = join(/*turbopackIgnore: true*/ process.cwd(), "data");
-const cache = new Map<string, { stamp: string; data: MarketData | null }>();
+const cache = new Map<string, { stamp: string; data: MarketData | null; files: SourceFile[] }>();
 
 /** Loads data/<market>/*.xlsx; re-parsed only when a file changes. */
 export async function getMarketData(market: string): Promise<MarketData | null> {
@@ -23,8 +23,18 @@ export async function getMarketData(market: string): Promise<MarketData | null> 
   if (hit && hit.stamp === stamp) return hit.data;
   const files = await Promise.all(names.map(async (n) => readFirstSheet(new Uint8Array(await readFile(join(dir, n))), n)));
   const data = buildMarket(market, files);
-  cache.set(market, { stamp, data });
+  cache.set(market, { stamp, data, files });
   return data;
+}
+
+/** Rows of the `serp` worksheet(s) of data/<market>/*.xlsx, with the workbook date; null when there is none. */
+export async function getTrackedSerp(market: string): Promise<{ rows: SerpRow[]; generatedAt: string } | null> {
+  await getMarketData(market);
+  const files = cache.get(market)?.files ?? [];
+  const rows = serpRows(files);
+  if (rows.length === 0) return null;
+  const dates = files.filter((f) => f.serp?.length && f.modified).map((f) => f.modified!.toISOString()).sort();
+  return { rows, generatedAt: dates.at(-1) ?? "" };
 }
 
 export async function hasMarketData(market: string): Promise<boolean> {
