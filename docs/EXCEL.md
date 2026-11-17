@@ -19,7 +19,7 @@ Seule la **première feuille** de chaque fichier est lue. Ligne 1 = noms de colo
 |---|---|---|
 | `keyword` | oui | Mot-clé (les doublons sont ignorés) |
 | `volume` | oui | Volume de recherche mensuel |
-| `category` (ou `Category`) | oui | Catégorie. Majuscules/accents ignorés pour regrouper (`keukens` = `Keukens`) |
+| `category` (ou `Category`, ou `label`) | oui | Catégorie (`label` est lu si aucune colonne `category` n'existe). Majuscules/accents ignorés pour regrouper (`keukens` = `Keukens`) |
 | `client_pos` | oui | Position de DeDecker. Vide ou 0 = non classé |
 | `<domaine>_pos` | — | Une colonne par concurrent, ex. `vika.be_pos`, `x2o.be_pos`. Détectées automatiquement |
 | `has_ai_overview` | — | `TRUE`/`FALSE` (aussi `1`, `yes`, `vrai`, `ja`) |
