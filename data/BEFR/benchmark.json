@@ -148,5 +148,447 @@
     }
    ]
   }
- ]
+ ],
+ "serpLeaders": {
+  "generatedAt": "2026-11-17T14:37:00.694Z",
+  "trackedKeywords": 457,
+  "items": [
+   {
+    "domain": "redacteur.com",
+    "keywords": 1,
+    "top3": 1,
+    "top10": 1,
+    "traffic": 51,
+    "avgPosition": 1,
+    "positions": [
+     {
+      "keyword": "copywriting",
+      "position": 1
+     }
+    ]
+   },
+   {
+    "domain": "shs.cairn.info",
+    "keywords": 1,
+    "top3": 1,
+    "top10": 1,
+    "traffic": 45,
+    "avgPosition": 1,
+    "positions": [
+     {
+      "keyword": "storytelling",
+      "position": 1
+     }
+    ]
+   },
+   {
+    "domain": "fr.indeed.com",
+    "keywords": 1,
+    "top3": 1,
+    "top10": 1,
+    "traffic": 35,
+    "avgPosition": 2,
+    "positions": [
+     {
+      "keyword": "copywriting",
+      "position": 2
+     }
+    ]
+   },
+   {
+    "domain": "ojc-conseil.com",
+    "keywords": 1,
+    "top3": 1,
+    "top10": 1,
+    "traffic": 23,
+    "avgPosition": 2,
+    "positions": [
+     {
+      "keyword": "storytelling",
+      "position": 2
+     }
+    ]
+   },
+   {
+    "domain": "sitecore.com",
+    "keywords": 1,
+    "top3": 1,
+    "top10": 1,
+    "traffic": 20,
+    "avgPosition": 1,
+    "positions": [
+     {
+      "keyword": "optimisation conversion",
+      "position": 1
+     }
+    ]
+   },
+   {
+    "domain": "textbroker.fr",
+    "keywords": 1,
+    "top3": 1,
+    "top10": 1,
+    "traffic": 15,
+    "avgPosition": 3,
+    "positions": [
+     {
+      "keyword": "storytelling",
+      "position": 3
+     }
+    ]
+   },
+   {
+    "domain": "expansion.be",
+    "keywords": 1,
+    "top3": 1,
+    "top10": 1,
+    "traffic": 14,
+    "avgPosition": 3,
+    "positions": [
+     {
+      "keyword": "copywriting",
+      "position": 3
+     }
+    ]
+   },
+   {
+    "domain": "epsilon-france.com",
+    "keywords": 1,
+    "top3": 1,
+    "top10": 1,
+    "traffic": 10,
+    "avgPosition": 2,
+    "positions": [
+     {
+      "keyword": "optimisation conversion",
+      "position": 2
+     }
+    ]
+   },
+   {
+    "domain": "patriciafiliatrault.com",
+    "keywords": 1,
+    "top3": 0,
+    "top10": 1,
+    "traffic": 10,
+    "avgPosition": 4,
+    "positions": [
+     {
+      "keyword": "storytelling",
+      "position": 4
+     }
+    ]
+   },
+   {
+    "domain": "youlovewords.com",
+    "keywords": 1,
+    "top3": 0,
+    "top10": 1,
+    "traffic": 10,
+    "avgPosition": 4,
+    "positions": [
+     {
+      "keyword": "copywriting",
+      "position": 4
+     }
+    ]
+   },
+   {
+    "domain": "almapay.com",
+    "keywords": 1,
+    "top3": 1,
+    "top10": 1,
+    "traffic": 8,
+    "avgPosition": 3,
+    "positions": [
+     {
+      "keyword": "optimisation conversion",
+      "position": 3
+     }
+    ]
+   },
+   {
+    "domain": "coollibri.com",
+    "keywords": 1,
+    "top3": 0,
+    "top10": 1,
+    "traffic": 8,
+    "avgPosition": 5,
+    "positions": [
+     {
+      "keyword": "storytelling",
+      "position": 5
+     }
+    ]
+   },
+   {
+    "domain": "youtube.com",
+    "keywords": 3,
+    "top3": 0,
+    "top10": 1,
+    "traffic": 7,
+    "avgPosition": 10,
+    "positions": [
+     {
+      "keyword": "copywriting",
+      "position": 6
+     },
+     {
+      "keyword": "storytelling",
+      "position": 12
+     },
+     {
+      "keyword": "optimisation conversion",
+      "position": 12
+     }
+    ]
+   },
+   {
+    "domain": "guardia.school",
+    "keywords": 1,
+    "top3": 0,
+    "top10": 1,
+    "traffic": 7,
+    "avgPosition": 5,
+    "positions": [
+     {
+      "keyword": "copywriting",
+      "position": 5
+     }
+    ]
+   },
+   {
+    "domain": "optimizer.be",
+    "keywords": 1,
+    "top3": 0,
+    "top10": 1,
+    "traffic": 6,
+    "avgPosition": 4,
+    "positions": [
+     {
+      "keyword": "optimisation conversion",
+      "position": 4
+     }
+    ]
+   },
+   {
+    "domain": "productionsarborescence.com",
+    "keywords": 1,
+    "top3": 0,
+    "top10": 1,
+    "traffic": 6,
+    "avgPosition": 6,
+    "positions": [
+     {
+      "keyword": "storytelling",
+      "position": 6
+     }
+    ]
+   },
+   {
+    "domain": "mailchimp.com",
+    "keywords": 2,
+    "top3": 0,
+    "top10": 1,
+    "traffic": 5,
+    "avgPosition": 10,
+    "positions": [
+     {
+      "keyword": "optimisation conversion",
+      "position": 6
+     },
+     {
+      "keyword": "copywriting",
+      "position": 14
+     }
+    ]
+   },
+   {
+    "domain": "en.wikipedia.org",
+    "keywords": 2,
+    "top3": 0,
+    "top10": 1,
+    "traffic": 4,
+    "avgPosition": 10,
+    "positions": [
+     {
+      "keyword": "copywriting",
+      "position": 7
+     },
+     {
+      "keyword": "optimisation conversion",
+      "position": 13
+     }
+    ]
+   },
+   {
+    "domain": "optimizely.com",
+    "keywords": 1,
+    "top3": 0,
+    "top10": 1,
+    "traffic": 4,
+    "avgPosition": 5,
+    "positions": [
+     {
+      "keyword": "optimisation conversion",
+      "position": 5
+     }
+    ]
+   },
+   {
+    "domain": "formanot.be",
+    "keywords": 1,
+    "top3": 0,
+    "top10": 1,
+    "traffic": 4,
+    "avgPosition": 7,
+    "positions": [
+     {
+      "keyword": "storytelling",
+      "position": 7
+     }
+    ]
+   },
+   {
+    "domain": "habefast.ch",
+    "keywords": 1,
+    "top3": 0,
+    "top10": 1,
+    "traffic": 3,
+    "avgPosition": 8,
+    "positions": [
+     {
+      "keyword": "storytelling",
+      "position": 8
+     }
+    ]
+   },
+   {
+    "domain": "saucewriting.com",
+    "keywords": 1,
+    "top3": 0,
+    "top10": 1,
+    "traffic": 3,
+    "avgPosition": 8,
+    "positions": [
+     {
+      "keyword": "copywriting",
+      "position": 8
+     }
+    ]
+   },
+   {
+    "domain": "radiofrance.fr",
+    "keywords": 1,
+    "top3": 0,
+    "top10": 1,
+    "traffic": 3,
+    "avgPosition": 9,
+    "positions": [
+     {
+      "keyword": "storytelling",
+      "position": 9
+     }
+    ]
+   },
+   {
+    "domain": "custup.com",
+    "keywords": 1,
+    "top3": 0,
+    "top10": 1,
+    "traffic": 2,
+    "avgPosition": 7,
+    "positions": [
+     {
+      "keyword": "optimisation conversion",
+      "position": 7
+     }
+    ]
+   },
+   {
+    "domain": "customerimpact.be",
+    "keywords": 1,
+    "top3": 0,
+    "top10": 1,
+    "traffic": 2,
+    "avgPosition": 8,
+    "positions": [
+     {
+      "keyword": "optimisation conversion",
+      "position": 8
+     }
+    ]
+   },
+   {
+    "domain": "creativeroom.be",
+    "keywords": 1,
+    "top3": 0,
+    "top10": 1,
+    "traffic": 2,
+    "avgPosition": 9,
+    "positions": [
+     {
+      "keyword": "copywriting",
+      "position": 9
+     }
+    ]
+   },
+   {
+    "domain": "clicdata.com",
+    "keywords": 1,
+    "top3": 0,
+    "top10": 1,
+    "traffic": 2,
+    "avgPosition": 10,
+    "positions": [
+     {
+      "keyword": "storytelling",
+      "position": 10
+     }
+    ]
+   },
+   {
+    "domain": "ludosln.net",
+    "keywords": 1,
+    "top3": 0,
+    "top10": 1,
+    "traffic": 2,
+    "avgPosition": 10,
+    "positions": [
+     {
+      "keyword": "copywriting",
+      "position": 10
+     }
+    ]
+   },
+   {
+    "domain": "digitalised.io",
+    "keywords": 1,
+    "top3": 0,
+    "top10": 1,
+    "traffic": 1,
+    "avgPosition": 9,
+    "positions": [
+     {
+      "keyword": "optimisation conversion",
+      "position": 9
+     }
+    ]
+   },
+   {
+    "domain": "inboundvalue.com",
+    "keywords": 1,
+    "top3": 0,
+    "top10": 1,
+    "traffic": 1,
+    "avgPosition": 10,
+    "positions": [
+     {
+      "keyword": "optimisation conversion",
+      "position": 10
+     }
+    ]
+   }
+  ]
+ }
 }

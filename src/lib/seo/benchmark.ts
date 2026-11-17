@@ -4,4 +4,6 @@ export type BenchmarkDomain = {
   trafficByRange: { top3: number; "4-10": number; "11-20": number; "21+": number };
   keywords: BenchmarkKeyword[];
 };
-export type Benchmark = { market: string; generatedAt: string; source: string; location: number; language: string; domains: BenchmarkDomain[] };
+export type Benchmark = { market: string; generatedAt: string; source: string; location: number; language: string; domains: BenchmarkDomain[]; serpLeaders?: SerpLeaders };
+export type SerpLeader = { domain: string; keywords: number; top3: number; top10: number; traffic: number; avgPosition: number; positions: { keyword: string; position: number }[] };
+export type SerpLeaders = { generatedAt: string; trackedKeywords: number; items: SerpLeader[] };

@@ -15,6 +15,7 @@ export const fr = {
   },
   nav: { seo: "Mots-clés suivis", benchmark: "Benchmark concurrents" },
   bench: {
+    leaders: "Sites les mieux positionnés sur vos mots-clés suivis", leadersNote: "Domaines présents dans Google sur les {n} mots-clés suivis, classés par nombre de mots-clés en Top 10.", leadersChart: "Mots-clés suivis où le site est positionné", lcol: { domain: "Site", keywords: "Mots-clés", top10: "Top 10", top3: "Top 3", avg: "Pos. moy.", traffic: "Trafic estimé", best: "Meilleurs mots-clés" },
     title: "Benchmark concurrents", subtitle: "Mots-clés sur lesquels vos concurrents se positionnent réellement sur Google ({market})",
     trackedNone: "Vos concurrents ne se positionnent sur aucun des {n} mots-clés suivis. Voici les mots-clés sur lesquels ils sont visibles.",
     trackedSome: "Sur les {n} mots-clés suivis, vos concurrents se positionnent peu. Voici l'ensemble des mots-clés sur lesquels ils sont visibles.",
@@ -26,6 +27,7 @@ export const fr = {
     footer: "Source : {source}, Google {lang}-BE, données du {date}",
   },
   seo: {
+    volumeChart: "Volume de recherche par catégorie", showAll: "Voir toutes les catégories ({n})", showTop: "Afficher le Top 10", rankedShare: "{r} classées / {n}",
     title: "Tableau de bord SEO", kpis: "Indicateurs clés", volume: "Volume total", volumeHelp: "Somme des volumes mensuels",
     keywords: "Requêtes", keywordsHelp: "Requêtes suivies", ranked: "Requêtes positionnées", rankedAll: "Toutes classées", top20: "Top 20", top10: "Top 10",
     avgPosition: "Position moyenne", avgHelp: "Absence comptée 100", aiPresence: "Présence AI Overviews", aiCitation: "Citation {brand} dans l'AI",

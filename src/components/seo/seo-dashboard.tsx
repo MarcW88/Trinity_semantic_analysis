@@ -2,14 +2,12 @@
 import { useMemo, useState, useTransition } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import type { SeoMarketMeta, SeoResult } from "@/lib/seo/types";
-import { BUCKETS } from "@/lib/seo/types";
 import { makeFormat, t, type Dict } from "@/lib/i18n";
 import type { UiLang } from "@/lib/config";
-import { BUCKET_COLORS } from "@/lib/config";
 import { KpiCard } from "../kpi-card";
 import { CountUp, Reveal, Segmented } from "../motion";
 import { Explorer } from "./explorer";
-import { DistributionChart, VisibilityChart, VisibilityByCategoryChart, Donut } from "./charts";
+import { CategoryVolumeChart, VisibilityChart, VisibilityByCategoryChart, Donut } from "./charts";
 
 type Props = { result: SeoResult; meta: SeoMarketMeta; brand: string; client: string; marketLabel: string; d: Dict; lang: UiLang };
 
@@ -19,6 +17,8 @@ export function SeoDashboard({ result, meta, brand, client, marketLabel, d, lang
   const pathname = usePathname();
   const params = useSearchParams();
   const [pending, start] = useTransition();
+  const [allCats, setAllCats] = useState(false);
+  const cats = allCats ? result.categoryTable : result.categoryTable.slice(0, 10);
   const [rankMode, setRankMode] = useState<"ranked" | "top20" | "top10">("ranked");
   const k = result.kpis;
   const s = d.seo;
@@ -90,13 +90,8 @@ export function SeoDashboard({ result, meta, brand, client, marketLabel, d, lang
         <h2 id="cat" className="section-title">{s.categoryPerf}</h2>
         <div className="grid gap-4 lg:grid-cols-2">
           <div className="card">
-            <h3 className="card-title">{s.distribution}</h3>
-            <DistributionChart data={result.distribution} labels={s.bucket} />
-            <ul className="mt-2 flex flex-wrap gap-3 text-xs">
-              {BUCKETS.map((b) => (
-                <li key={b} className="flex items-center gap-1"><span className="inline-block h-3 w-3 rounded-sm" style={{ background: BUCKET_COLORS[b] }} />{s.bucket[b]}</li>
-              ))}
-            </ul>
+            <h3 className="card-title">{s.volumeChart}</h3>
+            <CategoryVolumeChart data={cats} format={f.int} rankedLabel={(r, n) => t(s.rankedShare, { r: f.int(r), n: f.int(n) })} />
           </div>
           <div className="card max-h-[30rem] overflow-auto">
             <table className="tbl">
@@ -105,7 +100,7 @@ export function SeoDashboard({ result, meta, brand, client, marketLabel, d, lang
                 <th scope="col" className="num">{s.catTable.top10}</th><th scope="col" className="num">{s.catTable.avg}</th><th scope="col" className="num">{s.catTable.unranked}</th>
               </tr></thead>
               <tbody>
-                {result.categoryTable.map((c) => (
+                {cats.map((c) => (
                   <tr key={c.categoryId}>
                     <td>{c.category}</td><td className="num">{f.int(c.volume)}</td><td className="num">{f.int(c.keywords)}</td>
                     <td className="num">{f.int(c.top10)}</td><td className="num">{f.dec1(c.avgPosition)}</td><td className="num">{f.int(c.unranked)}</td>
@@ -115,6 +110,11 @@ export function SeoDashboard({ result, meta, brand, client, marketLabel, d, lang
             </table>
           </div>
         </div>
+        {result.categoryTable.length > 10 && (
+          <button type="button" className="btn-ghost mt-3" onClick={() => setAllCats((v) => !v)}>
+            {allCats ? s.showTop : t(s.showAll, { n: result.categoryTable.length })}
+          </button>
+        )}
       </section>
       </Reveal>
 
