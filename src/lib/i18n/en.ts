@@ -17,7 +17,7 @@ export const en: Dict = {
   },
   nav: { seo: "Tracked keywords", benchmark: "Competitor benchmark" },
   bench: {
-    leaders: "Sites ranking best on your tracked keywords", leadersNote: "Domains in Google for the {n} tracked keywords, sorted by number of Top 10 keywords.", leadersChart: "Tracked keywords the site ranks for", lcol: { domain: "Site", keywords: "Keywords", top10: "Top 10", top3: "Top 3", avg: "Avg. pos.", traffic: "Est. traffic", best: "Best keywords" },
+    leaders: "Sites ranking best on your tracked keywords", leadersNote: "Domains in Google for the {n} tracked keywords, sorted by number of Top 10 keywords.", viewSites: "Top 30 sites", viewKeywords: "By keyword", showKeywords: "Show the {n} Top 10 keywords", lcol: { domain: "Site", top10: "Top 10 keywords", top3: "Top 3", traffic: "Est. traffic", cats: "Strongest categories", kws: "Keywords", category: "Category", top3sites: "Google top 3" },
     title: "Competitor benchmark", subtitle: "Keywords your competitors actually rank for on Google ({market})",
     trackedNone: "Your competitors rank for none of the {n} tracked keywords. Here are the keywords they are visible for.",
     trackedSome: "Your competitors rank for few of the {n} tracked keywords. Here are all the keywords they are visible for.",
