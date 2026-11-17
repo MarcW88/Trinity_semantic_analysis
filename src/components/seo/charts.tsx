@@ -6,17 +6,25 @@ import { BUCKETS, type Bucket, type DomainInfo, type SeoResult } from "@/lib/seo
 const legendText = (v: string) => <span style={{ color: "#1f1f22" }}>{v}</span>;
 const TOOLTIP = { borderRadius: 12, border: "1px solid #e6e6e9", boxShadow: "0 8px 24px -12px rgba(45,45,45,.25)", fontSize: 12 };
 
+const MANY = 6;
+
 export function DistributionChart({ data, labels }: { data: SeoResult["distribution"]; labels: Record<Bucket, string> }) {
   const rows = data.map((r) => ({ category: r.category, ...r.counts }));
+  const horizontal = data.length > MANY;
   return (
-    <div className="h-72" role="img" aria-label={data.map((r) => `${r.category}: ${BUCKETS.map((b) => `${labels[b]} ${r.counts[b]}`).join(", ")}`).join("; ")}>
+    <div style={{ height: horizontal ? Math.max(288, rows.length * 28 + 40) : 288 }} role="img" aria-label={data.map((r) => `${r.category}: ${BUCKETS.map((b) => `${labels[b]} ${r.counts[b]}`).join(", ")}`).join("; ")}>
       <ResponsiveContainer>
-        <BarChart data={rows} margin={{ top: 8, right: 8, left: 0, bottom: 8 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#ececef" vertical={false} />
-          <XAxis dataKey="category" tick={{ fontSize: 11 }} interval={0} />
-          <YAxis allowDecimals={false} tick={{ fontSize: 11 }} />
+        <BarChart data={rows} layout={horizontal ? "vertical" : "horizontal"} margin={{ top: 8, right: 8, left: 0, bottom: 8 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="#ececef" vertical={horizontal} horizontal={!horizontal} />
+          {horizontal ? <>
+            <XAxis type="number" allowDecimals={false} tick={{ fontSize: 11 }} />
+            <YAxis type="category" dataKey="category" width={190} interval={0} tick={{ fontSize: 11 }} />
+          </> : <>
+            <XAxis dataKey="category" tick={{ fontSize: 11 }} interval={0} />
+            <YAxis allowDecimals={false} tick={{ fontSize: 11 }} />
+          </>}
           <Tooltip contentStyle={TOOLTIP} />
-          {BUCKETS.map((b) => <Bar key={b} dataKey={b} name={labels[b]} stackId="a" fill={BUCKET_COLORS[b]} animationDuration={900} radius={b === "unranked" ? [6, 6, 0, 0] : 0} />)}
+          {BUCKETS.map((b) => <Bar key={b} dataKey={b} name={labels[b]} stackId="a" fill={BUCKET_COLORS[b]} animationDuration={900} radius={b === "unranked" ? (horizontal ? [0, 6, 6, 0] : [6, 6, 0, 0]) : 0} />)}
         </BarChart>
       </ResponsiveContainer>
     </div>
@@ -43,6 +51,7 @@ export function VisibilityChart({ data, total, domains }: { data: SeoResult["vis
 }
 
 export function VisibilityByCategoryChart({ data, domains }: { data: SeoResult["visibilityByCategory"]; domains: DomainInfo[] }) {
+  if (data.length > MANY) return <VisibilityByCategoryTable data={data} />;
   const labels = [...new Set(data.flatMap((c) => c.rates.map((r) => r.label)))];
   const colorOf = (label: string) => domains.find((x) => x.label === label)?.color ?? "#6B7280";
   const rows = data.map((c) => ({ category: c.category, ...Object.fromEntries(c.rates.map((r) => [r.label, r.rate === null ? 0 : Math.round(r.rate * 1000) / 10])) }));
@@ -58,6 +67,30 @@ export function VisibilityByCategoryChart({ data, domains }: { data: SeoResult["
           {labels.map((l) => <Bar key={l} dataKey={l} fill={colorOf(l)} radius={[4, 4, 0, 0]} animationDuration={900} />)}
         </BarChart>
       </ResponsiveContainer>
+    </div>
+  );
+}
+
+/** Category × actor heatmap of Top 10 rates, used when a bar chart would be unreadable. */
+function VisibilityByCategoryTable({ data }: { data: SeoResult["visibilityByCategory"] }) {
+  const cols = [...new Set(data.flatMap((c) => c.rates.map((r) => r.label)))];
+  return (
+    <div className="max-h-96 overflow-auto">
+      <table className="tbl">
+        <thead className="sticky top-0 z-10"><tr><th scope="col" />{cols.map((l) => <th key={l} scope="col" className="num">{l}</th>)}</tr></thead>
+        <tbody>
+          {data.map((c) => (
+            <tr key={c.categoryId}>
+              <td className="whitespace-nowrap">{c.category}</td>
+              {cols.map((l) => {
+                const r = c.rates.find((x) => x.label === l);
+                const v = r?.rate ?? null;
+                return <td key={l} className="num" style={{ background: v ? `rgba(234, 51, 35, ${0.08 + v * 0.7})` : undefined, color: v && v > 0.5 ? "#fff" : undefined }}>{v === null ? "—" : `${(v * 100).toFixed(1)} %`}</td>;
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

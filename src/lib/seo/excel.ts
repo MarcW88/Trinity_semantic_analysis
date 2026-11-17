@@ -64,6 +64,8 @@ function columns(rows: RawRow[]) {
   for (const r of rows.slice(0, 50)) for (const k of Object.keys(r)) if (!map.has(k.toLowerCase())) map.set(k.toLowerCase(), k);
   return {
     get: (r: RawRow, name: string) => { const k = map.get(name); return k === undefined ? undefined : r[k]; },
+    /** `category`, or `label` when the workbook has no category column. */
+    category: (r: RawRow) => r[map.get("category") ?? map.get("label") ?? ""],
     competitorCols: [...map.entries()].filter(([lc]) => lc.endsWith("_pos") && lc !== "client_pos").map(([lc, k]) => ({ domain: lc.slice(0, -4).trim(), col: k })),
   };
 }
@@ -87,7 +89,7 @@ export function buildMarket(market: string, input: SourceFile[]): MarketData | n
     catVariants.set(key, v);
     return key;
   };
-  for (const f of files) { const c = columns(f.rows); f.rows.forEach((r) => catOf(text(c.get(r, "category")))); }
+  for (const f of files) { const c = columns(f.rows); f.rows.forEach((r) => catOf(text(c.category(r)))); }
   catVariants.forEach((v) => v.clear());
 
   const catKeys = [...catVariants.keys()].filter((k) => k.length >= 4).sort((a, b) => b.length - a.length || a.localeCompare(b));
@@ -105,7 +107,7 @@ export function buildMarket(market: string, input: SourceFile[]): MarketData | n
     const url = text(mainCols.get(r, "client_url"));
     keywords.push({
       market, keywordId: `${market}-${keywords.length + 1}`, keyword: kw,
-      categoryId: catOf(text(mainCols.get(r, "category"))),
+      categoryId: catOf(text(mainCols.category(r))),
       volume: Math.max(0, Math.round(num(mainCols.get(r, "volume")) ?? 0)),
       hasAiOverview: hasAi, clientInAi: hasAi && bool(mainCols.get(r, "client_in_ai")),
       clientPos: pos(mainCols.get(r, "client_pos")), clientUrl: isUrl(url) ? url : null,

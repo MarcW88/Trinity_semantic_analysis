@@ -54,7 +54,11 @@ export function SeoDashboard({ result, meta, brand, client, marketLabel, d, lang
       <Reveal delay={0.05}>
         <div className="flex flex-wrap items-center gap-3">
           <span className="text-sm font-medium text-ink/60">{d.common.category}</span>
-          <Segmented label={d.common.category} layoutId="category-pill" value={result.category} options={categoryOptions} onChange={setCategory} disabled={pending} />
+          {categoryOptions.length <= 8
+            ? <Segmented label={d.common.category} layoutId="category-pill" value={result.category} options={categoryOptions} onChange={setCategory} disabled={pending} />
+            : <select className="select min-w-64" aria-label={d.common.category} value={result.category} disabled={pending} onChange={(e) => setCategory(e.target.value)}>
+                {categoryOptions.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+              </select>}
         </div>
       </Reveal>
 
@@ -94,7 +98,7 @@ export function SeoDashboard({ result, meta, brand, client, marketLabel, d, lang
               ))}
             </ul>
           </div>
-          <div className="card overflow-x-auto">
+          <div className="card max-h-[30rem] overflow-auto">
             <table className="tbl">
               <thead><tr>
                 <th scope="col">{s.catTable.category}</th><th scope="col" className="num">{s.catTable.volume}</th><th scope="col" className="num">{s.catTable.keywords}</th>
@@ -126,7 +130,7 @@ export function SeoDashboard({ result, meta, brand, client, marketLabel, d, lang
             <h3 className="card-title">{s.visibilityByCat}</h3>
             <VisibilityByCategoryChart data={result.visibilityByCategory} domains={result.domains} />
           </div>
-          <div className="card overflow-x-auto">
+          <div className="card max-h-[30rem] overflow-auto">
             <table className="tbl">
               <thead><tr>
                 <th scope="col">{s.visTable.domain}</th>
@@ -143,7 +147,7 @@ export function SeoDashboard({ result, meta, brand, client, marketLabel, d, lang
               </tbody>
             </table>
           </div>
-          <div className="card overflow-x-auto">
+          <div className="card max-h-[30rem] overflow-auto">
             <h3 className="card-title">{s.leaders}</h3>
             <table className="tbl">
               <thead><tr>

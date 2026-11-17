@@ -66,6 +66,11 @@ describe("buildMarket", () => {
     expect(m.scopes.find((s) => s.domain === "c.be")?.scope).toBe("keukenkasten");
   });
 
+  it("reads categories from a label column when there is no category column", () => {
+    const m = buildMarket("BEFR", [{ name: "kw.xlsx", modified: null, rows: [{ keyword: "seo", label: "SEO & GEO", volume: 10 }, { keyword: "ads", label: "Google Ads", volume: 5 }] }])!;
+    expect(m.categories.map((c) => c.label)).toEqual(["Google Ads", "SEO & GEO"]);
+  });
+
   it("returns null without keywords", () => {
     expect(buildMarket("BEEN", [])).toBeNull();
   });
