@@ -81,7 +81,7 @@ export function BenchmarkView({ bench, tracked, trackedTotal, keywordMeta, marke
                   <div><div className="text-2xl font-semibold tabular-nums"><CountUp value={x.total} format={f.int} /></div><div className="text-[11px] text-ink/50">{b.keywords}<InfoTip text={b.help.keywords} /></div></div>
                   <div><div className="text-2xl font-semibold tabular-nums"><CountUp value={x.top10} format={f.int} /></div><div className="text-[11px] text-ink/50">{b.top10}<InfoTip text={b.help.top10} align="right" /></div></div>
                 </div>
-                {trackedTotal > 0 && <p className="mt-2 text-xs text-ink/50">{t(b.trackedLine, { n: f.int(tracked[x.domain] ?? 0), total: f.int(trackedTotal) })}<InfoTip text={t(b.help.tracked, { total: f.int(trackedTotal) })} align="left" /></p>}
+                {trackedTotal > 0 && <p className="mt-2 text-xs text-ink/50">{t(b.trackedLine, { n: f.int(tracked[x.domain] ?? 0), total: f.int(trackedTotal) })}<InfoTip text={t(b.help.tracked, { total: f.int(trackedTotal) })} align="right" /></p>}
               </div>
             </Reveal>
           ))}

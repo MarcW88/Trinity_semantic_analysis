@@ -90,11 +90,11 @@ export function SeoDashboard({ result, meta, brand, client, marketLabel, d, lang
       <section aria-labelledby="cat">
         <h2 id="cat" className="section-title">{s.categoryPerf}</h2>
         <div className="grid gap-4 xl:grid-cols-5">
-          <div className="card xl:col-span-3">
+          <div className="card xl:col-span-2">
             <h3 className="card-title">{s.volumeChart}<InfoTip text={s.help.volumeChart} align="left" /></h3>
             <CategoryVolumeChart data={cats} format={f.int} rankedLabel={(r, n) => t(s.rankedShare, { r: f.int(r), n: f.int(n) })} />
           </div>
-          <div className="card max-h-[32rem] overflow-auto p-0 xl:col-span-2">
+          <div className="card max-h-[32rem] overflow-auto p-0 xl:col-span-3">
             <table className="tbl">
               <thead className="sticky top-0 z-10"><tr>
                 <th scope="col">{s.catTable.category}</th><th scope="col" className="num">{s.catTable.volume}</th><th scope="col" className="num">{s.catTable.keywords}</th>
