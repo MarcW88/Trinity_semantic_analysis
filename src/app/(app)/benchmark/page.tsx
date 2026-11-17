@@ -17,5 +17,8 @@ export default async function BenchmarkPage({ searchParams }: PageProps<"/benchm
   const trackedIds = new Set(data?.keywords.filter((k) => included.has(k.categoryId)).map((k) => k.keywordId));
   const trackedTotal = trackedIds.size;
   const tracked = Object.fromEntries(bench.domains.map((b) => [b.domain, data?.rankings.filter((r) => r.domain === b.domain && trackedIds.has(r.keywordId)).length ?? 0]));
-  return <BenchmarkView bench={bench} tracked={tracked} trackedTotal={trackedTotal} marketLabel={marketLabel} d={d} lang={lang} />;
+  const catLabel = new Map(data?.categories.map((c) => [c.categoryId, c.label]));
+  const keywordMeta = Object.fromEntries((data?.keywords ?? []).filter((k) => included.has(k.categoryId))
+    .map((k) => [k.keyword.trim().toLowerCase(), { category: catLabel.get(k.categoryId) ?? "", volume: k.volume }]));
+  return <BenchmarkView bench={bench} tracked={tracked} trackedTotal={trackedTotal} keywordMeta={keywordMeta} marketLabel={marketLabel} d={d} lang={lang} />;
 }

@@ -6,4 +6,4 @@ export type BenchmarkDomain = {
 };
 export type Benchmark = { market: string; generatedAt: string; source: string; location: number; language: string; domains: BenchmarkDomain[]; serpLeaders?: SerpLeaders };
 export type SerpLeader = { domain: string; keywords: number; top3: number; top10: number; traffic: number; avgPosition: number; positions: { keyword: string; position: number }[] };
-export type SerpLeaders = { generatedAt: string; trackedKeywords: number; items: SerpLeader[] };
+export type SerpLeaders = { generatedAt: string; trackedKeywords: number; keywordsWithSerp?: number; source?: string; items: SerpLeader[]; serp?: Record<string, { domain: string; position: number; url: string }[]> };

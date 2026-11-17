@@ -17,7 +17,7 @@ export const nl: Dict = {
   },
   nav: { seo: "Gevolgde zoekwoorden", benchmark: "Benchmark concurrenten" },
   bench: {
-    leaders: "Best gerankte sites op uw gevolgde zoekwoorden", leadersNote: "Domeinen in Google op de {n} gevolgde zoekwoorden, gesorteerd op aantal top 10-zoekwoorden.", leadersChart: "Gevolgde zoekwoorden waarop de site rankt", lcol: { domain: "Site", keywords: "Zoekwoorden", top10: "Top 10", top3: "Top 3", avg: "Gem. pos.", traffic: "Geschat verkeer", best: "Beste zoekwoorden" },
+    leaders: "Best gerankte sites op uw gevolgde zoekwoorden", leadersNote: "Domeinen in Google op de {n} gevolgde zoekwoorden, gesorteerd op aantal top 10-zoekwoorden.", viewSites: "Top 30 sites", viewKeywords: "Per zoekwoord", showKeywords: "Toon de {n} zoekwoorden in top 10", lcol: { domain: "Site", top10: "Zoekwoorden in top 10", top3: "Top 3", traffic: "Geschat verkeer", cats: "Sterkste categorieën", kws: "Zoekwoorden", category: "Categorie", top3sites: "Top 3 Google" },
     title: "Benchmark concurrenten", subtitle: "Zoekwoorden waarop uw concurrenten echt ranken in Google ({market})",
     trackedNone: "Uw concurrenten ranken op geen enkel van de {n} gevolgde zoekwoorden. Dit zijn de zoekwoorden waarop ze wel zichtbaar zijn.",
     trackedSome: "Op de {n} gevolgde zoekwoorden ranken uw concurrenten weinig. Dit zijn alle zoekwoorden waarop ze zichtbaar zijn.",
