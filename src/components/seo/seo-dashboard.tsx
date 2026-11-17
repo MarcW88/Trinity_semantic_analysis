@@ -7,6 +7,7 @@ import type { UiLang } from "@/lib/config";
 import { KpiCard } from "../kpi-card";
 import { CountUp, Reveal, Segmented } from "../motion";
 import { Explorer } from "./explorer";
+import { InfoTip } from "../info-tip";
 import { CategoryVolumeChart, VisibilityChart, VisibilityByCategoryChart, Donut } from "./charts";
 
 type Props = { result: SeoResult; meta: SeoMarketMeta; brand: string; client: string; marketLabel: string; d: Dict; lang: UiLang };
@@ -88,14 +89,14 @@ export function SeoDashboard({ result, meta, brand, client, marketLabel, d, lang
       <Reveal>
       <section aria-labelledby="cat">
         <h2 id="cat" className="section-title">{s.categoryPerf}</h2>
-        <div className="grid gap-4 lg:grid-cols-2">
-          <div className="card">
-            <h3 className="card-title">{s.volumeChart}</h3>
+        <div className="grid gap-4 xl:grid-cols-5">
+          <div className="card xl:col-span-3">
+            <h3 className="card-title">{s.volumeChart}<InfoTip text={s.help.volumeChart} align="left" /></h3>
             <CategoryVolumeChart data={cats} format={f.int} rankedLabel={(r, n) => t(s.rankedShare, { r: f.int(r), n: f.int(n) })} />
           </div>
-          <div className="card max-h-[30rem] overflow-auto">
+          <div className="card max-h-[32rem] overflow-auto p-0 xl:col-span-2">
             <table className="tbl">
-              <thead><tr>
+              <thead className="sticky top-0 z-10"><tr>
                 <th scope="col">{s.catTable.category}</th><th scope="col" className="num">{s.catTable.volume}</th><th scope="col" className="num">{s.catTable.keywords}</th>
                 <th scope="col" className="num">{s.catTable.top10}</th><th scope="col" className="num">{s.catTable.avg}</th><th scope="col" className="num">{s.catTable.unranked}</th>
               </tr></thead>
@@ -123,14 +124,10 @@ export function SeoDashboard({ result, meta, brand, client, marketLabel, d, lang
         <h2 id="comp" className="section-title">{s.competition}</h2>
         <div className="grid gap-4 lg:grid-cols-2">
           <div className="card">
-            <h3 className="card-title">{s.visibility}</h3>
+            <h3 className="card-title">{s.visibility}<InfoTip text={s.help.visibility} align="left" /></h3>
             <VisibilityChart data={result.visibility} total={k.keywords} domains={result.domains} />
           </div>
-          <div className="card">
-            <h3 className="card-title">{s.visibilityByCat}</h3>
-            <VisibilityByCategoryChart data={result.visibilityByCategory} domains={result.domains} />
-          </div>
-          <div className="card max-h-[30rem] overflow-auto">
+          <div className="card overflow-auto p-0">
             <table className="tbl">
               <thead><tr>
                 <th scope="col">{s.visTable.domain}</th>
@@ -147,8 +144,12 @@ export function SeoDashboard({ result, meta, brand, client, marketLabel, d, lang
               </tbody>
             </table>
           </div>
-          <div className="card max-h-[30rem] overflow-auto">
-            <h3 className="card-title">{s.leaders}</h3>
+          <div className="card lg:col-span-2">
+            <h3 className="card-title">{s.visibilityByCat}<InfoTip text={s.help.visibilityByCat} align="left" /></h3>
+            <VisibilityByCategoryChart data={result.visibilityByCategory} domains={result.domains} />
+          </div>
+          <div className="card overflow-auto lg:col-span-2">
+            <h3 className="card-title">{s.leaders}<InfoTip text={t(s.help.leaders, { brand })} align="left" /></h3>
             <table className="tbl">
               <thead><tr>
                 <th scope="col">{s.leaderTable.category}</th><th scope="col">{s.leaderTable.leader}</th><th scope="col" className="num">{s.leaderTable.leaderRate}</th>
@@ -172,6 +173,7 @@ export function SeoDashboard({ result, meta, brand, client, marketLabel, d, lang
       <section aria-labelledby="ai">
         <h2 id="ai" className="section-title">{s.ai}</h2>
         <div className="grid gap-4 lg:grid-cols-3">
+          <div className="grid gap-4">
           <div className="card">
             <h3 className="card-title">{s.aiDonut}</h3>
             <Donut data={[{ name: s.withAi, value: k.aiCount, color: "#EA3323" }, { name: s.withoutAi, value: k.keywords - k.aiCount, color: "#E4E4E7" }]} format={f.int} />
@@ -182,11 +184,12 @@ export function SeoDashboard({ result, meta, brand, client, marketLabel, d, lang
               ? <Donut data={[{ name: t(s.cited, { brand }), value: k.aiCited, color: "#1F1F22" }, { name: s.notCited, value: k.aiCount - k.aiCited, color: "#F8B4AD" }]} format={f.int} />
               : <p className="py-12 text-center text-sm text-ink/50">{s.noAi}</p>}
           </div>
-          <div className="card max-h-80 overflow-auto">
-            <h3 className="card-title">{s.aiTable}</h3>
-            {result.aiRows.length === 0 ? <p className="text-sm text-ink/50">{s.noAi}</p> : (
+          </div>
+          <div className="card max-h-[37rem] overflow-auto p-0 lg:col-span-2">
+            <h3 className="card-title px-5 pt-5">{s.aiTable}<InfoTip text={s.help.aiTable} align="left" /></h3>
+            {result.aiRows.length === 0 ? <p className="px-5 pb-5 text-sm text-ink/50">{s.noAi}</p> : (
               <table className="tbl">
-                <thead><tr><th scope="col">{s.col.keyword}</th><th scope="col" className="num">{s.col.volume}</th><th scope="col" className="num">{t(s.col.position, { brand })}</th><th scope="col">{t(s.cited, { brand })}</th></tr></thead>
+                <thead className="sticky top-0 z-10"><tr><th scope="col">{s.col.keyword}</th><th scope="col" className="num">{s.col.volume}</th><th scope="col" className="num">{t(s.col.position, { brand })}</th><th scope="col">{t(s.cited, { brand })}</th></tr></thead>
                 <tbody>
                   {result.aiRows.map((r) => (
                     <tr key={r.keywordId}><td>{r.keyword}</td><td className="num">{f.int(r.volume)}</td><td className="num">{r.clientPos ?? "—"}</td><td>{r.cited ? d.common.yes : d.common.no}</td></tr>

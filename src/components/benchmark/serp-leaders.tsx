@@ -5,6 +5,7 @@ import { t, type Dict } from "@/lib/i18n";
 import { POSITION_COLORS } from "@/lib/config";
 import { positionTone } from "@/lib/seo/compute";
 import { Reveal, Segmented } from "../motion";
+import { InfoTip } from "../info-tip";
 
 export type KeywordMeta = Record<string, { category: string; volume: number }>;
 type Fmt = { int: (n: number) => string; dec1: (n: number) => string };
@@ -47,8 +48,8 @@ export function SerpLeaders({ data, meta, d, f }: { data: Data; meta: KeywordMet
           <div className="card overflow-auto p-0">
             <table className="tbl">
               <thead><tr>
-                <th scope="col" className="num">#</th><th scope="col">{b.lcol.domain}</th><th scope="col" className="num">{b.lcol.top10}</th>
-                <th scope="col" className="num">{b.lcol.top3}</th><th scope="col" className="num">{b.lcol.traffic}</th><th scope="col">{b.lcol.cats}</th><th scope="col">{b.lcol.kws}</th>
+                <th scope="col" className="num">#</th><th scope="col">{b.lcol.domain}</th><th scope="col" className="num">{b.lcol.top10}<InfoTip text={b.help.leadersTop10} /></th>
+                <th scope="col" className="num">{b.lcol.top3}<InfoTip text={b.help.leadersTop3} /></th><th scope="col" className="num">{b.lcol.traffic}<InfoTip text={b.help.leadersTraffic} align="right" /></th><th scope="col">{b.lcol.cats}<InfoTip text={b.help.leadersCats} align="right" /></th><th scope="col">{b.lcol.kws}</th>
               </tr></thead>
               <tbody>
                 {leaders.map((l, i) => (
