@@ -1,0 +1,1755 @@
+{
+ "market": "BENL",
+ "generatedAt": "2026-11-17T20:25:58.188Z",
+ "source": "DataForSEO Labs ranked_keywords",
+ "location": 2056,
+ "language": "nl",
+ "allLanguages": true,
+ "domains": [
+  {
+   "domain": "hetpeloton.be",
+   "total": 32,
+   "top3": 1,
+   "top10": 4,
+   "top20": 9,
+   "traffic": 49,
+   "trafficByRange": {
+    "top3": 12,
+    "4-10": 2,
+    "11-20": 20,
+    "21+": 15
+   },
+   "keywords": [
+    {
+     "keyword": "productiehuizen gent",
+     "position": 2,
+     "url": "https://hetpeloton.be/",
+     "volume": 90,
+     "traffic": 12.3,
+     "cpc": 4.349999904632568,
+     "language": "nl"
+    },
+    {
+     "keyword": "photo studio",
+     "position": 14,
+     "url": "https://hetpeloton.be/studio/",
+     "volume": 1900,
+     "traffic": 9.6,
+     "cpc": 0.5699999928474426,
+     "language": "nl"
+    },
+    {
+     "keyword": "as adventure logo",
+     "position": 14,
+     "url": "https://hetpeloton.be/project/employer-branding-as-adventure/",
+     "volume": 480,
+     "traffic": 5.3,
+     "cpc": null,
+     "language": "de"
+    },
+    {
+     "keyword": "d'haene sereni",
+     "position": 24,
+     "url": "https://hetpeloton.be/team/martijn-dhaene/",
+     "volume": 880,
+     "traffic": 4.2,
+     "cpc": 0.4399999976158142,
+     "language": "fr"
+    },
+    {
+     "keyword": "lidl.be folder",
+     "position": 83,
+     "url": "https://hetpeloton.be/project/folderfans-een-online-videoreeks-voor-lidl/",
+     "volume": 90500,
+     "traffic": 4,
+     "cpc": 0.10000000149011612,
+     "language": "nl"
+    },
+    {
+     "keyword": "lidl folder belgique",
+     "position": 84,
+     "url": "https://hetpeloton.be/project/folderfans-een-online-videoreeks-voor-lidl/",
+     "volume": 9900,
+     "traffic": 3,
+     "cpc": 0.11999999731779099,
+     "language": "nl"
+    },
+    {
+     "keyword": "logo as adventure",
+     "position": 13,
+     "url": "https://hetpeloton.be/project/employer-branding-as-adventure/",
+     "volume": 210,
+     "traffic": 2.4,
+     "cpc": null,
+     "language": "de"
+    },
+    {
+     "keyword": "wichelen gemeente",
+     "position": 12,
+     "url": "https://hetpeloton.be/project/sensibiliseringscampagne-voor-gemeente-wichelen/",
+     "volume": 720,
+     "traffic": 2.3,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "nieuwe lidl folder",
+     "position": 86,
+     "url": "https://hetpeloton.be/project/folderfans-een-online-videoreeks-voor-lidl/",
+     "volume": 6600,
+     "traffic": 1.8,
+     "cpc": 0.1899999976158142,
+     "language": "nl"
+    },
+    {
+     "keyword": "productiehuis",
+     "position": 8,
+     "url": "https://hetpeloton.be/",
+     "volume": 390,
+     "traffic": 0.8,
+     "cpc": 6.980000019073486,
+     "language": "de"
+    },
+    {
+     "keyword": "productiehuis",
+     "position": 8,
+     "url": "https://hetpeloton.be/",
+     "volume": 390,
+     "traffic": 0.8,
+     "cpc": 6.980000019073486,
+     "language": "nl"
+    },
+    {
+     "keyword": "het peloton",
+     "position": 28,
+     "url": "https://hetpeloton.be/inform/",
+     "volume": 260,
+     "traffic": 0.7,
+     "cpc": 0.5899999737739563,
+     "language": "nl"
+    },
+    {
+     "keyword": "fotostudio huren",
+     "position": 17,
+     "url": "https://hetpeloton.be/studio/",
+     "volume": 70,
+     "traffic": 0.4,
+     "cpc": 3.990000009536743,
+     "language": "nl"
+    },
+    {
+     "keyword": "zeewijding zeebrugge",
+     "position": 21,
+     "url": "https://hetpeloton.be/project/podcast-voor-erfgoedcel-brugge/",
+     "volume": 70,
+     "traffic": 0.3,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "geronimo productiehuis",
+     "position": 45,
+     "url": "https://hetpeloton.be/",
+     "volume": 260,
+     "traffic": 0.2,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "fotostudio gent",
+     "position": 21,
+     "url": "https://hetpeloton.be/studio/",
+     "volume": 50,
+     "traffic": 0.2,
+     "cpc": 6.289999961853027,
+     "language": "nl"
+    },
+    {
+     "keyword": "red flames ek",
+     "position": 6,
+     "url": "https://hetpeloton.be/project/vlammende-video-voor-de-red-flames-ek-2025/",
+     "volume": 10,
+     "traffic": 0.2,
+     "cpc": null,
+     "language": "de"
+    },
+    {
+     "keyword": "de chinezen productiehuis",
+     "position": 86,
+     "url": "https://hetpeloton.be/productiehuis-gent-videoproductie-door-het-peloton/",
+     "volume": 390,
+     "traffic": 0.1,
+     "cpc": 1.7899999618530273,
+     "language": "de"
+    },
+    {
+     "keyword": "videohouse vilvoorde",
+     "position": 41,
+     "url": "https://hetpeloton.be/",
+     "volume": 70,
+     "traffic": 0.1,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "productiehuis geronimo",
+     "position": 31,
+     "url": "https://hetpeloton.be/",
+     "volume": 260,
+     "traffic": 0,
+     "cpc": null,
+     "language": "de"
+    },
+    {
+     "keyword": "productiehuis geronimo",
+     "position": 43,
+     "url": "https://hetpeloton.be/",
+     "volume": 260,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "creme culinaire lidl",
+     "position": 81,
+     "url": "https://hetpeloton.be/project/folderfans-een-online-videoreeks-voor-lidl/",
+     "volume": 90,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "dastex",
+     "position": 51,
+     "url": "https://hetpeloton.be/project/productvideo-en-logofilm-voor-dastex/",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": 0.7200000286102295,
+     "language": "nl"
+    },
+    {
+     "keyword": "jobat jobbeurs",
+     "position": 54,
+     "url": "https://hetpeloton.be/project/employer-branding-partnership-jobat/",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": 0.699999988079071,
+     "language": "nl"
+    },
+    {
+     "keyword": "openingsuren lidl mol",
+     "position": 72,
+     "url": "https://hetpeloton.be/project/folderfans-een-online-videoreeks-voor-lidl/",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "jus lidl",
+     "position": 76,
+     "url": "https://hetpeloton.be/project/folderfans-een-online-videoreeks-voor-lidl/",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "koffiekoeken lidl",
+     "position": 77,
+     "url": "https://hetpeloton.be/project/folderfans-een-online-videoreeks-voor-lidl/",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "gietijzeren kookpot lidl",
+     "position": 79,
+     "url": "https://hetpeloton.be/project/folderfans-een-online-videoreeks-voor-lidl/",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": 0.09000000357627869,
+     "language": "nl"
+    },
+    {
+     "keyword": "hamburgers lidl",
+     "position": 79,
+     "url": "https://hetpeloton.be/project/folderfans-een-online-videoreeks-voor-lidl/",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": 0.09000000357627869,
+     "language": "nl"
+    },
+    {
+     "keyword": "jupiler lidl",
+     "position": 85,
+     "url": "https://hetpeloton.be/project/folderfans-een-online-videoreeks-voor-lidl/",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "diepvries groente lidl prijs",
+     "position": 89,
+     "url": "https://hetpeloton.be/project/folderfans-een-online-videoreeks-voor-lidl/",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "recce meaning",
+     "position": 93,
+     "url": "https://hetpeloton.be/blog/2026/05/01/een-recce-wasda/",
+     "volume": 50,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    }
+   ]
+  },
+  {
+   "domain": "socialsky.eu",
+   "total": 22,
+   "top3": 8,
+   "top10": 14,
+   "top20": 15,
+   "traffic": 1174,
+   "trafficByRange": {
+    "top3": 1147,
+    "4-10": 19,
+    "11-20": 0,
+    "21+": 8
+   },
+   "keywords": [
+    {
+     "keyword": "socialsky",
+     "position": 1,
+     "url": "https://www.socialsky.eu/",
+     "volume": 720,
+     "traffic": 388.5,
+     "cpc": 0.47999998927116394,
+     "language": "de"
+    },
+    {
+     "keyword": "tiktok shop",
+     "position": 3,
+     "url": "https://www.socialsky.eu/articles/tiktok-shop-arrive-en-belgique-ce-que-ca-change-pour-les-marques-et-vendeurs",
+     "volume": 5400,
+     "traffic": 324.4,
+     "cpc": 7.039999961853027,
+     "language": "fr"
+    },
+    {
+     "keyword": "socialsky",
+     "position": 1,
+     "url": "https://www.socialsky.eu/services/google-ads",
+     "volume": 720,
+     "traffic": 209.5,
+     "cpc": 0.47999998927116394,
+     "language": "nl"
+    },
+    {
+     "keyword": "socialsky",
+     "position": 1,
+     "url": "https://www.socialsky.eu/",
+     "volume": 720,
+     "traffic": 144.5,
+     "cpc": 0.47999998927116394,
+     "language": "fr"
+    },
+    {
+     "keyword": "tiktok shop belgique",
+     "position": 2,
+     "url": "https://www.socialsky.eu/articles/tiktok-shop-arrive-en-belgique-ce-que-ca-change-pour-les-marques-et-vendeurs",
+     "volume": 590,
+     "traffic": 63.1,
+     "cpc": 2.630000114440918,
+     "language": "fr"
+    },
+    {
+     "keyword": "agence facebook ads",
+     "position": 1,
+     "url": "https://www.socialsky.eu/services/agence-facebook-ads",
+     "volume": 70,
+     "traffic": 13,
+     "cpc": 55.56999969482422,
+     "language": "nl"
+    },
+    {
+     "keyword": "socials",
+     "position": 8,
+     "url": "https://www.socialsky.eu/",
+     "volume": 2400,
+     "traffic": 8,
+     "cpc": 0.6299999952316284,
+     "language": "fr"
+    },
+    {
+     "keyword": "tiktok shop belgie",
+     "position": 6,
+     "url": "https://www.socialsky.eu/nl/articles/tiktok-shop-komt-naar-belgie-wat-dit-betekent-voor-merken-en-verkopers",
+     "volume": 390,
+     "traffic": 4.8,
+     "cpc": 2.700000047683716,
+     "language": "nl"
+    },
+    {
+     "keyword": "tiktok shop belgium",
+     "position": 7,
+     "url": "https://www.socialsky.eu/nl/articles/tiktok-shop-komt-naar-belgie-wat-dit-betekent-voor-merken-en-verkopers",
+     "volume": 390,
+     "traffic": 3.4,
+     "cpc": 12.180000305175781,
+     "language": "nl"
+    },
+    {
+     "keyword": "o'tacos gosselies",
+     "position": 33,
+     "url": "https://www.socialsky.eu/local/agence-social-media-charleroi",
+     "volume": 1300,
+     "traffic": 2.8,
+     "cpc": 1.3799999952316284,
+     "language": "nl"
+    },
+    {
+     "keyword": "bluesky sarah nys",
+     "position": 22,
+     "url": "https://www.socialsky.eu/nl/about",
+     "volume": 480,
+     "traffic": 2.5,
+     "cpc": 1.2999999523162842,
+     "language": "de"
+    },
+    {
+     "keyword": "agence marketing digital liege",
+     "position": 2,
+     "url": "https://www.socialsky.eu/local/agence-social-media-liege",
+     "volume": 30,
+     "traffic": 2.3,
+     "cpc": 4.239999771118164,
+     "language": "nl"
+    },
+    {
+     "keyword": "social media agency",
+     "position": 6,
+     "url": "https://www.socialsky.eu/nl",
+     "volume": 170,
+     "traffic": 2.2,
+     "cpc": 6.239999771118164,
+     "language": "nl"
+    },
+    {
+     "keyword": "agence marketing digital liège",
+     "position": 3,
+     "url": "https://www.socialsky.eu/local/agence-social-media-liege",
+     "volume": 30,
+     "traffic": 1.4,
+     "cpc": 4.529999732971191,
+     "language": "nl"
+    },
+    {
+     "keyword": "hosni essaouiki",
+     "position": 39,
+     "url": "https://www.socialsky.eu/about",
+     "volume": 480,
+     "traffic": 1.3,
+     "cpc": null,
+     "language": "de"
+    },
+    {
+     "keyword": "o'tacos namur",
+     "position": 48,
+     "url": "https://www.socialsky.eu/cases",
+     "volume": 1600,
+     "traffic": 0.9,
+     "cpc": 1.2000000476837158,
+     "language": "de"
+    },
+    {
+     "keyword": "hosni essaouiki",
+     "position": 44,
+     "url": "https://www.socialsky.eu/about",
+     "volume": 480,
+     "traffic": 0.9,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "google ads bureau",
+     "position": 5,
+     "url": "https://www.socialsky.eu/nl/services/google-ads",
+     "volume": 20,
+     "traffic": 0.4,
+     "cpc": 16.200000762939453,
+     "language": "nl"
+    },
+    {
+     "keyword": "sociale media bureau",
+     "position": 10,
+     "url": "https://www.socialsky.eu/nl",
+     "volume": 70,
+     "traffic": 0.3,
+     "cpc": 10.390000343322754,
+     "language": "nl"
+    },
+    {
+     "keyword": "tiktok technologies belgium",
+     "position": 18,
+     "url": "https://www.socialsky.eu/nl/expertises/tiktok",
+     "volume": 90,
+     "traffic": 0.1,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "sociale media bedrijf",
+     "position": 53,
+     "url": "https://www.socialsky.eu/nl",
+     "volume": 110,
+     "traffic": 0,
+     "cpc": 2.309999942779541,
+     "language": "nl"
+    },
+    {
+     "keyword": "starsky belgium",
+     "position": 60,
+     "url": "https://www.socialsky.eu/nl/about",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    }
+   ]
+  },
+  {
+   "domain": "hannibal.be",
+   "total": 85,
+   "top3": 5,
+   "top10": 35,
+   "top20": 59,
+   "traffic": 584,
+   "trafficByRange": {
+    "top3": 246,
+    "4-10": 160,
+    "11-20": 97,
+    "21+": 81
+   },
+   "keywords": [
+    {
+     "keyword": "hannibal advertising",
+     "position": 1,
+     "url": "https://www.hannibal.be/en/home",
+     "volume": 260,
+     "traffic": 151,
+     "cpc": 4.730000019073486,
+     "language": "de"
+    },
+    {
+     "keyword": "hannibal roeselare",
+     "position": 1,
+     "url": "https://www.hannibal.be/nl/home",
+     "volume": 170,
+     "traffic": 75,
+     "cpc": 2.9100000858306885,
+     "language": "nl"
+    },
+    {
+     "keyword": "autohandel didier",
+     "position": 16,
+     "url": "https://www.hannibal.be/nl/referenties/autohandel-didier",
+     "volume": 2400,
+     "traffic": 23.2,
+     "cpc": 0.30000001192092896,
+     "language": "nl"
+    },
+    {
+     "keyword": "elindus",
+     "position": 24,
+     "url": "https://www.hannibal.be/en/reference/elindus-0",
+     "volume": 4400,
+     "traffic": 20.7,
+     "cpc": 1.9600000381469727,
+     "language": "de"
+    },
+    {
+     "keyword": "elindus",
+     "position": 23,
+     "url": "https://www.hannibal.be/en/reference/elindus-0",
+     "volume": 4400,
+     "traffic": 19.9,
+     "cpc": 1.9600000381469727,
+     "language": "fr"
+    },
+    {
+     "keyword": "hannibal",
+     "position": 9,
+     "url": "https://www.hannibal.be/nl/about",
+     "volume": 6600,
+     "traffic": 17.2,
+     "cpc": 0.18000000715255737,
+     "language": "nl"
+    },
+    {
+     "keyword": "nieuwpoort stad",
+     "position": 6,
+     "url": "https://www.hannibal.be/nl/referenties/stad-nieuwpoort",
+     "volume": 4400,
+     "traffic": 15.8,
+     "cpc": 0.3400000035762787,
+     "language": "fr"
+    },
+    {
+     "keyword": "jan haeck",
+     "position": 7,
+     "url": "https://www.hannibal.be/en/reference/jan-haeck",
+     "volume": 1900,
+     "traffic": 14,
+     "cpc": 0.3400000035762787,
+     "language": "de"
+    },
+    {
+     "keyword": "evaluate",
+     "position": 5,
+     "url": "https://www.hannibal.be/nl/referenties/evaluate",
+     "volume": 590,
+     "traffic": 13.7,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "conservatorium brugge",
+     "position": 10,
+     "url": "https://www.hannibal.be/nl/referenties/conservatorium-brugge",
+     "volume": 1300,
+     "traffic": 12.5,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "hannibal advertising",
+     "position": 3,
+     "url": "https://www.hannibal.be/en/services/websites",
+     "volume": 260,
+     "traffic": 12.4,
+     "cpc": 4.730000019073486,
+     "language": "nl"
+    },
+    {
+     "keyword": "cid lines",
+     "position": 15,
+     "url": "https://www.hannibal.be/nl/referenties/cid-lines",
+     "volume": 1300,
+     "traffic": 11,
+     "cpc": 0.7400000095367432,
+     "language": "de"
+    },
+    {
+     "keyword": "establis",
+     "position": 4,
+     "url": "https://www.hannibal.be/nl/referenties/establis",
+     "volume": 390,
+     "traffic": 10.6,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "stap roeselare",
+     "position": 10,
+     "url": "https://www.hannibal.be/nl/referenties/stap-roeselare",
+     "volume": 1000,
+     "traffic": 10.2,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "didier",
+     "position": 13,
+     "url": "https://www.hannibal.be/nl/referenties/autohandel-didier",
+     "volume": 1900,
+     "traffic": 9.5,
+     "cpc": 0.11999999731779099,
+     "language": "nl"
+    },
+    {
+     "keyword": "jan haeck",
+     "position": 11,
+     "url": "https://www.hannibal.be/nl/referenties/jan-haeck",
+     "volume": 1900,
+     "traffic": 9.2,
+     "cpc": 0.3400000035762787,
+     "language": "nl"
+    },
+    {
+     "keyword": "autohandel didier cartrading carparts",
+     "position": 15,
+     "url": "https://www.hannibal.be/nl/referenties/autohandel-didier",
+     "volume": 880,
+     "traffic": 8.7,
+     "cpc": 0.20999999344348907,
+     "language": "nl"
+    },
+    {
+     "keyword": "standplus",
+     "position": 5,
+     "url": "https://www.hannibal.be/nl/referenties/standplus",
+     "volume": 480,
+     "traffic": 8,
+     "cpc": 22.479999542236328,
+     "language": "nl"
+    },
+    {
+     "keyword": "conservatorium brugge",
+     "position": 21,
+     "url": "https://www.hannibal.be/en/reference/conservatory-bruges",
+     "volume": 1300,
+     "traffic": 7.2,
+     "cpc": null,
+     "language": "fr"
+    },
+    {
+     "keyword": "pouleyn",
+     "position": 22,
+     "url": "https://www.hannibal.be/en/reference/pouleyn",
+     "volume": 1300,
+     "traffic": 6.8,
+     "cpc": 4.309999942779541,
+     "language": "nl"
+    },
+    {
+     "keyword": "bakkerij lorenzo",
+     "position": 13,
+     "url": "https://www.hannibal.be/en/reference/lorenzo-bakery",
+     "volume": 1000,
+     "traffic": 6.3,
+     "cpc": 0.28999999165534973,
+     "language": "fr"
+    },
+    {
+     "keyword": "sobemetal",
+     "position": 9,
+     "url": "https://www.hannibal.be/nl/referenties/sobemetal",
+     "volume": 590,
+     "traffic": 5.9,
+     "cpc": 23.18000030517578,
+     "language": "nl"
+    },
+    {
+     "keyword": "motena",
+     "position": 7,
+     "url": "https://www.hannibal.be/nl/referenties/motena",
+     "volume": 1000,
+     "traffic": 5.8,
+     "cpc": 3.490000009536743,
+     "language": "nl"
+    },
+    {
+     "keyword": "sobemetal",
+     "position": 13,
+     "url": "https://www.hannibal.be/en/reference/sobemetal",
+     "volume": 590,
+     "traffic": 5.7,
+     "cpc": 23.18000030517578,
+     "language": "de"
+    },
+    {
+     "keyword": "sobemetal",
+     "position": 14,
+     "url": "https://www.hannibal.be/nl/referenties/sobemetal",
+     "volume": 590,
+     "traffic": 5.7,
+     "cpc": 23.18000030517578,
+     "language": "fr"
+    },
+    {
+     "keyword": "zebra vastgoed",
+     "position": 8,
+     "url": "https://www.hannibal.be/nl/referenties/vastgoed-zebra",
+     "volume": 590,
+     "traffic": 5.4,
+     "cpc": 1.2200000286102295,
+     "language": "nl"
+    },
+    {
+     "keyword": "branding roeselare",
+     "position": 10,
+     "url": "https://www.hannibal.be/nl/home",
+     "volume": 720,
+     "traffic": 5.3,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "hestor",
+     "position": 3,
+     "url": "https://www.hannibal.be/nl/referenties/hestor",
+     "volume": 90,
+     "traffic": 5.2,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "reclamebureau",
+     "position": 9,
+     "url": "https://www.hannibal.be/nl/home",
+     "volume": 590,
+     "traffic": 5.1,
+     "cpc": 4.389999866485596,
+     "language": "nl"
+    },
+    {
+     "keyword": "heldr",
+     "position": 6,
+     "url": "https://www.hannibal.be/nl/referenties/heldr",
+     "volume": 590,
+     "traffic": 4.7,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "hairco",
+     "position": 35,
+     "url": "https://www.hannibal.be/en/reference/hairco",
+     "volume": 2400,
+     "traffic": 4.6,
+     "cpc": 2.4000000953674316,
+     "language": "de"
+    },
+    {
+     "keyword": "poco loco roeselare",
+     "position": 21,
+     "url": "https://www.hannibal.be/nl/referenties/paulig",
+     "volume": 720,
+     "traffic": 4.3,
+     "cpc": 0.33000001311302185,
+     "language": "de"
+    },
+    {
+     "keyword": "webmail azdelta",
+     "position": 21,
+     "url": "https://www.hannibal.be/en/reference/az-delta",
+     "volume": 3600,
+     "traffic": 3.8,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "containers haeck",
+     "position": 6,
+     "url": "https://www.hannibal.be/nl/referenties/jan-haeck",
+     "volume": 1900,
+     "traffic": 3.3,
+     "cpc": 0.3400000035762787,
+     "language": "fr"
+    },
+    {
+     "keyword": "innovad",
+     "position": 9,
+     "url": "https://www.hannibal.be/en/reference/innovad",
+     "volume": 390,
+     "traffic": 3.3,
+     "cpc": null,
+     "language": "de"
+    },
+    {
+     "keyword": "autohandel",
+     "position": 12,
+     "url": "https://www.hannibal.be/nl/referenties/autohandel-didier",
+     "volume": 1000,
+     "traffic": 2.8,
+     "cpc": 1.2100000381469727,
+     "language": "nl"
+    },
+    {
+     "keyword": "alsico group",
+     "position": 7,
+     "url": "https://www.hannibal.be/en/reference/alsico-group",
+     "volume": 390,
+     "traffic": 2.8,
+     "cpc": 1.850000023841858,
+     "language": "nl"
+    },
+    {
+     "keyword": "dominiek savio vzw",
+     "position": 38,
+     "url": "https://www.hannibal.be/nl/referenties/dominiek-savio",
+     "volume": 1900,
+     "traffic": 2.7,
+     "cpc": 0.4099999964237213,
+     "language": "de"
+    },
+    {
+     "keyword": "paulig",
+     "position": 20,
+     "url": "https://www.hannibal.be/nl/referenties/paulig",
+     "volume": 480,
+     "traffic": 2.7,
+     "cpc": 0.800000011920929,
+     "language": "nl"
+    },
+    {
+     "keyword": "maatwerkbedrijven",
+     "position": 10,
+     "url": "https://www.hannibal.be/nl/referenties/groep-maatwerk",
+     "volume": 390,
+     "traffic": 2.7,
+     "cpc": 2.5999999046325684,
+     "language": "nl"
+    },
+    {
+     "keyword": "hannibal nbc",
+     "position": 86,
+     "url": "https://www.hannibal.be/nl/jobs",
+     "volume": 6600,
+     "traffic": 2.6,
+     "cpc": 0.18000000715255737,
+     "language": "nl"
+    },
+    {
+     "keyword": "bm engineers",
+     "position": 9,
+     "url": "https://www.hannibal.be/nl/referenties/bm-engineering",
+     "volume": 590,
+     "traffic": 2.6,
+     "cpc": 1.409999966621399,
+     "language": "nl"
+    },
+    {
+     "keyword": "groep maatwerk",
+     "position": 13,
+     "url": "https://www.hannibal.be/nl/referenties/groep-maatwerk",
+     "volume": 320,
+     "traffic": 2.6,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "marketing bureau roeselare",
+     "position": 1,
+     "url": "https://www.hannibal.be/nl/home",
+     "volume": 70,
+     "traffic": 2.5,
+     "cpc": 4.940000057220459,
+     "language": "nl"
+    },
+    {
+     "keyword": "azdelta webmail",
+     "position": 27,
+     "url": "https://www.hannibal.be/en/reference/az-delta",
+     "volume": 590,
+     "traffic": 2.4,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "horsum",
+     "position": 9,
+     "url": "https://www.hannibal.be/en/reference/horsum",
+     "volume": 320,
+     "traffic": 2.2,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "iquu",
+     "position": 5,
+     "url": "https://www.hannibal.be/nl/referenties/iquu",
+     "volume": 210,
+     "traffic": 2.2,
+     "cpc": 0.27000001072883606,
+     "language": "nl"
+    },
+    {
+     "keyword": "buyck dudzele",
+     "position": 16,
+     "url": "https://www.hannibal.be/en/reference/buyck-displays",
+     "volume": 320,
+     "traffic": 2,
+     "cpc": 2.5199999809265137,
+     "language": "de"
+    },
+    {
+     "keyword": "freddy versluys",
+     "position": 7,
+     "url": "https://www.hannibal.be/nl/referenties/bouwconcept-freddy-versluys",
+     "volume": 260,
+     "traffic": 1.8,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "intec group",
+     "position": 12,
+     "url": "https://www.hannibal.be/nl/referenties/intec",
+     "volume": 140,
+     "traffic": 1.4,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "innovad laboratories",
+     "position": 5,
+     "url": "https://www.hannibal.be/nl/referenties/innovad",
+     "volume": 90,
+     "traffic": 1.3,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "piscine de kouter",
+     "position": 9,
+     "url": "https://www.hannibal.be/nl/referenties/de-kouter",
+     "volume": 210,
+     "traffic": 1.2,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "auto didier",
+     "position": 17,
+     "url": "https://www.hannibal.be/nl/referenties/autohandel-didier",
+     "volume": 390,
+     "traffic": 1.1,
+     "cpc": 0.15000000596046448,
+     "language": "nl"
+    },
+    {
+     "keyword": "didier be",
+     "position": 19,
+     "url": "https://www.hannibal.be/en/reference/car-dealer-didier",
+     "volume": 170,
+     "traffic": 1.1,
+     "cpc": 0.14000000059604645,
+     "language": "nl"
+    },
+    {
+     "keyword": "savio",
+     "position": 25,
+     "url": "https://www.hannibal.be/nl/referenties/dominiek-savio",
+     "volume": 320,
+     "traffic": 1,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "paulig roeselare",
+     "position": 25,
+     "url": "https://www.hannibal.be/nl/referenties/paulig",
+     "volume": 260,
+     "traffic": 1,
+     "cpc": 1.159999966621399,
+     "language": "de"
+    },
+    {
+     "keyword": "villavip gent",
+     "position": 19,
+     "url": "https://www.hannibal.be/nl/referenties/villavip",
+     "volume": 140,
+     "traffic": 1,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "innovad group",
+     "position": 23,
+     "url": "https://www.hannibal.be/en/reference/innovad",
+     "volume": 110,
+     "traffic": 0.8,
+     "cpc": 10.15999984741211,
+     "language": "nl"
+    },
+    {
+     "keyword": "vendimat",
+     "position": 5,
+     "url": "https://www.hannibal.be/en/reference/vendimat",
+     "volume": 70,
+     "traffic": 0.8,
+     "cpc": 0.09000000357627869,
+     "language": "nl"
+    },
+    {
+     "keyword": "televisie",
+     "position": 88,
+     "url": "https://www.hannibal.be/nl/blog/de-revival-van-de-tv-spot-waarom-televisie-weer-jouw-beste-vriend-wordt",
+     "volume": 1900,
+     "traffic": 0.7,
+     "cpc": 0.7400000095367432,
+     "language": "fr"
+    },
+    {
+     "keyword": "containers jan haeck brugge",
+     "position": 11,
+     "url": "https://www.hannibal.be/nl/referenties/jan-haeck",
+     "volume": 140,
+     "traffic": 0.7,
+     "cpc": 0.550000011920929,
+     "language": "nl"
+    },
+    {
+     "keyword": "davinsi labs nv",
+     "position": 6,
+     "url": "https://www.hannibal.be/en/reference/davinsi-labs",
+     "volume": 70,
+     "traffic": 0.7,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "arenal waregem",
+     "position": 52,
+     "url": "https://www.hannibal.be/nl/referenties/arenal",
+     "volume": 1300,
+     "traffic": 0.6,
+     "cpc": null,
+     "language": "fr"
+    },
+    {
+     "keyword": "hannibal uitgeverij",
+     "position": 12,
+     "url": "https://www.hannibal.be/nl/home",
+     "volume": 70,
+     "traffic": 0.6,
+     "cpc": 0.07999999821186066,
+     "language": "nl"
+    },
+    {
+     "keyword": "hairco roeselare",
+     "position": 18,
+     "url": "https://www.hannibal.be/nl/referenties/hairco",
+     "volume": 70,
+     "traffic": 0.6,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "vintecc roeselare",
+     "position": 24,
+     "url": "https://www.hannibal.be/nl/referenties/vintecc",
+     "volume": 70,
+     "traffic": 0.6,
+     "cpc": 1.8399999141693115,
+     "language": "nl"
+    },
+    {
+     "keyword": "paulig roeselare",
+     "position": 34,
+     "url": "https://www.hannibal.be/nl/referenties/paulig",
+     "volume": 260,
+     "traffic": 0.5,
+     "cpc": 1.159999966621399,
+     "language": "nl"
+    },
+    {
+     "keyword": "performance marketeer",
+     "position": 12,
+     "url": "https://www.hannibal.be/nl/jobs/digital-performance-marketeer",
+     "volume": 70,
+     "traffic": 0.5,
+     "cpc": 2.930000066757202,
+     "language": "nl"
+    },
+    {
+     "keyword": "mailing voorbeeld",
+     "position": 5,
+     "url": "https://www.hannibal.be/nl/blog/6-inspirerende-direct-mailing-voorbeelden",
+     "volume": 70,
+     "traffic": 0.4,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "webmaster vacature",
+     "position": 31,
+     "url": "https://www.hannibal.be/nl/jobs",
+     "volume": 70,
+     "traffic": 0.4,
+     "cpc": 0.699999988079071,
+     "language": "nl"
+    },
+    {
+     "keyword": "reclamebureau kortrijk",
+     "position": 10,
+     "url": "https://www.hannibal.be/nl/home",
+     "volume": 50,
+     "traffic": 0.4,
+     "cpc": 4.050000190734863,
+     "language": "nl"
+    },
+    {
+     "keyword": "maatwerkbedrijven",
+     "position": 46,
+     "url": "https://www.hannibal.be/nl/referenties/groep-maatwerk",
+     "volume": 390,
+     "traffic": 0.3,
+     "cpc": 2.5999999046325684,
+     "language": "de"
+    },
+    {
+     "keyword": "arenal padel",
+     "position": 53,
+     "url": "https://www.hannibal.be/nl/referenties/arenal",
+     "volume": 320,
+     "traffic": 0.2,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "bedrijfsnaam",
+     "position": 15,
+     "url": "https://www.hannibal.be/nl/blog/een-bedrijfsnaam-bedenken-doe-je-zo",
+     "volume": 170,
+     "traffic": 0.2,
+     "cpc": 2.0899999141693115,
+     "language": "nl"
+    },
+    {
+     "keyword": "hannibal rome",
+     "position": 26,
+     "url": "https://www.hannibal.be/nl/contact",
+     "volume": 70,
+     "traffic": 0.2,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "delirium beers",
+     "position": 9,
+     "url": "https://www.hannibal.be/en/work/delirium",
+     "volume": 720,
+     "traffic": 0.1,
+     "cpc": 0.10000000149011612,
+     "language": "nl"
+    },
+    {
+     "keyword": "dh en direct",
+     "position": 84,
+     "url": "https://www.hannibal.be/nl/blog/6-inspirerende-direct-mailing-voorbeelden",
+     "volume": 70,
+     "traffic": 0.1,
+     "cpc": 0.019999999552965164,
+     "language": "nl"
+    },
+    {
+     "keyword": "reclamebureaus belgie",
+     "position": 9,
+     "url": "https://www.hannibal.be/nl/home",
+     "volume": 30,
+     "traffic": 0.1,
+     "cpc": 11.720000267028809,
+     "language": "nl"
+    },
+    {
+     "keyword": "hannibals",
+     "position": 16,
+     "url": "https://www.hannibal.be/en/blog/wall-fame",
+     "volume": 6600,
+     "traffic": 0,
+     "cpc": 0.18000000715255737,
+     "language": "de"
+    },
+    {
+     "keyword": "hannibals",
+     "position": 18,
+     "url": "https://www.hannibal.be/en/blog/wall-fame",
+     "volume": 6600,
+     "traffic": 0,
+     "cpc": 0.18000000715255737,
+     "language": "nl"
+    },
+    {
+     "keyword": "hannibal boeken",
+     "position": 30,
+     "url": "https://www.hannibal.be/nl/contact",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": 0.09000000357627869,
+     "language": "nl"
+    },
+    {
+     "keyword": "hannibal serie imdb",
+     "position": 91,
+     "url": "https://www.hannibal.be/nl/jobs",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "tessenderlo industrie",
+     "position": 41,
+     "url": "https://www.hannibal.be/nl/referenties/tessenderlo-group",
+     "volume": 50,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "reclame bureau belgie",
+     "position": 11,
+     "url": "https://www.hannibal.be/nl/home",
+     "volume": 30,
+     "traffic": 0,
+     "cpc": 11.720000267028809,
+     "language": "nl"
+    },
+    {
+     "keyword": "employer branding strategie",
+     "position": 91,
+     "url": "https://www.hannibal.be/nl/services/branding",
+     "volume": 20,
+     "traffic": 0,
+     "cpc": 8.149999618530273,
+     "language": "nl"
+    }
+   ]
+  },
+  {
+   "domain": "castaar.com",
+   "total": 24,
+   "top3": 2,
+   "top10": 4,
+   "top20": 7,
+   "traffic": 736,
+   "trafficByRange": {
+    "top3": 706,
+    "4-10": 25,
+    "11-20": 2,
+    "21+": 4
+   },
+   "keywords": [
+    {
+     "keyword": "castaar",
+     "position": 1,
+     "url": "https://castaar.com/",
+     "volume": 720,
+     "traffic": 388.5,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "castaar",
+     "position": 1,
+     "url": "https://castaar.com/",
+     "volume": 720,
+     "traffic": 317.6,
+     "cpc": null,
+     "language": "fr"
+    },
+    {
+     "keyword": "kastaar",
+     "position": 5,
+     "url": "https://castaar.com/",
+     "volume": 1600,
+     "traffic": 22.3,
+     "cpc": 2.3499999046325684,
+     "language": "de"
+    },
+    {
+     "keyword": "kinderpraktijk castaar",
+     "position": 10,
+     "url": "https://castaar.com/",
+     "volume": 260,
+     "traffic": 2.5,
+     "cpc": null,
+     "language": "de"
+    },
+    {
+     "keyword": "trends gazellen 2026",
+     "position": 40,
+     "url": "https://castaar.com/award/trends-gazellen/",
+     "volume": 390,
+     "traffic": 0.8,
+     "cpc": 5.059999942779541,
+     "language": "nl"
+    },
+    {
+     "keyword": "deusjevoo",
+     "position": 44,
+     "url": "https://castaar.com/poulekes/",
+     "volume": 590,
+     "traffic": 0.6,
+     "cpc": 0.6100000143051147,
+     "language": "fr"
+    },
+    {
+     "keyword": "trends gazellen",
+     "position": 23,
+     "url": "https://castaar.com/award/trends-gazellen/",
+     "volume": 320,
+     "traffic": 0.6,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "gazellen",
+     "position": 13,
+     "url": "https://castaar.com/award/trends-gazellen/",
+     "volume": 90,
+     "traffic": 0.6,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "trends gazelle",
+     "position": 35,
+     "url": "https://castaar.com/award/trends-gazellen/",
+     "volume": 210,
+     "traffic": 0.5,
+     "cpc": 4.460000038146973,
+     "language": "de"
+    },
+    {
+     "keyword": "trends gazellen 2025",
+     "position": 12,
+     "url": "https://castaar.com/award/trends-gazellen/",
+     "volume": 70,
+     "traffic": 0.5,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "reclamebureau choco",
+     "position": 16,
+     "url": "https://castaar.com/",
+     "volume": 90,
+     "traffic": 0.4,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "dicar vacatures",
+     "position": 38,
+     "url": "https://castaar.com/jobs/",
+     "volume": 90,
+     "traffic": 0.4,
+     "cpc": 0.7099999785423279,
+     "language": "nl"
+    },
+    {
+     "keyword": "marker roeselare",
+     "position": 45,
+     "url": "https://castaar.com/",
+     "volume": 260,
+     "traffic": 0.2,
+     "cpc": 3.3499999046325684,
+     "language": "de"
+    },
+    {
+     "keyword": "computertovenaar",
+     "position": 38,
+     "url": "https://castaar.com/",
+     "volume": 70,
+     "traffic": 0.2,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "kastaar denderwindeke",
+     "position": 96,
+     "url": "https://castaar.com/",
+     "volume": 260,
+     "traffic": 0.1,
+     "cpc": null,
+     "language": "de"
+    },
+    {
+     "keyword": "de kastaar kessel lo",
+     "position": 49,
+     "url": "https://castaar.com/",
+     "volume": 110,
+     "traffic": 0.1,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "cidar",
+     "position": 43,
+     "url": "https://castaar.com/",
+     "volume": 90,
+     "traffic": 0.1,
+     "cpc": 0.029999999329447746,
+     "language": "nl"
+    },
+    {
+     "keyword": "sjacheraar",
+     "position": 26,
+     "url": "https://castaar.com/",
+     "volume": 70,
+     "traffic": 0.1,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "de kastaar kessel-lo",
+     "position": 49,
+     "url": "https://castaar.com/",
+     "volume": 110,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "d'artagnan brugge",
+     "position": 49,
+     "url": "https://castaar.com/poulekes/",
+     "volume": 90,
+     "traffic": 0,
+     "cpc": 1.159999966621399,
+     "language": "nl"
+    },
+    {
+     "keyword": "deliconstruct",
+     "position": 68,
+     "url": "https://castaar.com/poulekes/",
+     "volume": 90,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "autobelettering",
+     "position": 93,
+     "url": "https://castaar.com/belettering-voertuigen/",
+     "volume": 90,
+     "traffic": 0,
+     "cpc": 2.7699999809265137,
+     "language": "nl"
+    },
+    {
+     "keyword": "kastaars rode loper",
+     "position": 93,
+     "url": "https://castaar.com/",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "reclamebureaus brussel",
+     "position": 24,
+     "url": "https://castaar.com/",
+     "volume": 30,
+     "traffic": 0,
+     "cpc": 2.4800000190734863,
+     "language": "nl"
+    }
+   ]
+  },
+  {
+   "domain": "mediamixer.be",
+   "total": 22,
+   "top3": 4,
+   "top10": 6,
+   "top20": 12,
+   "traffic": 566,
+   "trafficByRange": {
+    "top3": 551,
+    "4-10": 3,
+    "11-20": 7,
+    "21+": 5
+   },
+   "keywords": [
+    {
+     "keyword": "mediamixer",
+     "position": 1,
+     "url": "https://www.mediamixer.be/",
+     "volume": 590,
+     "traffic": 271,
+     "cpc": null,
+     "language": "fr"
+    },
+    {
+     "keyword": "mediamixer",
+     "position": 1,
+     "url": "https://www.mediamixer.be/work/INGCompanyRadio",
+     "volume": 590,
+     "traffic": 270.1,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "gecommuniceerd",
+     "position": 3,
+     "url": "https://www.mediamixer.be/crisisperiodes-het-luik-communicatie-meestal-het-eerste-wat-op-de-schop-gaat-terwijl-er-net-dan",
+     "volume": 480,
+     "traffic": 9.3,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "vacature media",
+     "position": 15,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 320,
+     "traffic": 4.1,
+     "cpc": 0.9399999976158142,
+     "language": "nl"
+    },
+    {
+     "keyword": "vacature videograaf",
+     "position": 27,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 260,
+     "traffic": 2.5,
+     "cpc": 1,
+     "language": "nl"
+    },
+    {
+     "keyword": "bobbejaanland kaart",
+     "position": 9,
+     "url": "https://www.mediamixer.be/work/cm-familiedag-bobbejaanland-verbondenheid-fun-en-live-radio",
+     "volume": 320,
+     "traffic": 2.2,
+     "cpc": 1.0700000524520874,
+     "language": "nl"
+    },
+    {
+     "keyword": "vacatures videograaf",
+     "position": 28,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 260,
+     "traffic": 2.2,
+     "cpc": 1.2400000095367432,
+     "language": "nl"
+    },
+    {
+     "keyword": "media vacatures",
+     "position": 17,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 320,
+     "traffic": 1.1,
+     "cpc": 0.9399999976158142,
+     "language": "de"
+    },
+    {
+     "keyword": "monsieur jobs",
+     "position": 15,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 70,
+     "traffic": 0.8,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "media vacatures",
+     "position": 17,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 320,
+     "traffic": 0.7,
+     "cpc": 0.9399999976158142,
+     "language": "nl"
+    },
+    {
+     "keyword": "mediamixers",
+     "position": 1,
+     "url": "https://www.mediamixer.be/",
+     "volume": 590,
+     "traffic": 0.6,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "media jobs",
+     "position": 17,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 320,
+     "traffic": 0.5,
+     "cpc": 0.6899999976158142,
+     "language": "de"
+    },
+    {
+     "keyword": "strategic planner",
+     "position": 7,
+     "url": "https://www.mediamixer.be/jobs/strategic-planner",
+     "volume": 90,
+     "traffic": 0.5,
+     "cpc": null,
+     "language": "nl"
+    },
+    {
+     "keyword": "vacatures video editor",
+     "position": 38,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 140,
+     "traffic": 0.3,
+     "cpc": 1.0299999713897705,
+     "language": "nl"
+    },
+    {
+     "keyword": "mediageuzen",
+     "position": 57,
+     "url": "https://www.mediamixer.be/",
+     "volume": 480,
+     "traffic": 0.2,
+     "cpc": 3.759999990463257,
+     "language": "nl"
+    },
+    {
+     "keyword": "vacature video",
+     "position": 16,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 90,
+     "traffic": 0.1,
+     "cpc": 1.4300000667572021,
+     "language": "nl"
+    },
+    {
+     "keyword": "vacature cameraman",
+     "position": 26,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 70,
+     "traffic": 0.1,
+     "cpc": 1.5099999904632568,
+     "language": "nl"
+    },
+    {
+     "keyword": "vacature mediahuis",
+     "position": 24,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 480,
+     "traffic": 0,
+     "cpc": 0.18000000715255737,
+     "language": "de"
+    },
+    {
+     "keyword": "youtuber jobs",
+     "position": 42,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 320,
+     "traffic": 0,
+     "cpc": null,
+     "language": "de"
+    },
+    {
+     "keyword": "vacatures cameraman",
+     "position": 24,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": 1.5099999904632568,
+     "language": "nl"
+    },
+    {
+     "keyword": "video editing jobs",
+     "position": 51,
+     "url": "https://www.mediamixer.be/jobs",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": 1.399999976158142,
+     "language": "nl"
+    },
+    {
+     "keyword": "klokkenluider betekenis",
+     "position": 98,
+     "url": "https://www.mediamixer.be/klokkenluidersregeling",
+     "volume": 70,
+     "traffic": 0,
+     "cpc": null,
+     "language": "nl"
+    }
+   ]
+  }
+ ]
+}
