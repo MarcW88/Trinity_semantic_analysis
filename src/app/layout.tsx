@@ -6,9 +6,9 @@ import "./globals.css";
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "DeDecker · Semantic dashboard",
+  title: "Trinity · Semantic dashboard",
   robots: { index: false, follow: false },
-  icons: { icon: "/dedecker-logo.png" },
+  icons: { icon: "/icon.png" },
 };
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {

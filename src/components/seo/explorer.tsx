@@ -58,7 +58,7 @@ export function Explorer({ result, brand, d, lang }: { result: SeoResult; brand:
             {AI_FILTERS.map((a) => <option key={a} value={a}>{t(s.aiF[a], { brand })}</option>)}
           </select>
         </label>
-        <span className="text-sm text-gray-600" aria-live="polite">{t(s.showing, { n: f.int(rows.length) })}</span>
+        <span className="text-sm text-ink/60" aria-live="polite">{t(s.showing, { n: f.int(rows.length) })}</span>
         <a className="btn ml-auto" href={exportHref} download>{d.common.exportCsv}</a>
       </div>
       <div className="card max-h-[600px] overflow-auto p-0">
@@ -87,7 +87,7 @@ export function Explorer({ result, brand, d, lang }: { result: SeoResult; brand:
           </tbody>
         </table>
       </div>
-      <p className="mt-2 text-xs text-gray-600">{s.legend}</p>
+      <p className="mt-2 text-xs text-ink/60">{s.legend}</p>
     </section>
   );
 }

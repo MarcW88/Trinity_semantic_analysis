@@ -2,43 +2,22 @@ export type UiLang = "fr" | "nl" | "en";
 export const UI_LANGS: UiLang[] = ["fr", "nl", "en"];
 export const DEFAULT_UI_LANG: UiLang = "fr";
 
-export const BRAND = {
-  taupe: "#B8A99A",
-  brown: "#8B7355",
-  text: "#2D2D2D",
-  background: "#F9F7F5",
-};
+export const CLIENT = { name: "DeDecker Keukens", brandLabel: "DeDecker" };
 
-export const DEFAULT_PROJECT = {
-  slug: "dedecker",
-  name: "DeDecker Keukens",
-  brandLabel: "DeDecker",
-  clientDomains: ["dedecker.be"],
-};
+/** One folder per market under data/. BEEN (English for Belgium) is a hypothesis to confirm. */
+export const MARKETS = [
+  { code: "BENL", isDefault: true },
+  { code: "BEFR", isDefault: false },
+  { code: "BEEN", isDefault: false },
+] as const;
+export type MarketCode = (typeof MARKETS)[number]["code"];
 
-export type MarketConfig = {
-  code: string;
-  country: string;
-  language: string;
-  isDefault: boolean;
-  sortOrder: number;
-};
+/** Categories kept in the Excel but left out of every dashboard calculation. */
+export const EXCLUDED_CATEGORIES = ["Branding", "Marque et valeurs"];
 
-/** Third market (BEEN, English for Belgium) is a hypothesis to confirm with the client. */
-export const DEFAULT_MARKETS: MarketConfig[] = [
-  { code: "BENL", country: "BE", language: "nl-BE", isDefault: true, sortOrder: 1 },
-  { code: "BEFR", country: "BE", language: "fr-BE", isDefault: false, sortOrder: 2 },
-  { code: "BEEN", country: "BE", language: "en-BE", isDefault: false, sortOrder: 3 },
-];
-
-export const IMPORT_LIMITS = {
-  maxFileBytes: 10 * 1024 * 1024,
-  maxUncompressedBytes: 120 * 1024 * 1024,
-  maxKeywords: 20_000,
-  maxRankings: 200_000,
-  maxGeoRuns: 100_000,
-  maxCells: 3_000_000,
-};
+/** Brand colour for the client series; competitors cycle through COMPETITOR_COLORS in column order. */
+export const CLIENT_COLOR = "#EA3323";
+export const COMPETITOR_COLORS = ["#1F1F22", "#2563EB", "#0EA5E9", "#14B8A6", "#F59E0B", "#8B5CF6", "#6B7280", "#EC4899", "#84CC16", "#A16207"];
 
 export const POSITION_COLORS = {
   top3: "#C8E6C9",
@@ -50,14 +29,9 @@ export const POSITION_COLORS = {
 };
 
 export const BUCKET_COLORS = {
-  top3: "#8B7355",
-  "4-10": "#B8A99A",
-  "11-20": "#D4C4B5",
-  "21+": "#E5DDD4",
-  unranked: "#C9A59A",
+  top3: "#EA3323",
+  "4-10": "#F2766B",
+  "11-20": "#F8B4AD",
+  "21+": "#FCE0DC",
+  unranked: "#D4D4D8",
 };
-
-export const DISPLAY_TZ = "Europe/Brussels";
-
-/** Account lockout after repeated wrong passwords. */
-export const LOGIN_LOCK = { maxAttempts: 5, minutes: 15 };

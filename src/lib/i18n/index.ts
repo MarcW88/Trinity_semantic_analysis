@@ -2,7 +2,6 @@ import { fr, type Dict } from "./fr";
 import { nl } from "./nl";
 import { en } from "./en";
 import { DEFAULT_UI_LANG, UI_LANGS, type UiLang } from "../config";
-import type { Issue } from "../issues";
 
 export type { Dict };
 export const DICTS: Record<UiLang, Dict> = { fr, nl, en };
@@ -15,11 +14,6 @@ export function resolveLang(value: string | undefined | null): UiLang {
 
 export function t(template: string, params: Record<string, string | number> = {}): string {
   return template.replace(/\{(\w+)\}/g, (_, k) => (k in params ? String(params[k]) : `{${k}}`));
-}
-
-export function issueMessage(d: Dict, issue: Issue): string {
-  const tpl = (d.issues as Record<string, string>)[issue.code] ?? issue.code;
-  return t(tpl, issue.params ?? {});
 }
 
 export function makeFormat(lang: UiLang) {

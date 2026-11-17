@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   serverExternalPackages: ["exceljs"],
+  outputFileTracingIncludes: { "/**": ["./data/**/*.xlsx"] },
   turbopack: {
     rules: {
       "*.css": {

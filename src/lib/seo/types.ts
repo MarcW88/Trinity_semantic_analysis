@@ -7,7 +7,7 @@ export type SeoKeyword = {
   market: string; keywordId: string; keyword: string; categoryId: string; volume: number;
   hasAiOverview: boolean; clientInAi: boolean; clientPos: number | null; clientUrl: string | null;
   clientAiSources: string[]; subcategory: string | null; priority: string | null; source: string | null;
-  cpc: number | null; competition: string | null; paa: string | null; legacyIlwaPos: number | null; sortOrder: number;
+  cpc: number | null; competition: string | null; paa: string | null; sortOrder: number;
 };
 export type SeoCompetitor = { market: string; domain: string; label: string; colorHex: string | null; sortOrder: number };
 export type SeoScope = { market: string; scope: string; domain: string; sortOrder: number };

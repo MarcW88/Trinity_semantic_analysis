@@ -1,10 +1,10 @@
 import type { AiFilter, Bucket, DomainInfo, ExplorerRow, MarketData, PosFilter, SeoKeyword, SeoResult } from "./types";
 import { BUCKETS } from "./types";
+import { CLIENT_COLOR, COMPETITOR_COLORS } from "../config";
 
 export const CLIENT_KEY = "__client__";
 export const ALL = "all";
 const UNRANKED_POSITION = 100;
-const FALLBACK_COLORS = ["#C4956A", "#4A90A4", "#7A9E7E", "#D4A87C", "#6AAFC3", "#A3B18A", "#B07D56", "#82C0D2"];
 
 export function bucketOf(pos: number | null): Bucket {
   if (pos === null) return "unranked";
@@ -85,11 +85,11 @@ export function computeSeo(data: MarketData, requestedCategory: string, brandLab
   const compByDomain = new Map(data.competitors.map((c) => [c.domain, c]));
   const domainList = activeDomains(data, category);
   const domains: DomainInfo[] = [
-    { domain: CLIENT_KEY, label: brandLabel, color: "#8B7355", isClient: true },
+    { domain: CLIENT_KEY, label: brandLabel, color: CLIENT_COLOR, isClient: true },
     ...domainList.map((d, i) => ({
       domain: d,
       label: compByDomain.get(d)?.label ?? d,
-      color: compByDomain.get(d)?.colorHex ?? FALLBACK_COLORS[i % FALLBACK_COLORS.length],
+      color: compByDomain.get(d)?.colorHex ?? COMPETITOR_COLORS[i % COMPETITOR_COLORS.length],
       isClient: false,
     })),
   ];
