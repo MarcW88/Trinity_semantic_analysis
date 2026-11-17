@@ -13,7 +13,9 @@ export default async function BenchmarkPage({ searchParams }: PageProps<"/benchm
   const marketLabel = (d.markets as Record<string, string>)[market] ?? market;
   const [bench, data] = await Promise.all([getBenchmark(market), getMarketData(market)]);
   if (!bench || bench.domains.length === 0) return <ComingSoon title={`${d.bench.title} · ${marketLabel}`} market={market} d={{ ...d, common: { ...d.common, comingSoonText: d.bench.none } }} />;
-  const trackedTotal = data?.keywords.length ?? 0;
-  const tracked = Object.fromEntries(bench.domains.map((b) => [b.domain, data?.rankings.filter((r) => r.domain === b.domain).length ?? 0]));
+  const included = new Set(data?.categories.filter((c) => c.include).map((c) => c.categoryId));
+  const trackedIds = new Set(data?.keywords.filter((k) => included.has(k.categoryId)).map((k) => k.keywordId));
+  const trackedTotal = trackedIds.size;
+  const tracked = Object.fromEntries(bench.domains.map((b) => [b.domain, data?.rankings.filter((r) => r.domain === b.domain && trackedIds.has(r.keywordId)).length ?? 0]));
   return <BenchmarkView bench={bench} tracked={tracked} trackedTotal={trackedTotal} marketLabel={marketLabel} d={d} lang={lang} />;
 }
