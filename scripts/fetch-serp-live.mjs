@@ -85,6 +85,10 @@ const items = [...byDomain.values()].map((d) => {
   };
 }).sort((a, b) => b.top10 - a.top10 || b.traffic - a.traffic).slice(0, 30);
 
+if (serps.size < list.length * 0.95) {
+  console.error(`\nOnly ${serps.size}/${list.length} keywords returned a SERP; snapshot not written.`);
+  process.exit(1);
+}
 const file = join(dir, "benchmark.json");
 const out = existsSync(file) ? JSON.parse(readFileSync(file, "utf8")) : { market, source: "DataForSEO", ...MARKETS[market], domains: [] };
 out.serpLeaders = { generatedAt: new Date().toISOString(), trackedKeywords: list.length, keywordsWithSerp: serps.size, source: "Google SERP (top 20, desktop)", items, serp };
