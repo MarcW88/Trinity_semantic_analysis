@@ -24,9 +24,9 @@ export function withTrackedSerp(bench: Benchmark, volumes: Record<string, number
     const hits = new Map<string, { position: number; url: string }>();
     for (const [kw, sites] of Object.entries(serp)) {
       const s = sites.find((x) => sameSite(x.domain, dm.domain));
-      if (s) hits.set(kw, { position: s.position, url: s.url });
+      if (s && kw in volumes) hits.set(kw, { position: s.position, url: s.url });
     }
-    for (const p of leaderPositions.get(dm.domain) ?? []) if (!hits.has(p.keyword)) hits.set(p.keyword, { position: p.position, url: "" });
+    for (const p of leaderPositions.get(dm.domain) ?? []) if (!hits.has(p.keyword) && p.keyword in volumes) hits.set(p.keyword, { position: p.position, url: "" });
     for (const [kw, h] of hits) {
       const old = byKw.get(key(kw));
       const volume = volumes[kw] ?? old?.volume ?? 0;
