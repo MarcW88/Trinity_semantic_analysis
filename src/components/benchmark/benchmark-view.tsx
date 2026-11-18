@@ -25,6 +25,8 @@ export function BenchmarkView({ bench, tracked, trackedTotal, keywordMeta, marke
   const [selected, setSelected] = useState(domains[0].domain);
   const defaultCards = useMemo(() => domains.slice(0, CARDS).map((x) => x.domain), [domains]);
   const [cards, setCards] = useState(defaultCards);
+  const [prevDefaults, setPrevDefaults] = useState(defaultCards);
+  if (prevDefaults !== defaultCards) { setPrevDefaults(defaultCards); setCards(defaultCards); }
   const [query, setQuery] = useState("");
   const [limit, setLimit] = useState(PAGE);
   const [scope, setScope] = useState<"all" | "tracked" | "other">("all");

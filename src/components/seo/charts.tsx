@@ -143,6 +143,8 @@ export function CategoryLeaders({ data, leaders, domains, brand, t }: {
 }) {
   const defaults = useMemo(() => leaders.filter((l) => l.leader).slice(0, 6).map((l) => l.categoryId), [leaders]);
   const [shown, setShown] = useState(defaults);
+  const [prevDefaults, setPrevDefaults] = useState(defaults);
+  if (prevDefaults !== defaults) { setPrevDefaults(defaults); setShown(defaults); }
   const byId = new Map(data.map((c) => [c.categoryId, c]));
   const colorOf = (d: string) => domains.find((x) => x.domain === d)?.color ?? "#6B7280";
   const ranked = leaders.filter((l) => l.leader);
