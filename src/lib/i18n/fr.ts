@@ -1,5 +1,6 @@
 export const fr = {
   common: {
+    topN: "Top {n}", showAll: "Tout afficher", prev: "Précédent", next: "Suivant",
     appTitle: "Analyse sémantique", all: "Toutes", market: "Marché", category: "Catégorie", language: "Langue",
     exportCsv: "Exporter CSV", loading: "Chargement…", none: "—", yes: "Oui", no: "Non", search: "Rechercher",
     logout: "Se déconnecter", back: "Retour", save: "Enregistrer", cancel: "Annuler", close: "Fermer",
@@ -7,7 +8,7 @@ export const fr = {
     noData: "Aucune donnée", collected: "Collecte du", dataset: "Jeu de données", footer: "{client} · {view} · données du {date}",
     rows: "{n} lignes", of: "sur",
   },
-  markets: { BENL: "Belgique NL", BEFR: "Belgique FR", BEEN: "Belgique EN" },
+  markets: { BENL: "BE-NL", BEFR: "BE-FR", BEEN: "BE-EN" },
   login: {
     title: "Connexion", password: "Mot de passe", submit: "Accéder au tableau de bord",
     error: "Mot de passe incorrect.", subtitle: "Accès protégé par mot de passe.",

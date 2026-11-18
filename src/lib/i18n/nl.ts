@@ -2,6 +2,7 @@ import type { Dict } from "./fr";
 
 export const nl: Dict = {
   common: {
+    topN: "Top {n}", showAll: "Alles tonen", prev: "Vorige", next: "Volgende",
     appTitle: "Semantische analyse", all: "Alle", market: "Markt", category: "Categorie", language: "Taal",
     exportCsv: "CSV exporteren", loading: "Laden…", none: "—", yes: "Ja", no: "Nee", search: "Zoeken",
     logout: "Afmelden", back: "Terug", save: "Opslaan", cancel: "Annuleren", close: "Sluiten",
@@ -9,7 +10,7 @@ export const nl: Dict = {
     noData: "Geen gegevens", collected: "Verzameld op", dataset: "Dataset", footer: "{client} · {view} · gegevens van {date}",
     rows: "{n} rijen", of: "van",
   },
-  markets: { BENL: "België NL", BEFR: "België FR", BEEN: "België EN" },
+  markets: { BENL: "BE-NL", BEFR: "BE-FR", BEEN: "BE-EN" },
   login: {
     title: "Aanmelden", password: "Wachtwoord", submit: "Naar het dashboard",
     error: "Onjuist wachtwoord.", subtitle: "Toegang beveiligd met een wachtwoord.",

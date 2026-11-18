@@ -2,6 +2,7 @@ import type { Dict } from "./fr";
 
 export const en: Dict = {
   common: {
+    topN: "Top {n}", showAll: "Show all", prev: "Previous", next: "Next",
     appTitle: "Semantic analysis", all: "All", market: "Market", category: "Category", language: "Language",
     exportCsv: "Export CSV", loading: "Loading…", none: "—", yes: "Yes", no: "No", search: "Search",
     logout: "Sign out", back: "Back", save: "Save", cancel: "Cancel", close: "Close",
@@ -9,7 +10,7 @@ export const en: Dict = {
     noData: "No data", collected: "Collected on", dataset: "Dataset", footer: "{client} · {view} · data from {date}",
     rows: "{n} rows", of: "of",
   },
-  markets: { BENL: "Belgium NL", BEFR: "Belgium FR", BEEN: "Belgium EN" },
+  markets: { BENL: "BE-NL", BEFR: "BE-FR", BEEN: "BE-EN" },
   login: {
     title: "Sign in", password: "Password", submit: "Open the dashboard",
     error: "Wrong password.", subtitle: "Password-protected access.",

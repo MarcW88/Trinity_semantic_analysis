@@ -4,7 +4,7 @@ import type { SerpLeaders as Data } from "@/lib/seo/benchmark";
 import { t, type Dict } from "@/lib/i18n";
 import { POSITION_COLORS } from "@/lib/config";
 import { positionTone } from "@/lib/seo/compute";
-import { Reveal, Segmented } from "../motion";
+import { Pager, Reveal, Segmented } from "../motion";
 import { InfoTip } from "../info-tip";
 
 export type KeywordMeta = Record<string, { category: string; volume: number }>;
@@ -18,6 +18,8 @@ export function SerpLeaders({ data, meta, d, f }: { data: Data; meta: KeywordMet
   const b = d.bench;
   const [view, setView] = useState<"sites" | "keywords">("sites");
   const [query, setQuery] = useState("");
+  const [page, setPage] = useState(1);
+  const per = view === "sites" ? 10 : 25;
   const leaders = useMemo(() => data.items.map((l) => {
     const top10 = l.positions.filter((p) => p.position <= 10);
     const cats = new Map<string, number>();
@@ -40,9 +42,9 @@ export function SerpLeaders({ data, meta, d, f }: { data: Data; meta: KeywordMet
           <p className="-mt-2 text-sm text-ink/60">{t(b.leadersNote, { n: f.int(data.keywordsWithSerp ?? data.trackedKeywords) })}</p>
         </div>
         <div className="flex flex-wrap items-center gap-3">
-          {data.serp && <Segmented label={b.leaders} layoutId="serp-view" value={view} onChange={(v) => setView(v as "sites" | "keywords")}
+          {data.serp && <Segmented label={b.leaders} layoutId="serp-view" value={view} onChange={(v) => { setView(v as "sites" | "keywords"); setPage(1); }}
             options={[{ value: "sites", label: b.viewSites }, { value: "keywords", label: b.viewKeywords }]} />}
-          {view === "keywords" && <input className="input min-w-56" type="search" placeholder={b.search} value={query} onChange={(e) => setQuery(e.target.value)} />}
+          {view === "keywords" && <input className="input min-w-56" type="search" placeholder={b.search} value={query} onChange={(e) => { setQuery(e.target.value); setPage(1); }} />}
         </div>
         {view === "sites" ? (
           <div className="card overflow-auto p-0">
@@ -52,9 +54,9 @@ export function SerpLeaders({ data, meta, d, f }: { data: Data; meta: KeywordMet
                 <th scope="col" className="num">{b.lcol.top3}<InfoTip text={b.help.leadersTop3} /></th><th scope="col" className="num">{b.lcol.traffic}<InfoTip text={b.help.leadersTraffic} align="right" /></th><th scope="col">{b.lcol.cats}<InfoTip text={b.help.leadersCats} align="right" /></th><th scope="col">{b.lcol.kws}</th>
               </tr></thead>
               <tbody>
-                {leaders.map((l, i) => (
+                {leaders.slice((page - 1) * per, page * per).map((l, i) => (
                   <tr key={l.domain} className="align-top">
-                    <td className="num text-ink/50">{i + 1}</td>
+                    <td className="num text-ink/50">{(page - 1) * per + i + 1}</td>
                     <td className="font-medium">{l.domain}</td>
                     <td className="num font-semibold">{f.int(l.top10)}</td><td className="num">{f.int(l.top3)}</td><td className="num">{f.int(l.traffic)}</td>
                     <td><div className="flex max-w-xs flex-wrap gap-1">{l.cats.slice(0, 3).map(([c, n]) => <span key={c} className="pill text-[11px]">{c} · {n}</span>)}</div></td>
@@ -78,7 +80,7 @@ export function SerpLeaders({ data, meta, d, f }: { data: Data; meta: KeywordMet
                 <th scope="col">{b.col.keyword}</th><th scope="col">{b.lcol.category}</th><th scope="col" className="num">{b.col.volume}</th><th scope="col">{b.lcol.top3sites}</th>
               </tr></thead>
               <tbody>
-                {keywords.map((k) => (
+                {keywords.slice((page - 1) * per, page * per).map((k) => (
                   <tr key={k.keyword} className="align-top">
                     <td>{k.keyword}</td><td className="text-xs text-ink/60">{k.category}</td><td className="num">{f.int(k.volume)}</td>
                     <td><div className="flex flex-wrap gap-x-3 gap-y-1 text-xs">{k.sites.filter((s) => s.position <= 3).map((s) => (
@@ -90,6 +92,7 @@ export function SerpLeaders({ data, meta, d, f }: { data: Data; meta: KeywordMet
             </table>
           </div>
         )}
+        <Pager page={page} pages={Math.ceil((view === "sites" ? leaders.length : keywords.length) / per)} onChange={setPage} labels={d.common} />
       </section>
     </Reveal>
   );

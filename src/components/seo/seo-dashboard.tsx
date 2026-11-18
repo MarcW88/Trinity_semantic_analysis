@@ -8,7 +8,7 @@ import { KpiCard } from "../kpi-card";
 import { CountUp, Reveal, Segmented } from "../motion";
 import { Explorer } from "./explorer";
 import { InfoTip } from "../info-tip";
-import { CategoryVolumeChart, VisibilityChart, VisibilityByCategoryChart, Donut } from "./charts";
+import { CategoryVolumeChart, CategoryLeaders, VisibilityChart, Donut } from "./charts";
 
 type Props = { result: SeoResult; meta: SeoMarketMeta; brand: string; client: string; marketLabel: string; d: Dict; lang: UiLang };
 
@@ -145,25 +145,9 @@ export function SeoDashboard({ result, meta, brand, client, marketLabel, d, lang
             </table>
           </div>
           <div className="card lg:col-span-2">
-            <h3 className="card-title">{s.visibilityByCat}<InfoTip text={s.help.visibilityByCat} align="left" /></h3>
-            <VisibilityByCategoryChart data={result.visibilityByCategory} domains={result.domains} />
-          </div>
-          <div className="card overflow-auto lg:col-span-2">
             <h3 className="card-title">{s.leaders}<InfoTip text={t(s.help.leaders, { brand })} align="left" /></h3>
-            <table className="tbl">
-              <thead><tr>
-                <th scope="col">{s.leaderTable.category}</th><th scope="col">{s.leaderTable.leader}</th><th scope="col" className="num">{s.leaderTable.leaderRate}</th>
-                <th scope="col" className="num">{t(s.leaderTable.clientRate, { brand })}</th><th scope="col" className="num">{s.leaderTable.gap}</th>
-              </tr></thead>
-              <tbody>
-                {result.leaders.map((l) => (
-                  <tr key={l.categoryId}>
-                    <td>{l.category}</td><td>{l.leader ?? <span className="text-ink/50">{s.noLeader}</span>}</td>
-                    <td className="num">{f.dec1(l.leaderRate)} %</td><td className="num">{f.dec1(l.clientRate)} %</td><td className="num">{f.dec1(l.gap)} pt</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <CategoryLeaders data={result.visibilityByCategory} leaders={result.leaders} domains={result.domains} brand={brand}
+              t={{ leader: s.leaderTable.leader, gap: `${s.leaderTable.gap} ${brand}`, none: s.noLeader, top: t(d.common.topN, { n: 6 }), all: d.common.showAll }} />
           </div>
         </div>
       </section>
