@@ -133,3 +133,49 @@ export function Donut({ data, format }: { data: { name: string; value: number; c
     </div>
   );
 }
+
+/** One card per category: each actor's Top 10 rate as a bar, the leader highlighted, categories without any Top 10 grouped at the end. */
+export function CategoryLeaders({ data, leaders, domains, brand, t }: {
+  data: SeoResult["visibilityByCategory"]; leaders: SeoResult["leaders"]; domains: DomainInfo[]; brand: string;
+  t: { leader: string; gap: string; none: string };
+}) {
+  const byId = new Map(data.map((c) => [c.categoryId, c]));
+  const colorOf = (d: string) => domains.find((x) => x.domain === d)?.color ?? "#6B7280";
+  const ranked = leaders.filter((l) => l.leader);
+  const empty = leaders.filter((l) => !l.leader);
+  const max = Math.max(0.01, ...data.flatMap((c) => c.rates.map((r) => r.rate ?? 0)));
+  const pct = (v: number) => `${(v * 100).toFixed(v < 0.1 ? 1 : 0)} %`;
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+        {ranked.map((l) => {
+          const rates = (byId.get(l.categoryId)?.rates ?? []).filter((r) => (r.rate ?? 0) > 0 || r.label === brand).sort((a, b) => (b.rate ?? 0) - (a.rate ?? 0));
+          return (
+            <div key={l.categoryId} className="rounded-xl border border-line bg-white p-4">
+              <div className="flex items-start justify-between gap-2">
+                <h4 className="text-sm font-semibold leading-snug">{l.category}</h4>
+                <span className="shrink-0 rounded-full bg-brand/10 px-2 py-0.5 text-[11px] font-semibold text-brand">{t.leader} : {l.leader}</span>
+              </div>
+              <ul className="mt-3 space-y-2">
+                {rates.map((r) => (
+                  <li key={r.domain} className="grid grid-cols-[7.5rem_1fr_3rem] items-center gap-2 text-xs">
+                    <span className={`truncate ${r.label === brand ? "font-semibold" : "text-ink/70"}`}>{r.label}</span>
+                    <span className="h-2.5 rounded-full bg-mist"><span className="block h-full rounded-full" style={{ width: `${((r.rate ?? 0) / max) * 100}%`, minWidth: (r.rate ?? 0) > 0 ? 6 : 0, background: colorOf(r.domain) }} /></span>
+                    <span className="text-right font-semibold tabular-nums">{pct(r.rate ?? 0)}</span>
+                  </li>
+                ))}
+              </ul>
+              {l.gap > 0 && <p className="mt-3 text-xs text-ink/60">{t.gap} : <span className="font-semibold text-brand">−{l.gap.toFixed(1)} pt</span></p>}
+            </div>
+          );
+        })}
+      </div>
+      {empty.length > 0 && (
+        <div className="rounded-xl border border-dashed border-line p-4">
+          <p className="text-xs font-semibold uppercase tracking-wide text-ink/50">{t.none} ({empty.length})</p>
+          <div className="mt-2 flex flex-wrap gap-1.5">{empty.map((l) => <span key={l.categoryId} className="pill text-[11px]">{l.category}</span>)}</div>
+        </div>
+      )}
+    </div>
+  );
+}
