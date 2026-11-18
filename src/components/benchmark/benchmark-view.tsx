@@ -6,13 +6,14 @@ import { makeFormat, t, type Dict } from "@/lib/i18n";
 import { BUCKET_COLORS, COMPETITOR_COLORS, POSITION_COLORS, type UiLang } from "@/lib/config";
 import { positionTone } from "@/lib/seo/compute";
 import { toCsv } from "@/lib/csv";
-import { CountUp, Reveal, Segmented } from "../motion";
+import { ChipFilter, CountUp, Reveal, Segmented } from "../motion";
 import { InfoTip } from "../info-tip";
 import { SerpLeaders, type KeywordMeta } from "./serp-leaders";
 
 const TOOLTIP = { borderRadius: 12, border: "1px solid #e6e6e9", boxShadow: "0 8px 24px -12px rgba(31,31,34,.25)", fontSize: 12 };
 const RANGES = ["top3", "4-10", "11-20"] as const;
 const PAGE = 200;
+const CARDS = 3;
 
 type Props = { bench: Benchmark; tracked: Record<string, number>; trackedTotal: number; keywordMeta: KeywordMeta; marketLabel: string; d: Dict; lang: UiLang };
 
@@ -22,6 +23,8 @@ export function BenchmarkView({ bench, tracked, trackedTotal, keywordMeta, marke
   const domains = useMemo(() => [...bench.domains].sort((x, y) => y.traffic - x.traffic), [bench.domains]);
   const color = (domain: string) => COMPETITOR_COLORS[bench.domains.findIndex((x) => x.domain === domain) % COMPETITOR_COLORS.length];
   const [selected, setSelected] = useState(domains[0].domain);
+  const defaultCards = useMemo(() => domains.slice(0, CARDS).map((x) => x.domain), [domains]);
+  const [cards, setCards] = useState(defaultCards);
   const [query, setQuery] = useState("");
   const [limit, setLimit] = useState(PAGE);
   const [scope, setScope] = useState<"all" | "tracked" | "other">("all");
@@ -53,6 +56,7 @@ export function BenchmarkView({ bench, tracked, trackedTotal, keywordMeta, marke
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/70">{marketLabel}</p>
             <h1 className="mt-1 text-3xl font-semibold tracking-tight text-white sm:text-4xl">{b.title}</h1>
             <p className="mt-1 text-sm text-white/80">{t(b.subtitle, { market: marketLabel })}</p>
+            <p className="mt-1 text-sm text-white/80">{d.common.collected} {f.date((bench.serpLeaders?.generatedAt ?? bench.generatedAt).slice(0, 10))}</p>
           </div>
         </div>
       </Reveal>
@@ -66,9 +70,11 @@ export function BenchmarkView({ bench, tracked, trackedTotal, keywordMeta, marke
         </Reveal>
       )}
 
-      <section>
+      <section className="space-y-3">
+        {domains.length > CARDS && <ChipFilter options={domains.map((x) => ({ value: x.domain, label: x.domain }))} selected={cards} onChange={setCards}
+          defaults={defaultCards} labels={{ top: t(d.common.topN, { n: CARDS }), all: d.common.showAll }} />}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
-          {domains.map((x, i) => (
+          {domains.filter((x) => cards.includes(x.domain)).map((x, i) => (
             <Reveal key={x.domain} delay={i * 0.05} className="h-full">
               <div onClick={() => { setSelected(x.domain); setLimit(PAGE); }}
                 className={`card card-hover h-full w-full cursor-pointer text-left ${x.domain === selected ? "ring-2 ring-brand/40" : ""}`}>

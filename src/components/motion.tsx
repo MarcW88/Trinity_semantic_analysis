@@ -58,3 +58,35 @@ export function Segmented<T extends string>({ value, options, onChange, layoutId
     </div>
   );
 }
+
+/** Toggleable chips to choose which items are shown, with shortcuts for the default selection and for everything. */
+export function ChipFilter({ options, selected, onChange, defaults, labels }: {
+  options: { value: string; label: string }[]; selected: string[]; onChange: (v: string[]) => void; defaults: string[];
+  labels: { top: string; all: string };
+}) {
+  const set = new Set(selected);
+  const btn = (active: boolean) => `rounded-full border px-2.5 py-1 text-xs font-medium transition-colors ${active ? "border-brand bg-brand text-white" : "border-line bg-white text-ink/70 hover:border-brand/50 hover:text-ink"}`;
+  const same = (a: string[]) => a.length === selected.length && a.every((v) => set.has(v));
+  return (
+    <div className="flex flex-wrap items-center gap-1.5">
+      <button type="button" className={btn(same(defaults))} onClick={() => onChange(defaults)}>{labels.top}</button>
+      <button type="button" className={btn(same(options.map((o) => o.value)))} onClick={() => onChange(options.map((o) => o.value))}>{labels.all}</button>
+      <span className="mx-1 h-4 w-px bg-line" />
+      {options.map((o) => (
+        <button key={o.value} type="button" aria-pressed={set.has(o.value)} className={btn(set.has(o.value))}
+          onClick={() => onChange(set.has(o.value) ? selected.filter((v) => v !== o.value) : [...selected, o.value])}>{o.label}</button>
+      ))}
+    </div>
+  );
+}
+
+export function Pager({ page, pages, onChange, labels }: { page: number; pages: number; onChange: (p: number) => void; labels: { prev: string; next: string } }) {
+  if (pages <= 1) return null;
+  return (
+    <div className="flex items-center justify-end gap-2 text-sm">
+      <button type="button" className="btn-ghost" disabled={page <= 1} onClick={() => onChange(page - 1)}>‹ {labels.prev}</button>
+      <span className="tabular-nums text-ink/60">{page} / {pages}</span>
+      <button type="button" className="btn-ghost" disabled={page >= pages} onClick={() => onChange(page + 1)}>{labels.next} ›</button>
+    </div>
+  );
+}

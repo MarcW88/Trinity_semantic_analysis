@@ -1,4 +1,6 @@
 "use client";
+import { useMemo, useState } from "react";
+import { ChipFilter } from "../motion";
 import { Bar, BarChart, CartesianGrid, Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { BUCKET_COLORS } from "@/lib/config";
 import { BUCKETS, type Bucket, type DomainInfo, type SeoResult } from "@/lib/seo/types";
@@ -137,8 +139,10 @@ export function Donut({ data, format }: { data: { name: string; value: number; c
 /** One card per category: each actor's Top 10 rate as a bar, the leader highlighted, categories without any Top 10 grouped at the end. */
 export function CategoryLeaders({ data, leaders, domains, brand, t }: {
   data: SeoResult["visibilityByCategory"]; leaders: SeoResult["leaders"]; domains: DomainInfo[]; brand: string;
-  t: { leader: string; gap: string; none: string };
+  t: { leader: string; gap: string; none: string; top: string; all: string };
 }) {
+  const defaults = useMemo(() => leaders.filter((l) => l.leader).slice(0, 6).map((l) => l.categoryId), [leaders]);
+  const [shown, setShown] = useState(defaults);
   const byId = new Map(data.map((c) => [c.categoryId, c]));
   const colorOf = (d: string) => domains.find((x) => x.domain === d)?.color ?? "#6B7280";
   const ranked = leaders.filter((l) => l.leader);
@@ -147,8 +151,9 @@ export function CategoryLeaders({ data, leaders, domains, brand, t }: {
   const pct = (v: number) => `${(v * 100).toFixed(v < 0.1 ? 1 : 0)} %`;
   return (
     <div className="space-y-4">
+      {ranked.length > defaults.length && <ChipFilter options={ranked.map((l) => ({ value: l.categoryId, label: l.category }))} selected={shown} onChange={setShown} defaults={defaults} labels={t} />}
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-        {ranked.map((l) => {
+        {ranked.filter((l) => shown.includes(l.categoryId)).map((l) => {
           const rates = (byId.get(l.categoryId)?.rates ?? []).filter((r) => (r.rate ?? 0) > 0 || r.label === brand).sort((a, b) => (b.rate ?? 0) - (a.rate ?? 0));
           return (
             <div key={l.categoryId} className="rounded-xl border border-line bg-white p-4">

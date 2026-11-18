@@ -147,7 +147,7 @@ export function SeoDashboard({ result, meta, brand, client, marketLabel, d, lang
           <div className="card lg:col-span-2">
             <h3 className="card-title">{s.leaders}<InfoTip text={t(s.help.leaders, { brand })} align="left" /></h3>
             <CategoryLeaders data={result.visibilityByCategory} leaders={result.leaders} domains={result.domains} brand={brand}
-              t={{ leader: s.leaderTable.leader, gap: `${s.leaderTable.gap} ${brand}`, none: s.noLeader }} />
+              t={{ leader: s.leaderTable.leader, gap: `${s.leaderTable.gap} ${brand}`, none: s.noLeader, top: t(d.common.topN, { n: 6 }), all: d.common.showAll }} />
           </div>
         </div>
       </section>

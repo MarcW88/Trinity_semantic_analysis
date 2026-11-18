@@ -2,17 +2,12 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { LANG_COOKIE, resolveLang } from "@/lib/i18n";
-import { MARKETS } from "@/lib/config";
 import { SESSION_COOKIE, SESSION_MAX_AGE, checkPassword, passwordConfigured, sessionToken } from "@/lib/auth";
 
 const prefOpts = { httpOnly: false, sameSite: "lax" as const, secure: process.env.NODE_ENV === "production", path: "/", maxAge: 60 * 60 * 24 * 365 };
 
 export async function setLang(lang: string) {
   (await cookies()).set(LANG_COOKIE, resolveLang(lang), prefOpts);
-}
-
-export async function setMarketCookie(market: string) {
-  if (MARKETS.some((m) => m.code === market)) (await cookies()).set("market", market, prefOpts);
 }
 
 export async function loginAction(_prev: { error: "invalid" | "config" } | undefined, form: FormData) {
