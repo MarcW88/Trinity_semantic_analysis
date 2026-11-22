@@ -16,5 +16,7 @@ export default async function SeoPage({ searchParams }: PageProps<"/seo">) {
   const marketLabel = (d.markets as Record<string, string>)[market] ?? market;
   if (!data) return <ComingSoon title={`${d.seo.title} · ${marketLabel}`} market={market} d={d} />;
   const result = computeSeo(data, param(sp.category, "all"), CLIENT.brandLabel);
-  return <SeoDashboard result={result} meta={data.meta} brand={CLIENT.brandLabel} client={CLIENT.name} marketLabel={marketLabel} d={d} lang={lang} />;
+  const seoData = await getMarketData(market, "seo");
+  const seoResult = seoData ? computeSeo(seoData, result.category, CLIENT.brandLabel) : undefined;
+  return <SeoDashboard result={result} seoResult={seoResult} meta={data.meta} brand={CLIENT.brandLabel} client={CLIENT.name} marketLabel={marketLabel} d={d} lang={lang} />;
 }

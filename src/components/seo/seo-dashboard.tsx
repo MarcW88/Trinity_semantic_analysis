@@ -10,9 +10,9 @@ import { Explorer } from "./explorer";
 import { InfoTip } from "../info-tip";
 import { CategoryVolumeChart, CategoryLeaders, VisibilityChart, Donut } from "./charts";
 
-type Props = { result: SeoResult; meta: SeoMarketMeta; brand: string; client: string; marketLabel: string; d: Dict; lang: UiLang };
+type Props = { result: SeoResult; seoResult?: SeoResult; meta: SeoMarketMeta; brand: string; client: string; marketLabel: string; d: Dict; lang: UiLang };
 
-export function SeoDashboard({ result, meta, brand, client, marketLabel, d, lang }: Props) {
+export function SeoDashboard({ result, seoResult, meta, brand, client, marketLabel, d, lang }: Props) {
   const f = useMemo(() => makeFormat(lang), [lang]);
   const router = useRouter();
   const pathname = usePathname();
@@ -187,7 +187,7 @@ export function SeoDashboard({ result, meta, brand, client, marketLabel, d, lang
       </Reveal>
 
       <Reveal>
-      <Explorer result={result} brand={brand} d={d} lang={lang} />
+      <Explorer result={result} seoResult={seoResult} brand={brand} d={d} lang={lang} />
       </Reveal>
 
       <footer className="border-t border-line pt-3 text-xs text-ink/50">

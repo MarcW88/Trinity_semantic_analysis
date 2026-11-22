@@ -9,21 +9,28 @@ const DATA_DIR = join(/*turbopackIgnore: true*/ process.cwd(), "data");
 const cache = new Map<string, { stamp: string; data: MarketData | null; files: SourceFile[] }>();
 
 /** Loads data/<market>/*.xlsx; re-parsed only when a file changes. */
-export async function getMarketData(market: string): Promise<MarketData | null> {
+export async function getMarketData(market: string, comparison: "direct" | "seo" = "direct"): Promise<MarketData | null> {
+  const cacheKey = comparison === "direct" ? market : `${market}:seo`;
   const dir = join(DATA_DIR, market);
   let names: string[];
   try {
-    names = (await readdir(dir)).filter((n) => /\.xlsx$/i.test(n) && !n.startsWith("~$")).sort();
+    names = (await readdir(dir)).filter((n) => /\.xlsx$/i.test(n) && !n.startsWith("~$") && (comparison === "seo" ? n === "seo-competitors-trinity.xlsx" : n !== "seo-competitors-trinity.xlsx")).sort();
   } catch {
     return null;
   }
   const stats = await Promise.all(names.map((n) => stat(join(dir, n))));
   const stamp = names.map((n, i) => `${n}:${stats[i].size}:${stats[i].mtimeMs}`).join("|");
-  const hit = cache.get(market);
+  const hit = cache.get(cacheKey);
   if (hit && hit.stamp === stamp) return hit.data;
   const files = await Promise.all(names.map(async (n) => readFirstSheet(new Uint8Array(await readFile(join(dir, n))), n)));
   const data = buildMarket(market, files);
-  cache.set(market, { stamp, data, files });
+  if (data && comparison === "seo") {
+    const domains = new Set(["varamedia.be", "customerimpact.be", "conversal.be", "ikag.be", "limelight.be"]);
+    data.competitors = data.competitors.filter((c) => domains.has(c.domain));
+    data.scopes = data.scopes.filter((s) => domains.has(s.domain));
+    data.rankings = data.rankings.filter((r) => domains.has(r.domain));
+  }
+  cache.set(cacheKey, { stamp, data, files });
   return data;
 }
 

@@ -47,6 +47,7 @@ export const en: Dict = {
     noLeader: "No player in the Top 10",
     ai: "AI Overviews", aiDonut: "AI Overview presence", citeDonut: "Citation among AI Overviews", withAi: "With AI Overview", withoutAi: "Without AI Overview",
     cited: "{brand} cited", notCited: "Not cited", aiTable: "Keywords with AI Overview", noAi: "No keyword with an AI Overview for this selection.",
+    directCompetitors: "Direct competitors", seoCompetitors: "Top SEO competitors",
     explorer: "Keyword explorer", posFilter: "Position", aiFilter: "AI Overview",
     pos: { all: "All", top3: "Top 3", "4-10": "4–10", "11-20": "11–20", "21+": "21+", unranked: "Not ranked" },
     aiF: { all: "All", with_ai: "With AI Overview", cited: "{brand} cited", opportunity: "AI opportunity" },

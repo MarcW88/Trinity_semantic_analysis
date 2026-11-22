@@ -1,8 +1,36 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+
+vi.mock("server-only", () => ({}));
 import { buildMarket, readFirstSheet, type SourceFile } from "@/lib/seo/excel";
-import { computeSeo } from "@/lib/seo/compute";
+import { computeSeo, filterExplorer } from "@/lib/seo/compute";
+import { getMarketData } from "@/lib/seo/source";
+
+describe("BENL competitor comparisons", () => {
+  it("keeps direct competitors separate from the V2 SEO competitors", async () => {
+    const direct = (await getMarketData("BENL"))!;
+    const seo = (await getMarketData("BENL", "seo"))!;
+    expect(direct.competitors.map((c) => c.domain)).toEqual(["hetpeloton.be", "socialsky.eu", "hannibal.be", "castaar.com", "mediamixer.be"]);
+    expect(seo.competitors.map((c) => c.domain)).toEqual(["varamedia.be", "customerimpact.be", "conversal.be", "ikag.be", "limelight.be"]);
+    expect(seo.keywords.map((k) => k.keyword).sort()).toEqual(direct.keywords.map((k) => k.keyword).sort());
+    expect(await getMarketData("BENL")).toBe(direct);
+    expect(await getMarketData("BENL", "seo")).toBe(seo);
+    const result = computeSeo(seo, "all", "Trinity");
+    expect(result.explorer).toHaveLength(563);
+    expect(result.explorer.some((r) => Object.values(r.positions).some((p) => p !== null))).toBe(true);
+    for (const category of result.categories) {
+      const filtered = computeSeo(seo, category.categoryId, "Trinity");
+      expect(filtered.explorer.every((r) => r.categoryId === category.categoryId)).toBe(true);
+    }
+    expect(filterExplorer(result.explorer, "unranked", "with_ai").every((r) => r.clientPos === null && r.hasAiOverview)).toBe(true);
+  });
+
+  it("does not expose an SEO comparison for markets without a V2 workbook", async () => {
+    expect(await getMarketData("BEFR", "seo")).toBeNull();
+    expect(await getMarketData("BEEN", "seo")).toBeNull();
+  });
+});
 
 async function loadFolder(market: string) {
   const dir = join("data", market);

@@ -45,6 +45,7 @@ export const fr = {
     noLeader: "Aucun acteur en Top 10",
     ai: "AI Overviews", aiDonut: "Présence d'AI Overview", citeDonut: "Citation parmi les AI Overviews", withAi: "Avec AI Overview", withoutAi: "Sans AI Overview",
     cited: "{brand} cité", notCited: "Non cité", aiTable: "Requêtes avec AI Overview", noAi: "Aucune requête avec AI Overview pour cette sélection.",
+    directCompetitors: "Concurrents directs", seoCompetitors: "Meilleurs concurrents SEO",
     explorer: "Explorateur de requêtes", posFilter: "Position", aiFilter: "AI Overview",
     pos: { all: "Toutes", top3: "Top 3", "4-10": "4–10", "11-20": "11–20", "21+": "21+", unranked: "Non classée" },
     aiF: { all: "Toutes", with_ai: "Avec AI Overview", cited: "{brand} cité", opportunity: "Opportunité AI" },

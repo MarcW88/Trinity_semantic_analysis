@@ -16,7 +16,8 @@ export async function GET(req: NextRequest) {
   const market = await resolveMarket(sp.get("market"));
   const pos = (POS_FILTERS as string[]).includes(sp.get("pos") ?? "") ? (sp.get("pos") as PosFilter) : "all";
   const ai = (AI_FILTERS as string[]).includes(sp.get("ai") ?? "") ? (sp.get("ai") as AiFilter) : "all";
-  const data = await getMarketData(market);
+  const comparison = sp.get("comparison") === "seo" ? "seo" : "direct";
+  const data = await getMarketData(market, comparison);
   if (!data) return json({ error: "no_data" }, 404);
   const result = computeSeo(data, sp.get("category") ?? "all", CLIENT.brandLabel);
   const d = DICTS[resolveLang(req.cookies.get("ui_lang")?.value)];

@@ -47,6 +47,7 @@ export const nl: Dict = {
     noLeader: "Geen speler in de Top 10",
     ai: "AI Overviews", aiDonut: "Aanwezigheid AI Overview", citeDonut: "Citatie binnen AI Overviews", withAi: "Met AI Overview", withoutAi: "Zonder AI Overview",
     cited: "{brand} geciteerd", notCited: "Niet geciteerd", aiTable: "Zoekwoorden met AI Overview", noAi: "Geen zoekwoord met AI Overview voor deze selectie.",
+    directCompetitors: "Directe concurrenten", seoCompetitors: "Beste SEO-concurrenten",
     explorer: "Zoekwoordverkenner", posFilter: "Positie", aiFilter: "AI Overview",
     pos: { all: "Alle", top3: "Top 3", "4-10": "4–10", "11-20": "11–20", "21+": "21+", unranked: "Niet gerankt" },
     aiF: { all: "Alle", with_ai: "Met AI Overview", cited: "{brand} geciteerd", opportunity: "AI-kans" },
