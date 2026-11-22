@@ -1,9 +1,9 @@
 "use client";
 import { useMemo, useState } from "react";
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import type { Benchmark } from "@/lib/seo/benchmark";
+import { isBrandKeyword, type Benchmark } from "@/lib/seo/benchmark";
 import { makeFormat, t, type Dict } from "@/lib/i18n";
-import { BUCKET_COLORS, COMPETITOR_COLORS, POSITION_COLORS, type UiLang } from "@/lib/config";
+import { COMPETITOR_COLORS, POSITION_COLORS, type UiLang } from "@/lib/config";
 import { positionTone } from "@/lib/seo/compute";
 import { toCsv } from "@/lib/csv";
 import { ChipFilter, CountUp, Reveal, Segmented } from "../motion";
@@ -11,7 +11,6 @@ import { InfoTip } from "../info-tip";
 import { SerpLeaders, type KeywordMeta } from "./serp-leaders";
 
 const TOOLTIP = { borderRadius: 12, border: "1px solid #e6e6e9", boxShadow: "0 8px 24px -12px rgba(31,31,34,.25)", fontSize: 12 };
-const RANGES = ["top3", "4-10", "11-20"] as const;
 const PAGE = 200;
 const CARDS = 3;
 
@@ -38,7 +37,10 @@ export function BenchmarkView({ bench, tracked, trackedTotal, keywordMeta, marke
   }, [current, query, scope]);
   const trackedHits = Object.values(tracked).reduce((s, n) => s + n, 0);
 
-  const trafficData = domains.map((x) => ({ domain: x.domain, ...x.trafficByRange }));
+  const trafficData = domains.map((x) => {
+    const brand = Math.round(x.keywords.filter((k) => k.position <= 20 && isBrandKeyword(k.keyword, x.domain)).reduce((s, k) => s + k.traffic, 0));
+    return { domain: x.domain, [b.brand]: brand, [b.nonBrand]: Math.max(0, x.traffic - brand) };
+  });
   const kwData = domains.map((x) => ({ domain: x.domain, [b.keywords]: x.total, [b.top10]: x.top10, [b.tracked]: tracked[x.domain] ?? 0 }));
 
   const exportCsv = () => {
@@ -108,7 +110,8 @@ export function BenchmarkView({ bench, tracked, trackedTotal, keywordMeta, marke
                   <YAxis type="category" dataKey="domain" width={130} tick={{ fontSize: 11 }} />
                   <Tooltip contentStyle={TOOLTIP} formatter={(v) => f.int(Number(v))} />
                   <Legend wrapperStyle={{ fontSize: 11 }} />
-                  {RANGES.map((r, i) => <Bar key={r} dataKey={r} name={d.seo.bucket[r]} stackId="t" fill={BUCKET_COLORS[r]} animationDuration={900} radius={i === RANGES.length - 1 ? [0, 6, 6, 0] : 0} />)}
+                  <Bar dataKey={b.nonBrand} stackId="t" fill="#EA3323" animationDuration={900} />
+                  <Bar dataKey={b.brand} stackId="t" fill="#F8B4AD" animationDuration={900} radius={[0, 6, 6, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>

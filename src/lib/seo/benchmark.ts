@@ -40,7 +40,52 @@ const sameSite = (serpDomain: string, domain: string) => serpDomain === domain |
 
 // Labs keywords of each competitor, with tracked keywords overridden by the live Google SERP snapshot (real positions).
 export function withTrackedSerp(bench: Benchmark, volumes: Record<string, number>): BenchmarkDomain[] {
-  return mergeTrackedSerp(bench, volumes).map(noTrafficBeyond20);
+  return mergeTrackedSerp(bench, volumes).map(dedupeLanguages).map(noTrafficBeyond20);
+}
+
+/** In all-languages snapshots one Google query can be listed once per language (e.g. "castaar" in fr and nl): keep a single entry. */
+function dedupeLanguages(dm: BenchmarkDomain): BenchmarkDomain {
+  const best = new Map<string, BenchmarkKeyword>();
+  for (const k of dm.keywords) {
+    const id = k.keyword.trim().toLowerCase();
+    const cur = best.get(id);
+    if (!cur || (!!k.tracked !== !!cur.tracked ? k.tracked : k.traffic > cur.traffic)) best.set(id, k);
+  }
+  if (best.size === dm.keywords.length) return dm;
+  const kept = new Set(best.values());
+  const dropped = dm.keywords.filter((k) => !kept.has(k));
+  const n = (lo: number, hi: number) => dropped.filter((k) => k.position >= lo && k.position <= hi);
+  const tr = (lo: number, hi: number) => n(lo, hi).reduce((s, k) => s + k.traffic, 0);
+  const r = dm.trafficByRange;
+  return {
+    ...dm, total: dm.total - dropped.length, top3: dm.top3 - n(1, 3).length, top10: dm.top10 - n(1, 10).length, top20: dm.top20 - n(1, 20).length,
+    traffic: dm.traffic - tr(1, 1e9),
+    trafficByRange: { top3: r.top3 - tr(1, 3), "4-10": r["4-10"] - tr(4, 10), "11-20": r["11-20"] - tr(11, 20), "21+": r["21+"] - tr(21, 1e9) },
+    keywords: dm.keywords.filter((k) => kept.has(k)),
+  };
+}
+
+const fold = (s: string) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+/** Within one edit (insertion, deletion or substitution). */
+function nearlyEqual(a: string, b: string): boolean {
+  if (Math.abs(a.length - b.length) > 1) return false;
+  let i = 0, j = 0, edits = 0;
+  while (i < a.length && j < b.length) {
+    if (a[i] === b[j]) { i++; j++; continue; }
+    if (++edits > 1) return false;
+    if (a.length > b.length) i++; else if (b.length > a.length) j++; else { i++; j++; }
+  }
+  return edits + (a.length - i) + (b.length - j) <= 1;
+}
+
+/** Branded query: it contains the site's name (domain without TLD), allowing one typo for names of 6+ letters ("kastaar"). */
+export function isBrandKeyword(keyword: string, domain: string): boolean {
+  const brand = fold(domain.replace(/^www\./, "").split(".")[0]).replace(/[^a-z0-9]/g, "");
+  if (brand.length < 3) return false;
+  const words = fold(keyword).split(/[^a-z0-9]+/).filter(Boolean);
+  if (brand.length < 5) return words.includes(brand);
+  const grams = words.flatMap((w, i) => [w, ...(i + 1 < words.length ? [w + words[i + 1]] : []), ...(i + 2 < words.length ? [w + words[i + 1] + words[i + 2]] : [])]);
+  return words.join("").includes(brand) || (brand.length >= 6 && grams.some((g) => nearlyEqual(g, brand)));
 }
 
 /** Google gives no clicks beyond page 2: the DataForSEO estimate for positions 21+ is dropped. */
